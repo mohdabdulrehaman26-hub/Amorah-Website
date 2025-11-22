@@ -1,0 +1,10 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin Dashboard</title></head><body class="p-6">
+<h2>Jobs Admin Dashboard</h2>
+<p><a href="login.html">Logout</a></p>
+<script>
+if(sessionStorage.getItem('jobs_admin_auth') !== '1'){
+  alert('Unauthorized. Please login.');
+  window.location.href = 'login.html';
+}
+</script>
+</body></html>

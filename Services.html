@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services — Amorah Group | IT, Recruitment, Training & Overseas</title>
+  <meta name="description" content="Explore Amorah Group services: IT & Software Development, Recruitment & Staffing, Training & Job Placement, and Global Overseas Services." />
+  <meta name="keywords" content="Amorah Group services, IT services, recruitment, staffing, training, job placement, overseas services, visas" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://amorahgroup.in/services" />
+  <link rel="icon" type="image/png" href="https://amorahgroup.in/wp-content/uploads/2025/10/cropped-Amorah-Logo-PNG-1.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://amorahgroup.in/services" />
+  <meta property="og:title" content="Amorah Group Services — IT, Recruitment, Training & Overseas" />
+  <meta property="og:description" content="Women-led, innovation-driven. Explore our full stack of services that power careers and businesses worldwide." />
+  <meta property="og:image" content="https://amorahgroup.in/wp-content/uploads/2025/11/Untitled-design.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
+
+  <style>
+    :root {
+      /* White Theme Palette */
+      --primary-deep: #ffffff;  
+      --accent-cyan: #00d4ff;   
+      --accent-royal: #4f46e5;  
+      
+      /* Glass / Card Settings for White BG */
+      --glass: #ffffff;
+      --glass-border: #e2e8f0;
+      --text-light: #1e293b;    /* Dark text for main content */
+      --text-muted: #64748b;    /* Muted text */
+      --card-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+    }
+    
+    body { 
+      background: var(--primary-deep); 
+      font-family: 'Poppins', sans-serif; 
+      color: var(--text-light); 
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden; 
+    }
+
+    /* Accent Underline */
+    .underline-accent { 
+      height: 4px; width: 80px; 
+      background: linear-gradient(90deg, var(--accent-royal), var(--accent-cyan)); 
+      border-radius: 10px;
+      margin: 10px auto 0;
+    }
+
+    /* Header Scroll State */
+    header { transition: all 0.4s ease-in-out; }
+    header.scrolled { 
+      background: rgba(255, 255, 255, 0.95); 
+      backdrop-filter: blur(12px);
+      padding-top: 12px; padding-bottom: 12px; 
+      box-shadow: 0 4px 20px -5px rgba(0,0,0,0.05); 
+    }
+
+    /* Premium Cards (White Theme) */
+    .glass-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+    }
+    
+    /* Hover effect */
+    .glass-card:hover { 
+      border-color: var(--accent-royal);
+      box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.15);
+      transform: translateY(-5px);
+    }
+
+    /* Juicy Premium Buttons */
+    .btn-premium {
+      position: relative;
+      background: linear-gradient(90deg, var(--accent-royal), var(--accent-cyan), var(--accent-royal));
+      background-size: 200% auto;
+      color: white; font-weight: 700; border-radius: 9999px;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 20px -10px rgba(79, 70, 229, 0.3);
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .btn-premium:hover {
+      background-position: right center;
+      box-shadow: 0 15px 30px -10px rgba(0, 212, 255, 0.5);
+      transform: translateY(-3px);
+    }
+
+    /* Outline button variant (Adjusted for White BG) */
+    .btn-outline {
+      position: relative; font-weight: 700; color: var(--accent-royal);
+      background: transparent; border-radius: 9999px;
+      z-index: 1; transition: all 0.4s ease; overflow: hidden; display: inline-flex; align-items: center; justify-content: center;
+    }
+    .btn-outline::before {
+        content: ""; position: absolute; inset: 0;
+        border-radius: 9999px; padding: 2px; 
+        background: linear-gradient(90deg, var(--accent-royal), var(--accent-cyan)); 
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor; mask-composite: exclude;
+        transition: all 0.4s ease;
+    }
+    .btn-outline:hover { color: white; box-shadow: 0 10px 30px -10px rgba(79, 70, 229, 0.2); transform: translateY(-3px); }
+    .btn-outline:hover::before { background: var(--accent-royal); }
+
+    /* Floating WA Bot */
+    .wa-float { position: fixed; bottom: 30px; right: 30px; z-index: 999; animation: bounce 2s infinite; }
+    @keyframes bounce { 0%,20%,50%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-10px)} 60%{transform:translateY(-5px)} }
+
+    /* Mobile Menu */
+    body.menu-open { overflow: hidden; }
+    #mobileMenu .dropdown-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+    #mobileMenu .dropdown-content.open { max-height: 300px; }
+
+    /* Tab Buttons (White Theme) */
+    .tab-btn {
+        padding: 12px 24px; border-radius: 999px; font-weight: 700;
+        border: 1px solid var(--glass-border); background: #ffffff;
+        color: var(--text-muted); transition: all 0.3s ease;
+    }
+    .tab-btn:hover { color: var(--accent-royal); border-color: var(--accent-royal); background: #f8fafc; }
+    .tab-btn.active {
+        background: linear-gradient(90deg, var(--accent-royal), var(--accent-cyan));
+        border: 1px solid transparent; color: white; box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+    }
+
+    /* FAQ Styles (White Theme) */
+    .faq-item { background: #ffffff; border: 1px solid var(--glass-border); border-radius: 16px; transition: all 0.3s; }
+    .faq-item.open { border-color: var(--accent-royal); background: #f8fafc; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    .faq-q { width: 100%; text-align: left; font-weight: 700; padding: 20px; color: var(--text-light); display: flex; justify-content: space-between; align-items: center; }
+    .faq-a { display: none; padding: 0 20px 20px; color: var(--text-muted); leading-relaxed; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-icon { transition: transform 0.3s; color: var(--text-muted); }
+    .faq-item.open .faq-icon { transform: rotate(180deg); color: var(--accent-royal); }
+    
+    /* Explicit Footer White Background */
+    #footer { background-color: #ffffff !important; }
+  </style>
+</head>
+<body class="antialiased">
+
+  <a href="https://wa.me/916301694153" target="_blank" rel="noopener noreferrer" class="wa-float flex items-center justify-center w-16 h-16 bg-[#25D366] rounded-full shadow-2xl hover:scale-110 transition text-white text-3xl">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <div id="header"></div>
+
+  <div id="mobileMenu" class="fixed inset-0 bg-white/98 backdrop-blur-xl z-40 hidden flex-col p-8 text-slate-800 overflow-y-auto transition-all opacity-0 scale-95">
+    <div class="flex justify-between items-center mb-8">
+        <img src="https://amorahgroup.in/wp-content/uploads/2025/10/cropped-Amorah-Logo-PNG-1.png" alt="Amorah Group logo" class="h-10">
+        <button id="closeMenu" class="text-4xl text-indigo-600"><i class="fas fa-times"></i></button>
+    </div>
+    
+    <div class="flex flex-col gap-6 text-xl font-bold">
+        <a href="/" class="hover:text-indigo-600 transition">Home</a>
+        <div>
+            <button class="mobile-dropdown-toggle flex items-center justify-between w-full text-indigo-600 transition">Services <i class="fas fa-chevron-down transition-transform"></i></button>
+            <div class="dropdown-content pl-4 text-lg text-slate-600 flex flex-col gap-3 mt-3">
+                <a href="#it">IT & Software</a>
+                <a href="#recruitment">Recruitment</a>
+                <a href="#training">Training & Placement</a>
+            </div>
+        </div>
+        <div>
+            <button class="mobile-dropdown-toggle flex items-center justify-between w-full hover:text-indigo-600 transition">Overseas <i class="fas fa-chevron-down transition-transform"></i></button>
+            <div class="dropdown-content pl-4 text-lg text-slate-600 flex flex-col gap-3 mt-3">
+                <a href="/overseas">Student Visa</a>
+                <a href="/overseas">Visit Visa</a>
+                <a href="/overseas">PR Visa</a>
+            </div>
+        </div>
+        <a href="/blog" class="hover:text-indigo-600 transition">Blog</a>
+        <a href="/about" class="hover:text-indigo-600 transition">About Us</a>
+        <a href="#contact" class="btn-premium px-10 py-4 text-center mt-4">Contact Us</a>
+    </div>
+  </div>
+
+  <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden z-10 text-center">
+    <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_#f1f5f9_0%,_#ffffff_100%)] -z-20"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-300/20 rounded-full filter blur-[120px] -z-10 animate-pulse"></div>
+
+    <div class="container mx-auto px-6 relative z-10" data-aos="fade-up">
+      <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6 text-slate-900">
+        Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-cyan-500">Services</span>
+      </h1>
+      <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-10 leading-relaxed">
+        Technology, Talent, Training & Global Mobility — comprehensive solutions designed to scale your business and accelerate your career.
+      </p>
+      <a href="#catalog" class="btn-premium px-10 py-4 text-lg animate-bounce-slow">
+        Explore Amorah <i class="fas fa-arrow-down ml-3"></i>
+      </a>
+    </div>
+  </section>
+
+  <section class="py-10 relative z-10 bg-slate-50 border-t border-b border-slate-200">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-wrap gap-4 justify-center" data-aos="fade-up" data-aos-delay="100">
+        <button class="tab-btn active" data-tab="tab-it"><i class="fas fa-code mr-2"></i> IT & Software</button>
+        <button class="tab-btn" data-tab="tab-recruitment"><i class="fas fa-user-tie mr-2"></i> Recruitment</button>
+        <button class="tab-btn" data-tab="tab-training"><i class="fas fa-chalkboard-teacher mr-2"></i> Training & Placement</button>
+        <button class="tab-btn" data-tab="tab-overseas"><i class="fas fa-plane-departure mr-2"></i> Overseas Services</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalog" class="py-20 relative z-10 bg-white">
+    <div class="container mx-auto px-6">
+      
+      <div id="tab-it" class="tab-pane transition-all duration-500">
+        <div class="text-center mb-16">
+          <h2 id="it" class="text-3xl md:text-4xl font-black text-slate-900">IT &amp; Software Development</h2>
+          <div class="underline-accent mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="glass-card p-8" data-tilt data-aos="fade-up">
+            <i class="fas fa-laptop-code text-4xl text-indigo-500 mb-6"></i>
+            <h3 class="text-xl font-bold mb-3 text-slate-800">Custom Web & App Development</h3>
+            <p class="mb-6 text-slate-600">Modern web apps, PWAs, and mobile solutions with performance-first architecture.</p>
+            <ul class="text-sm text-slate-500 space-y-2 mb-8">
+              <li><i class="fas fa-check text-cyan-500 mr-2"></i> Next.js / React / .NET / Node</li>
+              <li><i class="fas fa-check text-cyan-500 mr-2"></i> REST & GraphQL APIs</li>
+              <li><i class="fas fa-check text-cyan-500 mr-2"></i> UI/UX & Accessibility</li>
+            </ul>
+            <a href="#contact" class="text-indigo-600 hover:text-indigo-800 font-bold flex items-center gap-2 transition-all group">Get a Quote <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i></a>
+          </div>
+
+          <div class="glass-card p-8" data-tilt data-aos="fade-up" data-aos-delay="100">
+            <i class="fas fa-cloud-upload-alt text-4xl text-indigo-500 mb-6"></i>
+            <h3 class="text-xl font-bold mb-3 text-slate-800">Cloud & DevOps</h3>
+            <p class="mb-6 text-slate-600">Cloud-native deployments, CI/CD pipelines and infra automation.</p>
+            <ul class="text-sm text-slate-500 space-y-2 mb-8">
+              <li><i class="fas fa-check text-cyan-500 mr-2"></i> AWS / Azure Solutions</li>
+              <li><i class="fas fa-check text-cyan-500 mr-2"></i> Docker & Kubernetes</li>
+              <li><i class="fas fa-check text-cyan-500 mr-2"></i> Scaling & Observability</li>
+            </ul>
+            <a href="#contact" class="text-indigo-600 hover:text-indigo-800 font-bold flex items-center gap-2 transition-all group">Discuss Cloud <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i></a>
+          </div>
+
+          <div class="glass-card p-8" data-tilt data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-robot text-4xl text-indigo-500 mb-6"></i>
+            <h3 class="text-xl font-bold mb-3 text-slate-800">AI & Automation</h3>
+            <p class="mb-6 text-slate-600">Workflow automation, chatbots, and data pipelines to reduce manual time.</p>
+            <ul class="text-sm text-slate-500 space-y-2 mb-8">
+              <li><i class="fas fa-check text-cyan-500 mr-2"></i> RAG, AI Agents & Integrations</li>
+              <li><i class="fas fa-check text-cyan-500 mr-2"></i> Data Cleaning & ETL</li>
+              <li><i class="fas fa-check text-cyan-500 mr-2"></i> Process Automation (Zapier/Make)</li>
+            </ul>
+            <a href="#contact" class="text-indigo-600 hover:text-indigo-800 font-bold flex items-center gap-2 transition-all group">Automate Now <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-recruitment" class="tab-pane hidden transition-all duration-500">
+        <div class="text-center mb-16">
+          <h2 id="recruitment" class="text-3xl md:text-4xl font-black text-slate-900">Recruitment &amp; Staffing</h2>
+          <div class="underline-accent mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="glass-card p-8" data-tilt>
+            <i class="fas fa-users text-4xl text-purple-500 mb-6"></i>
+            <h3 class="text-xl font-bold mb-3 text-slate-800">Permanent Hiring</h3>
+            <p class="mb-6 text-slate-600">End-to-end hiring with skill-first screening and culture fit mapping.</p>
+            <ul class="text-sm text-slate-500 space-y-2 mb-8">
+              <li><i class="fas fa-check text-purple-500 mr-2"></i> Tech & Non-Tech roles</li>
+              <li><i class="fas fa-check text-purple-500 mr-2"></i> Interview scheduling</li>
+              <li><i class="fas fa-check text-purple-500 mr-2"></i> Offer & joining support</li>
+            </ul>
+            <a href="#contact" class="text-purple-600 hover:text-purple-800 font-bold flex items-center gap-2 transition-all group">Hire Talent <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i></a>
+          </div>
+
+          <div class="glass-card p-8" data-tilt>
+            <i class="far fa-handshake text-4xl text-purple-500 mb-6"></i>
+            <h3 class="text-xl font-bold mb-3 text-slate-800">Contract & Outsourcing</h3>
+            <p class="mb-6 text-slate-600">Flexible staffing to scale projects rapidly with complete compliance.</p>
+            <ul class="text-sm text-slate-500 space-y-2 mb-8">
+              <li><i class="fas fa-check text-purple-500 mr-2"></i> On-site / Remote / Hybrid</li>
+              <li><i class="fas fa-check text-purple-500 mr-2"></i> Payroll & Compliances</li>
+              <li><i class="fas fa-check text-purple-500 mr-2"></i> Vendor management</li>
+            </ul>
+            <a href="#contact" class="text-purple-600 hover:text-purple-800 font-bold flex items-center gap-2 transition-all group">Scale Teams <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i></a>
+          </div>
+
+          <div class="glass-card p-8" data-tilt>
+            <i class="fas fa-user-tie text-4xl text-purple-500 mb-6"></i>
+            <h3 class="text-xl font-bold mb-3 text-slate-800">Executive Search</h3>
+            <p class="mb-6 text-slate-600">Leadership hiring with discreet outreach and rigorous assessment.</p>
+            <ul class="text-sm text-slate-500 space-y-2 mb-8">
+              <li><i class="fas fa-check text-purple-500 mr-2"></i> CXO - VP - Director Levels</li>
+              <li><i class="fas fa-check text-purple-500 mr-2"></i> Benchmarked compensation</li>
+              <li><i class="fas fa-check text-purple-500 mr-2"></i> Succession planning</li>
+            </ul>
+            <a href="#contact" class="text-purple-600 hover:text-purple-800 font-bold flex items-center gap-2 transition-all group">Find Leaders <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-training" class="tab-pane hidden transition-all duration-500">
+        <div class="text-center mb-16">
+          <h2 id="training" class="text-3xl md:text-4xl font-black text-slate-900">Training &amp; Job Placement</h2>
+          <div class="underline-accent mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="glass-card p-8" data-tilt>
+            <i class="fas fa-graduation-cap text-4xl text-emerald-500 mb-6"></i>
+            <h3 class="text-xl font-bold mb-3 text-slate-800">Industry Programs</h3>
+            <p class="mb-6 text-slate-600">Project-based learning in .NET, DevOps, Data, QA, and more.</p>
+            <ul class="text-sm text-slate-500 space-y-2 mb-8">
+              <li><i class="fas fa-check text-emerald-500 mr-2"></i> Live capstone projects</li>
+              <li><i class="fas fa-check text-emerald-500 mr-2"></i> Mentor support</li>
+              <li><i class="fas fa-check text-emerald-500 mr-2"></i> Portfolio building</li>
+            </ul>
+            <a href="#contact" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center gap-2 transition-all group">Enroll Now <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i></a>
+          </div>
+
+          <div class="glass-card p-8" data-tilt>
+            <i class="fas fa-briefcase text-4xl text-emerald-500 mb-6"></i>
+            <h3 class="text-xl font-bold mb-3 text-slate-800">Placement Assistance</h3>
+            <p class="mb-6 text-slate-600">Interview prep, referrals, and employer connects to land your job.</p>
+            <ul class="text-sm text-slate-500 space-y-2 mb-8">
+              <li><i class="fas fa-check text-emerald-500 mr-2"></i> ATS-ready resume</li>
+              <li><i class="fas fa-check text-emerald-500 mr-2"></i> Mock interviews</li>
+              <li><i class="fas fa-check text-emerald-500 mr-2"></i> Job pipeline access</li>
+            </ul>
+            <a href="#contact" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center gap-2 transition-all group">Get Placed <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i></a>
+          </div>
+
+          <div class="glass-card p-8" data-tilt>
+            <i class="fas fa-chalkboard-teacher text-4xl text-emerald-500 mb-6"></i>
+            <h3 class="text-xl font-bold mb-3 text-slate-800">Corporate Upskilling</h3>
+            <p class="mb-6 text-slate-600">Tailored bootcamps for teams with measurable outcomes.</p>
+            <ul class="text-sm text-slate-500 space-y-2 mb-8">
+              <li><i class="fas fa-check text-emerald-500 mr-2"></i> Customized curriculum</li>
+              <li><i class="fas fa-check text-emerald-500 mr-2"></i> On-site / Online delivery</li>
+              <li><i class="fas fa-check text-emerald-500 mr-2"></i> Assessments & reports</li>
+            </ul>
+            <a href="#contact" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center gap-2 transition-all group">Train Teams <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-overseas" class="tab-pane hidden transition-all duration-500">
+        <div class="text-center mb-16">
+          <h2 id="overseas" class="text-3xl md:text-4xl font-black text-slate-900">Global Overseas Services</h2>
+          <div class="underline-accent mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="glass-card p-8" data-tilt>
+            <i class="fas fa-university text-4xl text-cyan-500 mb-6"></i>
+            <h3 class="text-xl font-bold mb-3 text-slate-800">Student Visas</h3>
+            <p class="mb-6 text-slate-600">Admissions, SOPs, scholarships, and compliant visa processing.</p>
+            <ul class="text-sm text-slate-500 space-y-2 mb-8">
+              <li><i class="fas fa-check text-cyan-500 mr-2"></i> UK | USA | Canada | Australia | EU</li>
+              <li><i class="fas fa-check text-cyan-500 mr-2"></i> Course & university mapping</li>
+              <li><i class="fas fa-check text-cyan-500 mr-2"></i> Pre-departure guidance</li>
+            </ul>
+            <a href="#contact" class="text-cyan-600 hover:text-cyan-800 font-bold flex items-center gap-2 transition-all group">Start Application <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i></a>
+          </div>
+
+          <div class="glass-card p-8" data-tilt>
+            <i class="fas fa-passport text-4xl text-cyan-500 mb-6"></i>
+            <h3 class="text-xl font-bold mb-3 text-slate-800">Visit & Work Visas</h3>
+            <p class="mb-6 text-slate-600">Eligibility checks and documentation with complete transparency.</p>
+            <ul class="text-sm text-slate-500 space-y-2 mb-8">
+              <li><i class="fas fa-check text-cyan-500 mr-2"></i> Tourism & Business Visas</li>
+              <li><i class="fas fa-check text-cyan-500 mr-2"></i> Skilled migration (PR)</li>
+              <li><i class="fas fa-check text-cyan-500 mr-2"></i> Ethical job assistance</li>
+            </ul>
+            <a href="#contact" class="text-cyan-600 hover:text-cyan-800 font-bold flex items-center gap-2 transition-all group">Check Eligibility <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i></a>
+          </div>
+
+          <div class="glass-card p-8" data-tilt>
+            <i class="fas fa-map-marked-alt text-4xl text-cyan-500 mb-6"></i>
+            <h3 class="text-xl font-bold mb-3 text-slate-800">Relocation Support</h3>
+            <p class="mb-6 text-slate-600">Accommodation, banking, SIM, and post-landing settlement services.</p>
+            <ul class="text-sm text-slate-500 space-y-2 mb-8">
+              <li><i class="fas fa-check text-cyan-500 mr-2"></i> Airport pickup options</li>
+              <li><i class="fas fa-check text-cyan-500 mr-2"></i> City orientation</li>
+              <li><i class="fas fa-check text-cyan-500 mr-2"></i> Community access</li>
+            </ul>
+            <a href="#contact" class="text-cyan-600 hover:text-cyan-800 font-bold flex items-center gap-2 transition-all group">Relocate Smoothly <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 relative z-10 bg-slate-50">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-black text-slate-900">Frequently Asked Questions</h2>
+        <div class="underline-accent mx-auto"></div>
+      </div>
+
+      <div class="space-y-4" data-aos="fade-up">
+        <div class="faq-item">
+          <button class="faq-q">
+            <span>How soon can you start an IT project?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-a">Typically within 5–10 business days after scope sign-off. For urgent builds, we propose a phased kickoff to demonstrate immediate value.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            <span>Do you provide job placement after training?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-a">Yes. We include comprehensive interview preparation, resume building, internal referrals, and dedicated job support until you land an offer.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            <span>Are overseas services ethical and compliant?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-a">Absolutely. We follow transparent, authentic processes aligned strictly with the destination country's immigration rules and regulations.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            <span>Can you hire at scale for short timelines?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-a">Yes, via our multi-channel sourcing, dedicated pool of recruiters, and a pre-vetted candidate pipeline ready for deployment.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-20 relative z-10 bg-white">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="grid md:grid-cols-2 gap-8 items-stretch">
+        <div class="glass-card p-10 bg-gradient-to-br from-white to-indigo-50 border border-indigo-100" data-aos="fade-right">
+            <h3 class="text-3xl font-black mb-6 text-slate-900">Why Choose Amorah?</h3>
+            <ul class="space-y-4 text-slate-600 text-lg mb-10">
+                <li class="flex items-center gap-3"><i class="fas fa-check-circle text-indigo-500"></i> Women-led, innovation-driven</li>
+                <li class="flex items-center gap-3"><i class="fas fa-check-circle text-indigo-500"></i> 5+ years, 400+ happy clients</li>
+                <li class="flex items-center gap-3"><i class="fas fa-check-circle text-indigo-500"></i> Ethical overseas processing</li>
+                <li class="flex items-center gap-3"><i class="fas fa-check-circle text-indigo-500"></i> Job-ready training & placement</li>
+                <li class="flex items-center gap-3"><i class="fas fa-check-circle text-indigo-500"></i> Scalable IT delivery with DevOps</li>
+            </ul>
+            <p class="text-slate-500 mb-6">Ready to start? Tell us what you need, and we'll tailor a plan for you.</p>
+            <a href="https://wa.me/916301694153" target="_blank" rel="noopener" class="btn-outline px-6 py-3 w-full md:w-auto gap-2 text-lg">
+                <i class="fab fa-whatsapp text-xl"></i> Chat on WhatsApp
+            </a>
+        </div>
+
+        <div class="glass-card p-10 bg-white" data-aos="fade-left">
+          <h3 class="text-2xl font-bold mb-8 text-slate-900">Send Us a Message</h3>
+          <form id="contactForm" class="space-y-5">
+            <div class="grid grid-cols-1 gap-5">
+              <input name="name" required placeholder="Full name" class="w-full p-4 rounded-xl bg-slate-50 border border-slate-200 focus:border-indigo-400 focus:outline-none text-slate-800 placeholder-slate-400 transition" />
+              <input name="email" type="email" required placeholder="Email address" class="w-full p-4 rounded-xl bg-slate-50 border border-slate-200 focus:border-indigo-400 focus:outline-none text-slate-800 placeholder-slate-400 transition" />
+              <input name="phone" placeholder="Phone number" class="w-full p-4 rounded-xl bg-slate-50 border border-slate-200 focus:border-indigo-400 focus:outline-none text-slate-800 placeholder-slate-400 transition" />
+              <select name="interest" class="w-full p-4 rounded-xl bg-slate-50 border border-slate-200 focus:border-indigo-400 focus:outline-none text-slate-800 transition">
+                <option value="" class="text-slate-400">I am interested in...</option>
+                <option>IT Services</option>
+                <option>Training & Placement</option>
+                <option>Overseas Services</option>
+                <option>Recruitment</option>
+              </select>
+              <textarea name="message" rows="4" placeholder="Tell us briefly about your requirements..." class="w-full p-4 rounded-xl bg-slate-50 border border-slate-200 focus:border-indigo-400 focus:outline-none text-slate-800 placeholder-slate-400 resize-none transition"></textarea>
+              
+              <button type="submit" class="btn-premium w-full py-4 text-lg shadow-lg">Send Message</button>
+              <p id="formMsg" class="text-center mt-4 hidden"></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 1. Initialize AOS
+    if(window.AOS) AOS.init({ duration: 800, once: true, offset: 60, easing: 'ease-out-cubic' });
+
+    // 2. Header Scroll
+    const siteHeader = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) siteHeader.classList.add('scrolled');
+      else siteHeader.classList.remove('scrolled');
+    });
+
+    // 3. Mobile Menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        setTimeout(() => {
+            mobileMenu.classList.remove('opacity-0', 'scale-95');
+            mobileMenu.classList.add('opacity-100', 'scale-100');
+        }, 10);
+        document.body.classList.add('menu-open');
+      });
+
+      const closeMenuFn = () => {
+        mobileMenu.classList.remove('opacity-100', 'scale-100');
+        mobileMenu.classList.add('opacity-0', 'scale-95');
+        setTimeout(() => { mobileMenu.classList.add('hidden'); }, 300);
+        document.body.classList.remove('menu-open');
+      };
+      closeMenu.addEventListener('click', closeMenuFn);
+
+      dropdownToggles.forEach(toggle => {
+          toggle.addEventListener('click', (e) => {
+              e.preventDefault();
+              const content = toggle.nextElementSibling;
+              const icon = toggle.querySelector('.fa-chevron-down');
+              content.classList.toggle('open');
+              icon.classList.toggle('rotate-180');
+          });
+      });
+    }
+
+    // 4. Tabs Logic
+    const tabs = document.querySelectorAll('.tab-btn');
+    const panes = document.querySelectorAll('.tab-pane');
+    tabs.forEach(btn => btn.addEventListener('click', () => {
+      tabs.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      // Hide all panes
+      panes.forEach(p => {
+          p.classList.add('hidden', 'opacity-0');
+          p.classList.remove('opacity-100');
+      });
+      // Show target pane with fade
+      const target = document.getElementById(btn.dataset.tab);
+      if (target) {
+          target.classList.remove('hidden');
+          setTimeout(() => {
+            target.classList.remove('opacity-0');
+            target.classList.add('opacity-100');
+          }, 50);
+      }
+      // Smooth scroll to catalog top
+      document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }));
+
+    // 5. FAQ Toggles
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-q').addEventListener('click', () => item.classList.toggle('open'));
+    });
+
+    // 6. Google Sheets Form Submit
+    const form = document.getElementById('contactForm');
+    const formMsg = document.getElementById('formMsg');
+    // Important: Replace with your actual Apps Script URL
+    const GOOGLE_SCRIPT_URL = "YOUR_APPS_SCRIPT_WEB_APP_URL"; 
+
+    if(form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerText;
+            submitBtn.disabled = true; submitBtn.innerText = 'Sending...';
+            formMsg.classList.add('hidden');
+            
+            const data = Object.fromEntries(new FormData(form).entries());
+            try {
+            await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST', mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            form.reset();
+            formMsg.textContent = "Thanks! We will get back to you soon.";
+            formMsg.className = "text-center mt-4 text-green-600 font-bold";
+            } catch (err) {
+            formMsg.textContent = "Something went wrong. Please try again.";
+            formMsg.className = "text-center mt-4 text-red-500 font-bold";
+            } finally {
+                submitBtn.disabled = false; submitBtn.innerText = originalText;
+                formMsg.classList.remove('hidden');
+            }
+        });
+    }
+  });
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Amorah Group Services",
+    "url": "https://amorahgroup.in/services",
+    "itemListElement": [
+      { "@type": "Service", "position": 1, "name": "IT & Software Development", "areaServed": ["IN","US","AE","EU"] },
+      { "@type": "Service", "position": 2, "name": "Recruitment & Staffing", "areaServed": ["IN","US","AE","EU"] },
+      { "@type": "Service", "position": 3, "name": "Training & Job Placement", "areaServed": ["IN","US","AE","EU"] },
+      { "@type": "Service", "position": 4, "name": "Global Overseas Services", "areaServed": ["IN","US","AE","EU"] }
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Amorah Group",
+      "url": "https://amorahgroup.in/",
+      "logo": "https://amorahgroup.in/wp-content/uploads/2025/10/cropped-Amorah-Logo-PNG-1.png"
+    }
+  }
+  </script>
+  <div id="header"></div>
+<script src="header.js"></script>
+
+<div id="footer"></div>
+<script src="footer.js"></script>
+
+
+    <!-- injected-links-scripts -->
+    <script src="links/external-links.js"></script>
+    <script src="links/links-init.js"></script>
+    <!-- Razorpay helper (uses server-side create-payment.php) -->
+    <script>
+    async function openPaymentLink(payload){ 
+      try{
+        const res = await fetch('payment/create-payment.php', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(payload || {})
+        });
+        const data = await res.json();
+        if(data && data.short_url) window.open(data.short_url, '_blank');
+        else alert('Payment link creation failed.');
+      } catch(e){ console.error(e); alert('Payment error'); }
+    }
+    </script>
+    <!-- end injected-links-scripts -->
+    
+</body>
+</html>

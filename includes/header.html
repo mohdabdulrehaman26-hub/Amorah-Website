@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amorah Group - Modern Header</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #00bf6f;
+      --blue: #1e40af;
+      --blue-glass: rgba(30, 64, 175, 0.95); /* Transparency for glass effect */
+      --dark: #0f172a;
+      --light: #ffffff;
+      --shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+        font-family: 'Inter', sans-serif; 
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+        min-height: 200vh; /* Extended height to allow scrolling demo */
+        color: #ffffff;
+    }
+
+    /* --- HEADER STYLES --- */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 20px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      /* Load Animation */
+      animation: slideDown 0.8s ease forwards;
+    }
+
+    /* --- SCROLLED STATE (THE BLUE EFFECT) --- */
+    .header.scrolled {
+      background: var(--blue-glass);
+      backdrop-filter: blur(12px); /* The "Awesome" Blur */
+      -webkit-backdrop-filter: blur(12px);
+      padding: 12px 5%;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Logo Animation */
+    .logo img {
+      height: 55px;
+      transition: height 0.4s ease;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+    .header.scrolled .logo img { height: 45px; }
+
+    /* Navigation */
+    .right-side { display: flex; align-items: center; gap: 2rem; }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-item { position: relative; display: flex; align-items: center; }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 0;
+    }
+
+    .nav-link i { font-size: 12px; transition: transform 0.3s ease; }
+    
+    /* Hover Effects */
+    .nav-link:hover { color: #fff; text-shadow: 0 0 20px rgba(255,255,255,0.4); }
+    .nav-item:hover .nav-link i { transform: rotate(180deg); }
+
+    /* Animated Underline */
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0; height: 2px;
+      bottom: 0; left: 0;
+      background: var(--green);
+      transition: width 0.3s ease;
+      box-shadow: 0 0 10px var(--green);
+    }
+    .nav-item:hover .nav-link::after { width: 100%; }
+
+    /* --- AWESOME DROPDOWN --- */
+    .dropdown-menu {
+      position: absolute;
+      top: 120%;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(255, 255, 255, 0.98);
+      min-width: 240px;
+      border-radius: 12px;
+      padding: 10px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bouncy effect */
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* Small triangle at top of dropdown */
+    .dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -6px; left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 12px; height: 12px;
+      background: #fff;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+      top: calc(100% + 10px);
+    }
+
+    .dropdown-link {
+      display: block;
+      padding: 12px 16px;
+      color: #1e293b;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .dropdown-link:hover {
+      background: #f1f5f9;
+      color: var(--blue);
+      padding-left: 20px; /* Slide right effect */
+    }
+
+    /* --- BUTTONS --- */
+    .cta-wa {
+      position: relative;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Button Shine Effect */
+    .cta-wa::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: 0.5s;
+    }
+    .cta-wa:hover::before { left: 100%; }
+    
+    .cta-wa:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+    }
+
+    /* Mobile Menu Button */
+    .mobile-toggle {
+      display: none;
+      color: white;
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* --- MOBILE DRAWER --- */
+    .mobile-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100vh;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      z-index: 9998;
+      opacity: 0; visibility: hidden;
+      transition: 0.3s;
+    }
+    .mobile-menu {
+      position: fixed;
+      top: 0; right: -300px;
+      width: 280px; height: 100vh;
+      background: white;
+      z-index: 9999;
+      padding: 30px;
+      transition: 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+      box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+    }
+    .mobile-active .mobile-overlay { opacity: 1; visibility: visible; }
+    .mobile-active .mobile-menu { right: 0; }
+
+    .mobile-menu a {
+      display: block;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .close-btn {
+      position: absolute;
+      top: 20px; right: 20px;
+      font-size: 24px;
+      background: none; border: none;
+      cursor: pointer;
+    }
+
+    /* Initial Animation Keyframes */
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Responsiveness */
+    @media (max-width: 1024px) {
+      .nav-links, .cta-wa { display: none; }
+      .mobile-toggle { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <a href="index.html" class="logo">
+    <img src="https://amorahgroup.in/wp-content/uploads/2025/10/cropped-Amorah-Logo-PNG-1.png" alt="Amorah Group">
+  </a>
+
+  <div class="right-side">
+    <nav>
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        
+        <li class="nav-item">
+          <a href="Services.html" class="nav-link">Services <i class="fa-solid fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="Services.html#it" class="dropdown-link">IT & Software</a>
+            <a href="Services.html#recruitment" class="dropdown-link">Recruitment</a>
+            <a href="Services.html#training" class="dropdown-link">Training</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a href="overseas.html" class="nav-link">Overseas <i class="fa-solid fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="overseas.html#student" class="dropdown-link">Student Visa</a>
+            <a href="overseas.html#visit" class="dropdown-link">Visit Visa</a>
+            <a href="overseas.html#pr" class="dropdown-link">PR Visa</a>
+            <a href="overseas.html#jobs" class="dropdown-link">Job Assistance</a>
+          </div>
+        </li>
+
+        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="job-openings.html" class="nav-link">Careers</a></li>
+      </ul>
+    </nav>
+
+    <a href="https://wa.me/916301694153" class="cta-wa" target="_blank">
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp
+    </a>
+
+    <button class="mobile-toggle" id="mobileBtn">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-btn" id="closeBtn"><i class="fa-solid fa-xmark"></i></button>
+  <br>
+  <a href="index.html">Home</a>
+  <a href="Services.html">Services</a>
+  <a href="overseas.html">Overseas Services</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About</a>
+  <a href="job-openings.html">Careers</a>
+  <br>
+  <a href="https://wa.me/916301694153" style="color: var(--green);">WhatsApp Chat</a>
+</div>
+
+<script>
+  // Header Scroll Effect
+  const header = document.getElementById('header');
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  // Mobile Menu Logic
+  const mobileBtn = document.getElementById('mobileBtn');
+  const closeBtn = document.getElementById('closeBtn');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const body = document.body;
+
+  function toggleMenu() {
+    body.classList.toggle('mobile-active');
+  }
+
+  mobileBtn.addEventListener('click', toggleMenu);
+  closeBtn.addEventListener('click', toggleMenu);
+  mobileOverlay.addEventListener('click', toggleMenu);
+</script>
+
+</body>
+</html>

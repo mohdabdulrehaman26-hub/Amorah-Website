@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us — Amorah Group</title>
+  <meta name="description" content="Amorah Group is a women-led, innovation-driven company delivering IT, Recruitment, Training & Global Overseas Services with trust and excellence." />
+  <meta name="keywords" content="Amorah Group About, Women-led company, IT services, recruitment, overseas services, Hyderabad" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://amorahgroup.in/about" />
+  <link rel="icon" type="image/png" href="https://amorahgroup.in/wp-content/uploads/2025/10/cropped-Amorah-Logo-PNG-1.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://amorahgroup.in/about" />
+  <meta property="og:title" content="About Us — Amorah Group" />
+  <meta property="og:description" content="Women-led, innovation-driven. 5+ years, 400+ clients. IT, Recruitment, Training & Global Overseas Services." />
+  <meta property="og:image" content="https://amorahgroup.in/wp-content/uploads/2025/11/Untitled-design.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
+
+  <style>
+    :root {
+      /* Light Theme Palette */
+      --primary-deep: #ffffff;  
+      --accent-cyan: #00d4ff;   
+      --accent-royal: #4f46e5;  
+      --glass: rgba(255, 255, 255, 0.8); 
+      --glass-border: rgba(0, 0, 0, 0.05);
+      --text-light: #1e293b;    
+      --text-muted: #64748b;    
+      --card-shadow: 0 10px 30px -10px rgba(0,0,0,0.08); 
+    }
+    
+    body { 
+      background: var(--primary-deep); 
+      font-family: 'Poppins', sans-serif; 
+      color: var(--text-light); 
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden; 
+    }
+
+    /* Explicit White Footer Styling */
+    #footer {
+        background-color: #ffffff !important;
+        color: var(--text-light) !important;
+        border-top: 1px solid #f1f5f9;
+    }
+
+    /* Accent Underline */
+    .underline-accent { 
+      height: 4px; width: 80px; 
+      background: linear-gradient(90deg, var(--accent-royal), var(--accent-cyan)); 
+      border-radius: 10px;
+    }
+
+    /* Header Scroll State */
+    header { transition: all 0.4s ease-in-out; }
+    header.scrolled { 
+      background: rgba(255, 255, 255, 0.95); 
+      backdrop-filter: blur(12px);
+      padding-top: 12px; padding-bottom: 12px; 
+      box-shadow: 0 4px 20px -5px rgba(0,0,0,0.05); 
+    }
+
+    /* Premium Glass Cards */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--card-shadow); 
+    }
+    /* Glow effect on hover */
+    .glass-card::after {
+        content: ''; position: absolute; inset: 0;
+        background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(79, 70, 229, 0.05) 0%, transparent 50%);
+        opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: -1;
+    }
+    .glass-card:hover::after { opacity: 1; }
+    .glass-card:hover { 
+      border-color: var(--accent-royal);
+      box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.15);
+    }
+
+    /* Juicy Premium Buttons */
+    .btn-premium {
+      position: relative;
+      background: linear-gradient(90deg, var(--accent-royal), var(--accent-cyan), var(--accent-royal));
+      background-size: 200% auto;
+      color: white; font-weight: 700; border-radius: 9999px;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 20px -10px rgba(79, 70, 229, 0.3);
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .btn-premium:hover {
+      background-position: right center;
+      box-shadow: 0 15px 30px -10px rgba(0, 212, 255, 0.5);
+      transform: translateY(-3px);
+    }
+
+    /* Outline button variant */
+    .btn-outline {
+      position: relative; font-weight: 700; color: var(--accent-royal);
+      background: transparent; border-radius: 9999px;
+      z-index: 1; transition: all 0.4s ease; overflow: hidden; display: inline-flex; align-items: center; justify-content: center;
+    }
+    .btn-outline::before {
+        content: ""; position: absolute; inset: 0;
+        border-radius: 9999px; padding: 2px; 
+        background: linear-gradient(90deg, var(--accent-royal), var(--accent-cyan)); 
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor; mask-composite: exclude;
+        transition: all 0.4s ease;
+    }
+    .btn-outline:hover { color: white; box-shadow: 0 10px 30px -10px rgba(79, 70, 229, 0.2); transform: translateY(-3px); }
+    .btn-outline:hover::before { background: var(--accent-royal); }
+
+    /* Floating WA Bot */
+    .wa-float { position: fixed; bottom: 30px; right: 30px; z-index: 999; animation: bounce 2s infinite; }
+    @keyframes bounce { 0%,20%,50%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-10px)} 60%{transform:translateY(-5px)} }
+
+    /* Mobile Menu */
+    body.menu-open { overflow: hidden; }
+    #mobileMenu .dropdown-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+    #mobileMenu .dropdown-content.open { max-height: 300px; }
+
+    /* Value Chips */
+    .value-chip {
+        background: rgba(79, 70, 229, 0.05); border: 1px solid rgba(79, 70, 229, 0.1);
+        color: var(--accent-royal); border-radius: 999px; font-weight: 600; padding: 8px 16px;
+        transition: all 0.3s; cursor: default;
+    }
+    .value-chip:hover { background: rgba(79, 70, 229, 0.1); box-shadow: 0 0 15px rgba(79, 70, 229, 0.2); }
+  </style>
+
+
+</head>
+<body class="antialiased">
+
+  <a href="https://wa.me/916301694153" target="_blank" rel="noopener noreferrer" class="wa-float flex items-center justify-center w-16 h-16 bg-[#25D366] rounded-full shadow-2xl hover:scale-110 transition text-white text-3xl">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <div id="header"></div>
+
+  <div id="mobileMenu" class="fixed inset-0 bg-white/98 backdrop-blur-xl z-40 hidden flex-col p-8 text-slate-800 overflow-y-auto transition-all opacity-0 scale-95">
+    <div class="flex justify-between items-center mb-8">
+        <img src="https://amorahgroup.in/wp-content/uploads/2025/10/cropped-Amorah-Logo-PNG-1.png" alt="Amorah Group logo" class="h-10">
+        <button id="closeMenu" class="text-4xl text-indigo-600"><i class="fas fa-times"></i></button>
+    </div>
+    
+    <div class="flex flex-col gap-6 text-xl font-bold">
+        <a href="/" class="hover:text-indigo-600 transition">Home</a>
+        <div>
+            <button class="mobile-dropdown-toggle flex items-center justify-between w-full hover:text-indigo-600 transition">Services <i class="fas fa-chevron-down transition-transform"></i></button>
+            <div class="dropdown-content pl-4 text-lg text-slate-600 flex flex-col gap-3 mt-3">
+                <a href="/#it">IT & Software</a>
+                <a href="/#recruitment">Recruitment</a>
+                <a href="/#training">Training & Placement</a>
+            </div>
+        </div>
+        <div>
+            <button class="mobile-dropdown-toggle flex items-center justify-between w-full hover:text-indigo-600 transition">Overseas <i class="fas fa-chevron-down transition-transform"></i></button>
+            <div class="dropdown-content pl-4 text-lg text-slate-600 flex flex-col gap-3 mt-3">
+                <a href="/#overseas">Student Visa</a>
+                <a href="/#overseas">Visit Visa</a>
+                <a href="/#overseas">PR Visa</a>
+            </div>
+        </div>
+        <a href="/blog" class="hover:text-indigo-600 transition">Blog</a>
+        <a href="/about" class="text-indigo-600 transition">About Us</a>
+        <a href="/contact" class="btn-premium px-10 py-4 text-center mt-4">Contact Us</a>
+    </div>
+  </div>
+
+  <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden z-10">
+    <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_#f8fafc_0%,_#ffffff_100%)] -z-20"></div>
+    <div class="absolute top-20 right-0 w-96 h-96 bg-indigo-300/20 rounded-full filter blur-[100px] -z-10 animate-pulse"></div>
+    <div class="absolute bottom-20 left-0 w-96 h-96 bg-cyan-300/20 rounded-full filter blur-[100px] -z-10 animate-pulse" style="animation-delay: 1s;"></div>
+
+    <div class="container mx-auto px-6 lg:px-12">
+      <nav class="mb-8 text-slate-500 text-sm" aria-label="Breadcrumb" data-aos="fade-down">
+        <ol class="flex items-center gap-2">
+          <li><a href="/" class="hover:text-indigo-600 transition">Home</a></li>
+          <li>›</li>
+          <li class="text-indigo-600 font-medium">About Us</li>
+        </ol>
+      </nav>
+
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div data-aos="fade-right">
+          <h1 class="text-4xl md:text-6xl font-black leading-tight text-slate-900">
+            About <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-cyan-500">Amorah Group</span>
+          </h1>
+          <div class="underline-accent mt-6 mb-8"></div>
+          
+          <p class="text-lg text-slate-600 leading-relaxed mb-6">
+            Amorah Group is a <span class="text-indigo-600 font-semibold">women-led</span>, innovation-first organization headquartered in Hyderabad, India. We exist to bridge skills with global opportunity and ambitious ideas with tangible outcomes.
+          </p>
+          <p class="text-lg text-slate-600 leading-relaxed mb-8">
+            We specialize in <strong>IT & Software Development</strong>, <strong>Recruitment</strong>, <strong>Training</strong>, and comprehensive <strong>Global Overseas Services</strong>. Guided by integrity and excellence, we’ve built a trusted network across India, the Middle East, North America, Europe & Australia.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="/#services" class="btn-premium px-8 py-4">Explore Services</a>
+            <a href="/contact" class="btn-outline px-8 py-4">Contact Us</a>
+          </div>
+        </div>
+
+        <div class="relative" data-aos="fade-left" data-tilt data-tilt-max="5">
+            <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-indigo-500 rounded-3xl blur-md opacity-30 group-hover:opacity-70 transition duration-500"></div>
+            
+            <div class="glass-card p-3 rounded-3xl relative overflow-hidden bg-white">
+                <img src="https://images.unsplash.com/photo-1529336953121-ad5a0d43d0f5?q=80&w=1600&auto=format&fit=crop" alt="Our Team at Work" class="w-full h-[400px] lg:h-[500px] object-cover rounded-2xl hover:scale-105 transition duration-700" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent pointer-events-none rounded-2xl"></div>
+
+                <div class="absolute top-8 left-8 glass-card px-5 py-2 text-sm font-semibold text-indigo-700 bg-white/90 flex items-center gap-2">
+                    <i class="fas fa-venus"></i> Women-led • Since 2020
+                </div>
+                <div class="absolute bottom-8 right-8 glass-card px-5 py-2 text-sm font-semibold text-indigo-700 bg-white/90 flex items-center gap-2">
+                    <i class="fas fa-globe"></i> 400+ Global Clients
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 relative z-10 bg-slate-50">
+    <div class="container mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center">
+      <div data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-slate-900">Who We Are</h2>
+        <div class="underline-accent mb-8"></div>
+        <p class="text-slate-600 leading-relaxed mb-6 text-lg">
+          We partner with ambitious businesses and professionals to deliver measurable outcomes. From product engineering and
+          enterprise automation to global recruitment and ethical migration support — our teams deliver with speed and quality.
+        </p>
+        <ul class="space-y-4 text-slate-600">
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-indigo-500"></i> End-to-end IT development & cloud-led modernization</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-indigo-500"></i> Recruitment & staffing powered by AI-enabled screening</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-indigo-500"></i> Industry-grade training with real-time project exposure</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-indigo-500"></i> Global overseas services for students and professionals</li>
+        </ul>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="120" data-tilt>
+        <div class="glass-card p-2 rounded-2xl bg-white">
+          <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=1600&auto=format&fit=crop" alt="About image" class="w-full h-[400px] object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-700">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stats-section" class="py-16 relative z-10">
+    <div class="container mx-auto px-6 lg:px-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="glass-card p-8 text-center group bg-white" data-aos="fade-up">
+          <h3 class="text-5xl font-black text-indigo-500 mb-2"><span class="counter-num" data-target="5">0</span>+</h3>
+          <p class="text-slate-500 font-bold group-hover:text-indigo-600 transition">Years Experience</p>
+      </div>
+      <div class="glass-card p-8 text-center group bg-white" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="text-5xl font-black text-indigo-500 mb-2"><span class="counter-num" data-target="400">0</span>+</h3>
+          <p class="text-slate-500 font-bold group-hover:text-indigo-600 transition">Global Clients</p>
+      </div>
+      <div class="glass-card p-8 text-center group bg-white" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-5xl font-black text-indigo-500 mb-2"><span class="counter-num" data-target="200">0</span>+</h3>
+          <p class="text-slate-500 font-bold group-hover:text-indigo-600 transition">Projects Delivered</p>
+      </div>
+      <div class="glass-card p-8 text-center group bg-white" data-aos="fade-up" data-aos-delay="300">
+          <h3 class="text-5xl font-black text-indigo-500 mb-2"><span class="counter-num" data-target="98">0</span>%</h3>
+          <p class="text-slate-500 font-bold group-hover:text-indigo-600 transition">Client Satisfaction</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 relative z-10 bg-slate-50">
+    <div class="container mx-auto px-6 lg:px-12 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-slate-900">Our Core Values</h2>
+      <div class="underline-accent mx-auto mb-10"></div>
+      <div class="flex flex-wrap justify-center gap-4">
+        <span class="value-chip" data-aos="zoom-in">Integrity & Ethics</span>
+        <span class="value-chip" data-aos="zoom-in" data-aos-delay="50">Customer Success</span>
+        <span class="value-chip" data-aos="zoom-in" data-aos-delay="100">Transparency</span>
+        <span class="value-chip" data-aos="zoom-in" data-aos-delay="150">Innovation First</span>
+        <span class="value-chip" data-aos="zoom-in" data-aos-delay="200">Excellence</span>
+        <span class="value-chip" data-aos="zoom-in" data-aos-delay="250">Global Mindset</span>
+        <span class="value-chip" data-aos="zoom-in" data-aos-delay="300">Empowerment</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-28 relative z-10">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-slate-900">Our Leadership</h2>
+        <div class="underline-accent mx-auto"></div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+        <div class="glass-card p-8 text-center group bg-white" data-tilt data-aos="fade-up">
+          <div class="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 ring-4 ring-indigo-100 group-hover:ring-indigo-400 transition-all">
+            <img src="https://via.placeholder.com/600x600" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Uzma Unnisa">
+          </div>
+          <h3 class="text-xl font-extrabold mb-2 text-slate-800">Uzma Unnisa</h3>
+          <p class="text-indigo-500 font-semibold mb-6">Founder & MD Overseas</p>
+          <div class="flex gap-4 justify-center text-slate-400">
+            <a href="#" class="hover:text-indigo-600 transition hover:scale-110"><i class="fab fa-linkedin-in text-lg"></i></a>
+            <a href="#" class="hover:text-indigo-600 transition hover:scale-110"><i class="fab fa-twitter text-lg"></i></a>
+          </div>
+        </div>
+
+        <div class="glass-card p-8 text-center group bg-white" data-tilt data-aos="fade-up" data-aos-delay="150">
+            <div class="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 ring-4 ring-indigo-100 group-hover:ring-indigo-400 transition-all">
+              <img src="https://via.placeholder.com/600x600" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Sadia Unnisa">
+            </div>
+          <h3 class="text-xl font-extrabold mb-2 text-slate-800">Sadia Unnisa</h3>
+          <p class="text-indigo-500 font-semibold mb-6">Founder & Operations Head</p>
+          <div class="flex gap-4 justify-center text-slate-400">
+            <a href="#" class="hover:text-indigo-600 transition hover:scale-110"><i class="fab fa-linkedin-in text-lg"></i></a>
+            <a href="#" class="hover:text-indigo-600 transition hover:scale-110"><i class="fab fa-twitter text-lg"></i></a>
+          </div>
+        </div>
+
+        <div class="glass-card p-8 text-center group bg-white" data-tilt data-aos="fade-up" data-aos-delay="300">
+            <div class="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 ring-4 ring-indigo-100 group-hover:ring-indigo-400 transition-all">
+              <img src="https://via.placeholder.com/600x600" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Abdul Rahman">
+            </div>
+          <h3 class="text-xl font-extrabold mb-2 text-slate-800">Abdul Rahman</h3>
+          <p class="text-indigo-500 font-semibold mb-6">MD & Head of Recruitment</p>
+          <div class="flex gap-4 justify-center text-slate-400">
+            <a href="#" class="hover:text-indigo-600 transition hover:scale-110"><i class="fab fa-linkedin-in text-lg"></i></a>
+            <a href="#" class="hover:text-indigo-600 transition hover:scale-110"><i class="fab fa-twitter text-lg"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 relative z-10 bg-slate-50">
+    <div class="container mx-auto px-6 lg:px-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-slate-900">Our Journey</h2>
+
+      <div class="relative pl-8 border-l-2 border-indigo-200 ml-4">
+        
+        <div class="relative mb-12 group" data-aos="fade-up">
+          <div class="absolute -left-[41px] top-1 w-6 h-6 bg-white border-4 border-indigo-500 rounded-full group-hover:scale-125 transition"></div>
+          <h3 class="text-xl font-extrabold text-indigo-600 mb-2">2020 — Founded in Hyderabad</h3>
+          <p class="text-slate-600 text-lg">Built on a mission to empower people through technology, skills and opportunities.</p>
+        </div>
+
+        <div class="relative mb-12 group" data-aos="fade-up" data-aos-delay="100">
+            <div class="absolute -left-[41px] top-1 w-6 h-6 bg-white border-4 border-indigo-500 rounded-full group-hover:scale-125 transition"></div>
+          <h3 class="text-xl font-extrabold text-indigo-600 mb-2">2021 — Recruitment Division</h3>
+          <p class="text-slate-600 text-lg">Scaled hiring across IT & non-IT with AI-assisted screening and assessments.</p>
+        </div>
+
+        <div class="relative mb-12 group" data-aos="fade-up" data-aos-delay="200">
+            <div class="absolute -left-[41px] top-1 w-6 h-6 bg-white border-4 border-indigo-500 rounded-full group-hover:scale-125 transition"></div>
+          <h3 class="text-xl font-extrabold text-indigo-600 mb-2">2023 — Overseas Services Expansion</h3>
+          <p class="text-slate-600 text-lg">Expanded globally: UAE, Saudi, USA, UK, Canada, Australia & Europe.</p>
+        </div>
+
+        <div class="relative group" data-aos="fade-up" data-aos-delay="300">
+            <div class="absolute -left-[41px] top-1 w-6 h-6 bg-white border-4 border-indigo-500 rounded-full group-hover:scale-125 transition"></div>
+          <h3 class="text-xl font-extrabold text-indigo-600 mb-2">2025 — 400+ Global Clients</h3>
+          <p class="text-slate-600 text-lg">Delivering excellence across technology, recruitment and international mobility.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-6 relative z-10">
+    <div class="max-w-5xl mx-auto glass-card p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 bg-white" data-tilt>
+      <div class="text-center md:text-left">
+        <h3 class="text-3xl md:text-4xl font-black mb-4 text-slate-900">Let’s build something meaningful.</h3>
+        <p class="text-slate-600 text-lg">Talk to our team about IT builds, recruitment strategies, or global mobility plans.</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="https://wa.me/916301694153" target="_blank" rel="noopener" class="btn-premium px-8 py-4 text-lg gap-2">
+            <i class="fab fa-whatsapp text-2xl"></i> WhatsApp Us
+        </a>
+        <a href="/contact" class="btn-outline px-8 py-4 text-lg">Contact Form</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 1. Initialize AOS
+    if(window.AOS) AOS.init({ duration: 1000, once: true, offset: 60, easing: 'ease-out-cubic' });
+
+    // 2. Header Scroll
+    const siteHeader = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) siteHeader.classList.add('scrolled');
+      else siteHeader.classList.remove('scrolled');
+    });
+
+    // 3. Mobile Menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        setTimeout(() => {
+            mobileMenu.classList.remove('opacity-0', 'scale-95');
+            mobileMenu.classList.add('opacity-100', 'scale-100');
+        }, 10);
+        document.body.classList.add('menu-open');
+      });
+
+      const closeMenuFn = () => {
+        mobileMenu.classList.remove('opacity-100', 'scale-100');
+        mobileMenu.classList.add('opacity-0', 'scale-95');
+        setTimeout(() => { mobileMenu.classList.add('hidden'); }, 300);
+        document.body.classList.remove('menu-open');
+      };
+      closeMenu.addEventListener('click', closeMenuFn);
+
+      dropdownToggles.forEach(toggle => {
+          toggle.addEventListener('click', (e) => {
+              e.preventDefault();
+              const content = toggle.nextElementSibling;
+              const icon = toggle.querySelector('.fa-chevron-down');
+              content.classList.toggle('open');
+              icon.classList.toggle('rotate-180');
+          });
+      });
+    }
+
+     // 4. Animated Counters (for Stats section)
+     const animateCounters = () => {
+        document.querySelectorAll('.counter-num').forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const duration = 2000; let current = 0;
+            const increment = target / (duration / 16);
+            const updateCount = () => {
+                current += increment;
+                if (current < target) {
+                    counter.innerText = Math.ceil(current); requestAnimationFrame(updateCount);
+                } else { counter.innerText = target; }
+            };
+            updateCount();
+        });
+    };
+    // Trigger counters on scroll
+    const statsSection = document.getElementById('stats-section');
+    if (statsSection) {
+        let viewed = false;
+        new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !viewed) {
+                animateCounters(); viewed = true;
+            }
+        }, { threshold: 0.5 }).observe(statsSection);
+    }
+  });
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Amorah Group",
+    "url": "https://amorahgroup.in/about",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Amorah Group",
+      "url": "https://amorahgroup.in/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://amorahgroup.in/wp-content/uploads/2025/10/cropped-Amorah-Logo-PNG-1.png"
+      }
+    },
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Amorah Group",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Hyderabad",
+        "addressRegion": "Telangana",
+        "addressCountry": "IN"
+      },
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "telephone": "+91-6301694153",
+        "contactType": "customer service",
+        "areaServed": "IN, US, AE, EU",
+        "availableLanguage": ["en", "hi", "ur"]
+      }]
+    }
+  }
+  </script>
+
+<div id="header"></div>
+<script src="header.js"></script>
+
+<div id="footer"></div>
+<script src="footer.js"></script>
+
+
+    <!-- injected-links-scripts -->
+    <script src="links/external-links.js"></script>
+    <script src="links/links-init.js"></script>
+    <!-- Razorpay helper (uses server-side create-payment.php) -->
+    <script>
+    async function openPaymentLink(payload){ 
+      try{
+        const res = await fetch('payment/create-payment.php', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(payload || {})
+        });
+        const data = await res.json();
+        if(data && data.short_url) window.open(data.short_url, '_blank');
+        else alert('Payment link creation failed.');
+      } catch(e){ console.error(e); alert('Payment error'); }
+    }
+    <script src="header.js"></script>
+    </script>
+    <!-- end injected-links-scripts -->
+    
+</body>
+</html>

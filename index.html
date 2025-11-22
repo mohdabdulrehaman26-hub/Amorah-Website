@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title>Amorah Group — IT, Software Development, Recruitment & Travel Services | Hyderabad</title>
+  <meta name="description" content="Amorah Group provides IT services, software development, recruitment solutions, and overseas travel & visa assistance from Hyderabad, India.">
+  <meta name="keywords" content="Amorah Group, IT services, software development, recruitment, overseas services, travel agency, Hyderabad">
+  <link rel="canonical" href="https://amorahgroup.in/" />
+  <link rel="icon" type="image/png" href="https://amorahgroup.in/wp-content/uploads/2025/10/cropped-Amorah-Logo-PNG-1.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://amorahgroup.in/" />
+  <meta property="og:title" content="Amorah Group — IT, Recruitment & Overseas Services" />
+  <meta property="og:description" content="Women-led, innovation-driven. 5+ years, 400+ clients. IT, Recruitment, Training & Global Overseas Services." />
+  <meta property="og:image" content="https://amorahgroup.in/wp-content/uploads/2025/11/Untitled-design.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js" defer></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+
+  <style>
+    :root {
+      --blue-700: #1e40af;
+      --blue-600: #2563eb;
+      --blue-500: #3b82f6;
+    }
+
+    html, body { 
+      font-family: 'Inter', sans-serif; 
+      scroll-behavior: smooth; 
+      overflow-x: hidden; 
+    }
+
+    .underline-blue { width: 80px; height: 4px; background: var(--blue-700); border-radius: 4px; margin: 10px auto 0; }
+
+    /* --- FIXED STICKY UNIVERSAL HEADER --- */
+    #header, .header {
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 999999 !important;
+    }
+
+    /* --- HERO SECTION --- */
+    .hero { position:relative; min-height:92vh; width:100%; overflow:hidden; }
+    .hero video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-3; }
+
+    .hero::before {
+        content: ""; position: absolute; inset: 0; z-index: -2;
+        background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+        background-size: 50px 50px;
+        mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+    }
+
+    .hero::after { 
+      content:""; position:absolute; inset:0; 
+      background:linear-gradient(to bottom, rgba(0,15,40,0.6), rgba(0,46,110,0.45)); 
+      z-index:-1; 
+    }
+
+    .hero-content { position:relative; z-index:1; text-align:center; padding-top:30vh; color:#fff; animation:fadeUp .9s ease both; }
+    .hero h1 { font-size: clamp(28px, 5vw, 60px); font-weight:900; }
+    .hero p { font-size: clamp(16px, 2.2vw, 20px); opacity:.95; margin-top:16px; font-weight:500; }
+
+    @keyframes fadeUp { from{opacity:0; transform:translateY(24px);} to{opacity:1; transform:translateY(0);} }
+
+    /* --- ABOUT --- */
+    .underline-gradient { display:block; width:90px; height:4px; margin-top:12px; border-radius:2px; background: linear-gradient(90deg, #3b82f6, #60a5fa); animation: slideIn 1.5s ease-in-out; }
+    @keyframes slideIn { from{ width:0; opacity:0;} to{ width:90px; opacity:1;} }
+    
+    .rounded-diagonal { clip-path: polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%); border-radius: 20px; }
+    .image-wrapper { position:relative; overflow:hidden; border-radius:20px; transform-style:preserve-3d; perspective:1000px; transition:transform .6s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
+    .image-wrapper:hover { transform: rotateY(8deg) rotateX(4deg) scale(1.03); }
+    .image-wrapper img { transition: transform .6s ease; }
+    .image-wrapper img:hover { transform: scale(1.05); }
+    .image-overlay { position:absolute; inset:0; background: radial-gradient(circle at top right, rgba(59,130,246,.25), rgba(147,197,253,.15)); mix-blend-mode: overlay; border-radius:20px; pointer-events:none; opacity:.7; transition:opacity .6s ease; }
+    
+    /* Graphic: Floating Particles Container */
+    #particle-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 0.6; }
+
+    @keyframes gradient-x { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    .animate-gradient-x { background-size:200% 200%; animation:gradient-x 4s ease infinite; }
+    
+    /* --- SERVICES --- */
+    .service-card { position:relative; background:#fff; padding:32px 24px; border-radius:18px; border:1px solid #e0e7ff; box-shadow:0 10px 30px rgba(0,0,0,.05); transition:.4s; text-align:left; overflow:hidden; z-index: 2; }
+    .service-card:hover { transform: translateY(-10px); border-color:var(--blue-600); box-shadow:0 20px 40px rgba(37,99,235,.15); }
+    .service-card h3 { color:#1e293b; font-size:1.3rem; font-weight:800; margin-bottom:12px; }
+    .service-card p { color:#475569; font-size:1rem; line-height:1.6; min-height:100px; margin-bottom:25px; }
+    .glow-circle { position:absolute; inset:-60px; background: radial-gradient(circle, rgba(37,99,235,.15), transparent 60%); opacity:0; transition:.5s; pointer-events: none; }
+    .service-card:hover .glow-circle { opacity:1; }
+    #network-lines { position:absolute; inset:0; z-index:1; opacity:.4; pointer-events: none; }
+
+    /* --- CARDS & COMPONENTS --- */
+    .vm-card, .achieve-card, .team-card, .blog-card { background:#fff; border-radius:18px; border:1px solid #e0e7ff; box-shadow:0 10px 25px rgba(0,0,0,.05); transition:.35s; }
+    .vm-card:hover, .achieve-card:hover, .team-card:hover, .blog-card:hover { transform:translateY(-8px); box-shadow:0 18px 40px rgba(37,99,235,.15); border-color:#2563eb; }
+
+    .globalSwiper .swiper-slide { width: 260px !important; }
+    .gp-badge {
+      width:auto !important; padding:10px 24px; background:rgba(255,255,255,0.9);
+      border-radius:999px; font-weight:700; border:1px solid #e5e7eb; box-shadow:0 4px 10px rgba(0,0,0,.05); margin-right:14px; transition:.3s; cursor: default;
+    }
+    .gp-badge:hover { background:#2563eb; color:white; border-color:#2563eb; transform:translateY(-2px); }
+    
+    /* Global Presence Cards */
+    .gp-card {
+      width:230px; padding:30px; background:#fff;
+      border-radius:20px; border:1px solid #e0e7ff; transition:.35s ease; text-align:center; box-shadow:0 12px 30px rgba(0,0,0,.08);
+    }
+    .gp-card:hover { transform: translateY(-10px) scale(1.02); border-color:#2563eb; box-shadow:0 18px 40px rgba(37,99,235,.2); }
+    .gp-flag { width:65px; border-radius:8px; margin:0 auto 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .gp-number { font-size:2.5rem; font-weight:900; color:#1e3a8a; line-height: 1.2; }
+    .gp-title { font-weight:600; color:#475569; margin-top: 5px; }
+
+    /* Testimonials */
+    .testimonial-card { padding:40px 30px; text-align:center; position:relative; background: #fff; border-radius: 18px; border: 1px solid #f1f5f9; height: 100%; }
+    .quote-icon { font-size:60px; color:#2563eb; opacity:.2; line-height:20px; margin-bottom:15px; }
+    .testi-text { color:#475569; font-size:1.05rem; line-height:1.7; margin-bottom:20px; }
+    .testi-name { font-size:1.1rem; font-weight:800; color:#1e293b; }
+    .testi-role { font-size:.9rem; color:#2563eb; font-weight:700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .swiper-pagination-bullet { background:#2563eb !important; width:10px; height:10px; opacity:.4; transition:.25s; }
+    .swiper-pagination-bullet-active { opacity:1; transform:scale(1.25); }
+
+    /* WhatsApp Float */
+    .whatsapp-float { position: fixed; bottom: 24px; right: 24px; background:#25D366; color:#fff; border-radius:50%; width:60px; height:60px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 15px rgba(37,211,102,0.4); font-size:28px; z-index:999; animation:bounce 2s infinite; cursor:pointer; text-decoration:none; transition: transform .25s; }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    @keyframes bounce { 0%,20%,50%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-10px)} 60%{transform:translateY(-5px)} }
+
+    /* Footer Placeholder */
+    #footer { position: relative; z-index: 10; background: #fff; }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-gray-900">
+
+<div id="header"></div>
+
+<section class="hero">
+  <video autoplay muted loop playsinline poster="https://amorahgroup.in/wp-content/uploads/2025/11/Untitled-design.png">
+    <source src="https://amorahgroup.in/wp-content/uploads/2025/11/Untitled-design.mp4" type="video/mp4">
+  </video>
+  
+  <div class="hero-content container mx-auto px-6">
+    <h1 class="drop-shadow-lg">Welcome to Amorah</h1>
+    <p class="drop-shadow-md">Transforming Ideas into Digital Transitions</p>
+    
+    <div class="mt-8">
+        <a href="#services" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition transform hover:-translate-y-1 shadow-lg hover:shadow-blue-500/50">
+            Explore Services
+        </a>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="bg-white relative overflow-hidden py-24">
+  <canvas id="particle-bg"></canvas>
+
+  <div class="container mx-auto px-6 lg:px-16 flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
+    <div class="w-full lg:w-1/2" data-aos="fade-right">
+      <div class="mb-6">
+        <h2 class="text-4xl font-extrabold text-gray-900 relative inline-block">
+          About <span class="bg-gradient-to-r from-blue-600 to-blue-400 text-transparent bg-clip-text">Amorah Group</span>
+          <span class="underline-gradient"></span>
+        </h2>
+      </div>
+
+      <p class="text-gray-700 text-justify leading-relaxed mb-6">
+        <strong>Amorah Group</strong> is a women-led, dynamic, and innovative organization headquartered in Hyderabad, India,
+        specializing in <strong>Technology, Recruitment, and Global Overseas Services</strong>. Founded with the vision to empower
+        people and transform industries, Amorah stands as a symbol of inclusive leadership and women empowerment.
+      </p>
+
+      <p class="text-gray-700 text-justify leading-relaxed mb-6">
+        Through its integrated services, we bridge the gap between skills and global opportunities — empowering professionals to realize
+        their potential and helping businesses achieve sustainable success.
+      </p>
+
+      <div class="mt-8">
+        <a href="#services" class="inline-flex items-center font-bold text-blue-600 hover:text-blue-800 transition">
+           Read More About Us <i class="fa-solid fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="w-full lg:w-1/2 flex justify-center" data-aos="fade-left">
+      <div class="image-wrapper">
+        <img src="https://amorahgroup.in/wp-content/uploads/2025/11/Untitled-design.png" alt="About Amorah Group" class="w-full max-w-lg rounded-diagonal" />
+        <div class="image-overlay"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="py-24 bg-slate-50 relative overflow-hidden">
+  <div class="text-center mb-14 relative z-10">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">Our <span class="text-blue-600">Services</span></h2>
+    <div class="underline-blue"></div>
+  </div>
+
+  <canvas id="network-lines"></canvas>
+
+  <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+    
+    <div class="service-card" data-tilt>
+      <div class="glow-circle"></div>
+      <i class="fa-solid fa-code text-4xl text-blue-600 mb-4"></i>
+      <h3>IT Services & Software</h3>
+      <p>Advanced applications, AI automation systems, and enterprise-grade cloud-based solutions to digitally transform your business.</p>
+      <a href="#" class="text-blue-600 font-bold hover:underline">Learn More →</a>
+    </div>
+
+    <div class="service-card" data-tilt>
+      <div class="glow-circle"></div>
+      <i class="fa-solid fa-passport text-4xl text-blue-600 mb-4"></i>
+      <h3>Overseas Services</h3>
+      <p>Student visa support, visit visas, PR consultation, and international job assistance for global career growth.</p>
+      <a href="#" class="text-blue-600 font-bold hover:underline">Learn More →</a>
+    </div>
+
+    <div class="service-card" data-tilt>
+      <div class="glow-circle"></div>
+      <i class="fa-solid fa-users-viewfinder text-4xl text-blue-600 mb-4"></i>
+      <h3>Recruitment</h3>
+      <p>End-to-end recruitment, staffing, and talent outsourcing backed by data-driven screening and AI-powered hiring tools.</p>
+      <a href="#" class="text-blue-600 font-bold hover:underline">Learn More →</a>
+    </div>
+
+    <div class="service-card" data-tilt>
+      <div class="glow-circle"></div>
+      <i class="fa-solid fa-graduation-cap text-4xl text-blue-600 mb-4"></i>
+      <h3>Training & Placement</h3>
+      <p>Hands-on IT training, real-time industry projects, and certified upskilling programs with job placement assistance.</p>
+      <a href="#" class="text-blue-600 font-bold hover:underline">Learn More →</a>
+    </div>
+  </div>
+</section>
+
+<section id="global-presence" class="py-28 bg-white relative overflow-hidden">
+  <img src="https://amorahgroup.in/wp-content/uploads/2025/11/7605.jpg" class="absolute inset-0 w-full h-full object-contain opacity-30 mix-blend-luminosity pointer-events-none" alt="World map" />
+  
+  <canvas id="gp-lines" class="absolute inset-0 pointer-events-none z-[1]"></canvas>
+  <canvas id="gp-effects" class="absolute inset-0 pointer-events-none z-[2]"></canvas>
+
+  <div class="relative z-[4] container mx-auto px-6 text-center">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">
+      Our <span class="text-blue-600">Global Presence</span>
+    </h2>
+    <div class="underline-blue mx-auto mb-12"></div>
+
+    <div class="swiper gpTopSwiper mb-12">
+      <div class="swiper-wrapper select-none">
+        <div class="swiper-slide gp-badge">🇮🇳 India</div>
+        <div class="swiper-slide gp-badge">🇦🇪 UAE</div>
+        <div class="swiper-slide gp-badge">🇸🇦 Saudi Arabia</div>
+        <div class="swiper-slide gp-badge">🇺🇸 USA</div>
+        <div class="swiper-slide gp-badge">🇬🇧 UK</div>
+        <div class="swiper-slide gp-badge">🇨🇦 Canada</div>
+        <div class="swiper-slide gp-badge">🇦🇺 Australia</div>
+        <div class="swiper-slide gp-badge">🇪🇺 Europe</div>
+      </div>
+    </div>
+
+    <div class="swiper gpMainSwiper py-10">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide flex justify-center">
+          <div class="gp-card country-node" data-label="India" data-target="150" data-x="50" data-y="68">
+            <img src="https://flagcdn.com/w160/in.png" class="gp-flag" alt="India">
+            <h3 class="gp-number" data-target="150">0</h3>
+            <p class="gp-title">India</p>
+          </div>
+        </div>
+        <div class="swiper-slide flex justify-center">
+          <div class="gp-card country-node" data-label="UAE" data-target="90" data-x="63" data-y="70">
+            <img src="https://flagcdn.com/w160/ae.png" class="gp-flag" alt="UAE">
+            <h3 class="gp-number" data-target="90">0</h3>
+            <p class="gp-title">UAE</p>
+          </div>
+        </div>
+        <div class="swiper-slide flex justify-center">
+          <div class="gp-card country-node" data-label="Saudi Arabia" data-target="110" data-x="60" data-y="63">
+            <img src="https://flagcdn.com/w160/sa.png" class="gp-flag" alt="Saudi">
+            <h3 class="gp-number" data-target="110">0</h3>
+            <p class="gp-title">Saudi Arabia</p>
+          </div>
+        </div>
+        <div class="swiper-slide flex justify-center">
+          <div class="gp-card country-node" data-label="USA" data-target="70" data-x="18" data-y="58">
+            <img src="https://flagcdn.com/w160/us.png" class="gp-flag" alt="USA">
+            <h3 class="gp-number" data-target="70">0</h3>
+            <p class="gp-title">USA</p>
+          </div>
+        </div>
+        <div class="swiper-slide flex justify-center">
+          <div class="gp-card country-node" data-label="UK" data-target="55" data-x="42" data-y="48">
+            <img src="https://flagcdn.com/w160/gb.png" class="gp-flag" alt="UK">
+            <h3 class="gp-number" data-target="55">0</h3>
+            <p class="gp-title">United Kingdom</p>
+          </div>
+        </div>
+        <div class="swiper-slide flex justify-center">
+          <div class="gp-card country-node" data-label="Canada" data-target="40" data-x="22" data-y="50">
+            <img src="https://flagcdn.com/w160/ca.png" class="gp-flag" alt="Canada">
+            <h3 class="gp-number" data-target="40">0</h3>
+            <p class="gp-title">Canada</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination gp-pagination mt-4"></div>
+    </div>
+  </div>
+  <div id="gp-tooltip" class="opacity-0 pointer-events-none fixed bg-white px-3 py-1 rounded-md text-sm font-bold text-gray-700 shadow-lg border z-[999]"></div>
+</section>
+
+<section id="vision-mission" class="py-28 bg-slate-50">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4" data-aos="fade-down">
+      Vision, Mission & <span class="text-blue-600">Core Values</span>
+    </h2>
+    <div class="underline-blue mx-auto mb-16"></div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="vm-card p-8" data-aos="fade-right" data-aos-delay="100">
+        <i class="fas fa-eye text-[42px] text-blue-600 mb-4"></i>
+        <h3 class="text-xl font-extrabold text-slate-800 mb-2">Our Vision</h3>
+        <p class="text-slate-600">To be a global leader in digital innovation, empowering individuals and businesses through technology and opportunities.</p>
+      </div>
+
+      <div class="vm-card p-8" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fas fa-bullseye text-[42px] text-blue-600 mb-4"></i>
+        <h3 class="text-xl font-extrabold text-slate-800 mb-2">Our Mission</h3>
+        <p class="text-slate-600">To deliver high-quality, cost-effective solutions across IT, recruitment, and overseas services.</p>
+      </div>
+
+      <div class="vm-card p-8" data-aos="fade-left" data-aos-delay="300">
+        <i class="fas fa-gem text-[42px] text-blue-600 mb-4"></i>
+        <h3 class="text-xl font-extrabold text-slate-800 mb-2">Core Values</h3>
+        <p class="text-slate-600">Integrity, Innovation, Transparency, Customer Success, and Excellence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="achievements-section" class="py-28 bg-white">
+  <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div data-aos="fade-right">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+        Driving Success Across <span class="text-blue-600">Multiple Verticals</span>
+      </h2>
+      <p class="text-slate-600 mb-6 text-lg">
+        Amorah Group is a multifaceted organization excelling in IT Solutions, Talent Acquisition, and Global Overseas Services.
+      </p>
+      <ul class="space-y-3 text-slate-700 font-semibold">
+        <li><i class="fas fa-check-circle text-blue-600 mr-2"></i> 100% Ethical & Transparent Processes</li>
+        <li><i class="fas fa-check-circle text-blue-600 mr-2"></i> Certified Experts & Industry-Best Training</li>
+        <li><i class="fas fa-check-circle text-blue-600 mr-2"></i> Tailored Solutions for Global Businesses</li>
+      </ul>
+    </div>
+
+    <div id="achievements" class="grid grid-cols-2 gap-6" data-aos="fade-left">
+      <div class="achieve-card p-8 text-center">
+        <i class="fas fa-medal text-[40px] text-blue-600 mb-4"></i>
+        <h3 class="counter-num text-5xl font-black text-blue-900 mb-1" data-target="5">0</h3>
+        <p class="text-slate-600 font-semibold">Years Experience</p>
+      </div>
+      <div class="achieve-card p-8 text-center">
+        <i class="fas fa-users text-[40px] text-blue-600 mb-4"></i>
+        <h3 class="counter-num text-5xl font-black text-blue-900 mb-1" data-target="400">0</h3>
+        <p class="text-slate-600 font-semibold">Happy Clients</p>
+      </div>
+      <div class="achieve-card p-8 text-center">
+        <i class="fas fa-project-diagram text-[40px] text-blue-600 mb-4"></i>
+        <h3 class="counter-num text-5xl font-black text-blue-900 mb-1" data-target="200">0</h3>
+        <p class="text-slate-600 font-semibold">Projects Done</p>
+      </div>
+      <div class="achieve-card p-8 text-center">
+        <i class="fas fa-star text-[40px] text-blue-600 mb-4"></i>
+        <h3 class="counter-num text-5xl font-black text-blue-900 mb-1" data-target="98">0</h3>
+        <p class="text-slate-600 font-semibold">Success Rate %</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="py-28 bg-slate-50">
+  <div class="container mx-auto px-6 text-center mb-14">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">What Our <span class="text-blue-600">Clients Say</span></h2>
+    <div class="underline-blue mx-auto"></div>
+  </div>
+
+  <div class="swiper testimonialSwiper w-full max-w-6xl mx-auto pb-14">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide h-auto">
+        <div class="testimonial-card">
+          <div class="quote-icon">“</div>
+          <p class="testi-text">Amorah Group transformed my international career dreams into reality. Their overseas and job placement service is absolutely trustworthy.</p>
+          <h4 class="testi-name">Ayesha Khan</h4>
+          <span class="testi-role">UAE Work Visa Client</span>
+        </div>
+      </div>
+      <div class="swiper-slide h-auto">
+        <div class="testimonial-card">
+          <div class="quote-icon">“</div>
+          <p class="testi-text">The recruitment team is extremely professional. Got placed in a top IT company within 30 days — highly recommended!</p>
+          <h4 class="testi-name">Rahul Verma</h4>
+          <span class="testi-role">Software Engineer</span>
+        </div>
+      </div>
+      <div class="swiper-slide h-auto">
+        <div class="testimonial-card">
+          <div class="quote-icon">“</div>
+          <p class="testi-text">Their training program is exceptional. Real-time projects and excellent support helped me secure a job in record time.</p>
+          <h4 class="testi-name">Priya Desai</h4>
+          <span class="testi-role">Digital Marketing</span>
+        </div>
+      </div>
+      <div class="swiper-slide h-auto">
+        <div class="testimonial-card">
+          <div class="quote-icon">“</div>
+          <p class="testi-text">Professionalism and transparency in overseas processing were outstanding. Truly trustworthy!</p>
+          <h4 class="testi-name">Mohammed Riyaz</h4>
+          <span class="testi-role">Saudi Arabia Client</span>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination testi-pagination mt-8"></div>
+  </div>
+</section>
+
+<section id="contact" class="py-28 bg-white">
+  <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+    <div class="text-center lg:text-left" data-aos="fade-right">
+      <h2 class="text-4xl font-extrabold mb-4 text-slate-900">Let’s Build Your Future Together</h2>
+      <p class="mb-6 text-slate-600 max-w-lg lg:max-w-none mx-auto lg:mx-0">
+        Join the hundreds who trust Amorah for IT, training, jobs, and international careers.
+        We ensure transparency and excellence in every vertical.
+      </p>
+      
+      <div class="mt-8 space-y-4">
+        <div class="p-4 border rounded-lg flex items-center gap-4 shadow-sm">
+           <i class="fas fa-envelope text-blue-600 text-xl"></i>
+           <div><p class="text-xs text-gray-500">Email Us</p><a href="mailto:info@amorahgroup.in" class="font-bold text-gray-800">info@amorahgroup.in</a></div>
+        </div>
+        <div class="p-4 border rounded-lg flex items-center gap-4 shadow-sm">
+           <i class="fas fa-phone text-blue-600 text-xl"></i>
+           <div><p class="text-xs text-gray-500">Call Us</p><a href="tel:+916301694153" class="font-bold text-gray-800">+91 63016 94153</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div data-aos="fade-left">
+      <form id="contactForm" class="bg-slate-50 p-8 rounded-2xl shadow-lg border border-gray-100">
+        <h3 class="text-2xl font-bold mb-6 text-center text-blue-900">Send Us a Message</h3>
+        <div class="space-y-4">
+          <input name="name" required placeholder="Full name" class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none" />
+          <input name="email" type="email" required placeholder="Email address" class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none" />
+          <input name="phone" placeholder="Phone number" class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none" />
+          <select name="interest" class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none">
+            <option value="">I am interested in</option>
+            <option>IT Services</option>
+            <option>Training & Placement</option>
+            <option>Overseas Services</option>
+            <option>Hiring / Partnership</option>
+          </select>
+          <textarea name="message" rows="4" placeholder="Tell us briefly..." class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
+          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-bold shadow-md transition transform hover:-translate-y-1">Send Message</button>
+          <p id="formMsg" class="text-sm hidden mt-2 text-center"></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<a href="https://wa.me/916301694153" class="whatsapp-float" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+
+<div id="footer"></div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Initialize AOS
+    if (window.AOS) AOS.init({ duration: 900, once: true });
+
+    // Initialize Tilt
+    if (window.VanillaTilt) {
+      VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+        max: 12, speed: 300, glare: true, "max-glare": 0.2
+      });
+    }
+
+    // --- GRAPHICS: Services Network Lines ---
+    const canvas = document.getElementById("network-lines");
+    if(canvas){
+        const ctx = canvas.getContext("2d");
+        function resizeCanvas() { canvas.width = canvas.parentElement.offsetWidth; canvas.height = 600; }
+        resizeCanvas(); window.addEventListener('resize', resizeCanvas);
+        let dots = []; for (let i=0;i<60;i++) dots.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*0.7,vy:(Math.random()-.5)*0.7});
+        (function draw(){
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            dots.forEach(d=>{ d.x+=d.vx; d.y+=d.vy; if(d.x<0||d.x>canvas.width) d.vx*=-1; if(d.y<0||d.y>canvas.height) d.vy*=-1;
+            ctx.beginPath(); ctx.arc(d.x,d.y,2,0,Math.PI*2); ctx.fillStyle="#1e40af"; ctx.fill(); });
+            for(let i=0;i<dots.length;i++){ for(let j=i+1;j<dots.length;j++){ const dist=Math.hypot(dots[i].x-dots[j].x, dots[i].y-dots[j].y);
+            if(dist<120){ ctx.beginPath(); ctx.strokeStyle="rgba(37,99,235,0.15)"; ctx.moveTo(dots[i].x,dots[i].y); ctx.lineTo(dots[j].x,dots[j].y); ctx.stroke(); } } }
+            requestAnimationFrame(draw);
+        })();
+    }
+
+    // --- GRAPHICS: About Section Particles ---
+    const pCanvas = document.getElementById("particle-bg");
+    if(pCanvas){
+        const pCtx = pCanvas.getContext("2d");
+        function resizePCanvas() { pCanvas.width = pCanvas.parentElement.offsetWidth; pCanvas.height = pCanvas.parentElement.offsetHeight; }
+        resizePCanvas(); window.addEventListener('resize', resizePCanvas);
+        let particles = []; for(let i=0; i<40; i++) particles.push({x:Math.random()*pCanvas.width, y:Math.random()*pCanvas.height, r:Math.random()*4+1, s:(Math.random()-0.5)*0.5});
+        function animateParticles(){
+            pCtx.clearRect(0,0,pCanvas.width, pCanvas.height);
+            particles.forEach(p => {
+                p.y -= p.s; if(p.y < 0) p.y = pCanvas.height; if(p.y > pCanvas.height) p.y = 0;
+                pCtx.beginPath(); pCtx.arc(p.x, p.y, p.r, 0, Math.PI*2); pCtx.fillStyle = "rgba(59,130,246,0.1)"; pCtx.fill();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+    }
+
+    // --- GLOBAL PRESENCE LOGIC ---
+    const gpSection = document.getElementById("global-presence");
+    const lines = document.getElementById("gp-lines");
+    const fx = document.getElementById("gp-effects");
+    
+    // Ensure Elements Exist
+    if(gpSection && lines && fx){
+        const lctx = lines.getContext("2d");
+        const fctx = fx.getContext("2d");
+        let nodes = [];
+
+        function resizeGP() {
+            lines.width = gpSection.offsetWidth; lines.height = gpSection.offsetHeight;
+            fx.width = gpSection.offsetWidth; fx.height = gpSection.offsetHeight;
+            drawLines();
+        }
+
+        function getNodes() {
+            return [...document.querySelectorAll(".country-node")].map(el => {
+                // Helper to get position relative to container
+                // For simplicity here we assume data-x/y are percentages relative to section size
+                return {
+                    el,
+                    x: (el.dataset.x / 100) * lines.width,
+                    y: (el.dataset.y / 100) * lines.height,
+                    label: el.dataset.label,
+                    target: +el.dataset.target
+                };
+            });
+        }
+
+        function drawLines() {
+            if (!lctx) return;
+            lctx.clearRect(0,0,lines.width,lines.height);
+            nodes.forEach(a => {
+            nodes.forEach(b => {
+                const d = Math.hypot(a.x - b.x, a.y - b.y);
+                if (d < 420) {
+                lctx.beginPath();
+                lctx.moveTo(a.x, a.y);
+                lctx.lineTo(b.x, b.y);
+                lctx.strokeStyle = "rgba(37,99,235,0.1)";
+                lctx.lineWidth = 1;
+                lctx.stroke();
+                }
+            });
+            });
+        }
+
+        let t = 0;
+        function animateGlow() {
+            if (!fctx) return;
+            t += 0.012;
+            fctx.clearRect(0,0,fx.width,fx.height);
+            nodes.forEach(n => {
+            const r = 4 + Math.sin(t * 4) * 2;
+            fctx.beginPath();
+            fctx.arc(n.x, n.y, r, 0, Math.PI*2);
+            fctx.fillStyle = "rgba(59,130,246,0.5)";
+            fctx.fill();
+            });
+            requestAnimationFrame(animateGlow);
+        }
+
+        // Initialize GP
+        setTimeout(() => {
+            resizeGP();
+            nodes = getNodes();
+            drawLines();
+            animateGlow();
+        }, 1000); // Delay to ensure swiper positions settle
+        window.addEventListener("resize", () => { resizeGP(); nodes = getNodes(); drawLines(); });
+    }
+
+    // --- SWIPERS ---
+    window.addEventListener('load', () => {
+        new Swiper(".gpTopSwiper", { slidesPerView: "auto", freeMode: true, loop: true, spaceBetween: 12, autoplay: { delay: 2000 } });
+        new Swiper(".gpMainSwiper", { 
+            slidesPerView: 1.2, loop: true, spaceBetween: 20, centeredSlides:true,
+            autoplay: { delay: 3000 }, 
+            pagination: { el: ".gp-pagination", clickable: true },
+            breakpoints: { 640:{slidesPerView:2.2}, 1024:{slidesPerView:4} } 
+        });
+        new Swiper(".testimonialSwiper", { 
+            slidesPerView: 1, spaceBetween: 20, loop: true, 
+            autoplay: { delay: 3500 }, 
+            pagination: { el: ".testi-pagination", clickable: true },
+            breakpoints: { 768:{slidesPerView:2}, 1024:{slidesPerView:2} } 
+        });
+    });
+
+    // --- COUNTERS ---
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counters = entry.target.querySelectorAll('.gp-number, .counter-num');
+                counters.forEach(el => {
+                    const target = +el.dataset.target; let c = 0; const step = Math.ceil(target / 50);
+                    const t = setInterval(() => { c += step; if (c >= target) { c = target; clearInterval(t);} el.textContent = c; }, 30);
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    const gpEl = document.getElementById('global-presence');
+    if (gpEl) observer.observe(gpEl);
+    const achEl = document.getElementById('achievements');
+    if (achEl) observer.observe(achEl);
+  });
+</script>
+
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="links/external-links.js"></script>
+<script src="links/links-init.js"></script>
+
+<script>
+async function openPaymentLink(payload){ 
+  try{
+    const res = await fetch('payment/create-payment.php', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(payload || {})
+    });
+    const data = await res.json();
+    if(data && data.short_url) window.open(data.short_url, '_blank');
+    else alert('Payment link creation failed.');
+  } catch(e){ console.error(e); alert('Payment error'); }
+}
+</script>
+    
+</body>
+</html>

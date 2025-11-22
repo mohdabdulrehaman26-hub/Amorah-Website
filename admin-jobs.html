@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jobs Admin — Amorah</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    :root {
+      /* Light Theme Palette */
+      --accent: #0891b2; /* Cyan-600 (slightly darker for light bg) */
+      --accent-hover: #06b6d4; /* Cyan-500 */
+      --glass-bg: rgba(255, 255, 255, 0.9); /* White glass */
+      --glass-border: rgba(226, 232, 240, 0.8); /* Slate-200 */
+      --input-bg: rgba(241, 245, 249, 1); /* Slate-100 solid */
+      --text-primary: #0f172a; /* Slate-900 */
+      --text-secondary: #475569; /* Slate-600 */
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc; /* Slate-50 light background */
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    /* Modern Light Glass Panel */
+    .glass-panel {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Form Labels */
+    .form-label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Modern Light Inputs */
+    .input-field {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-primary);
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+    }
+    .input-field:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1); /* Cyan glow */
+      background: #ffffff;
+    }
+    .input-field::placeholder { color: #94a3b8; }
+
+    /* Custom styling for the Select dropdown arrow (Dark color for light bg) */
+    select.input-field {
+      appearance: none;
+      /* Changed stroke color to #475569 (Slate-600) */
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23475569' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+      background-position: right 0.75rem center;
+      background-repeat: no-repeat;
+      background-size: 1.5em 1.5em;
+      padding-right: 2.5rem;
+    }
+
+    /* Table Styling for Light Theme */
+    .table-head th {
+        background: rgba(241, 245, 249, 0.95); /* Slate-100 */
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+        color: var(--text-secondary);
+        border-bottom: 1px solid var(--glass-border);
+    }
+    .table-row { border-bottom: 1px solid var(--glass-border); }
+    .table-row:hover { background: rgba(241, 245, 249, 0.5); }
+    
+    /* SweetAlert Light Theme Overrides */
+    div:where(.swal2-container).swal2-dark { background-color: rgba(0,0,0,0.4) !important; }
+    div:where(.swal2-popup).swal2-dark { background: #ffffff !important; color: var(--text-primary); border: 1px solid var(--glass-border); }
+    div:where(.swal2-html-container).swal2-dark { color: var(--text-secondary); }
+
+  </style>
+</head>
+<body class="p-4 md:p-8">
+
+  <div class="max-w-7xl mx-auto">
+    <div id="header"></div>
+
+    <div class="grid xl:grid-cols-12 gap-8 items-start">
+      
+      <div class="xl:col-span-5">
+          <form id="f" class="glass-panel rounded-3xl p-6 md:p-8 space-y-6 relative overflow-hidden bg-white">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-blue-600"></div>
+            
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fas fa-edit text-cyan-600"></i> Job Details
+                </h2>
+                <button type="button" id="resetBtn" class="text-xs flex items-center gap-1 text-slate-500 hover:text-slate-900 transition-colors">
+                    <i class="fas fa-undo"></i> Reset Form
+                </button>
+            </div>
+
+            <div class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="form-label">Job ID <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <i class="fas fa-fingerprint absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input name="id" class="input-field pl-10" placeholder="AMR-IT-001" required />
+                    </div>
+                  </div>
+                  <div>
+                    <label class="form-label">Category <span class="text-red-500">*</span></label>
+                    <select name="category" class="input-field cursor-pointer">
+                      <option value="IT">IT & Software</option>
+                      <option value="Non-IT">Non-IT / Operations</option>
+                      <option value="International">International / Overseas</option>
+                      <option value="Remote">Remote</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="form-label">Job Title <span class="text-red-500">*</span></label>
+                  <input name="title" class="input-field font-semibold" placeholder="e.g. Senior Software Engineer" required />
+                </div>
+            </div>
+            
+            <hr class="border-slate-200">
+
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="form-label">Department</label>
+                  <input name="department" class="input-field" placeholder="e.g. Engineering" />
+                </div>
+                <div>
+                  <label class="form-label">Location</label>
+                  <div class="relative">
+                      <i class="fas fa-map-marker-alt absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                      <input name="location" class="input-field pl-10" placeholder="e.g. Hyderabad" />
+                  </div>
+                </div>
+                <div>
+                  <label class="form-label">Experience</label>
+                  <input name="experience" class="input-field" placeholder="e.g. 2–5 Years" />
+                </div>
+                <div>
+                  <label class="form-label">Salary Range</label>
+                  <input name="salary" class="input-field" placeholder="e.g. ₹12–18 LPA" />
+                </div>
+            </div>
+
+            <hr class="border-slate-200">
+
+            <div>
+              <label class="form-label">Summary / Short Description</label>
+              <textarea name="summary" rows="3" class="input-field resize-none leading-relaxed" placeholder="A brief, catchy introduction to the role..."></textarea>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                  <label class="form-label text-cyan-700"><i class="fas fa-code mr-1"></i> Must-Have Skills (Comma separated)</label>
+                  <input name="skills" class="input-field" placeholder="React, Node.js, SQL" />
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                      <label class="form-label"><i class="fas fa-plus-circle mr-1"></i> Nice-to-have</label>
+                      <input name="nice" class="input-field" placeholder="AWS, Docker" />
+                    </div>
+                    <div>
+                      <label class="form-label"><i class="fas fa-tasks mr-1"></i> Responsibilities</label>
+                      <input name="responsibilities" class="input-field" placeholder="Delivery, Mentoring" />
+                    </div>
+                </div>
+            </div>
+
+            <div>
+              <label class="form-label">Posted On (YYYY-MM-DD)</label>
+              <input type="date" name="postedOn" class="input-field text-slate-600" />
+            </div>
+
+            <div class="pt-4">
+              <button class="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-bold shadow-lg shadow-cyan-500/20 transition-all flex items-center justify-center gap-2" id="saveBtn" type="submit">
+                <i class="fas fa-save"></i> Save / Update Job
+            </button>
+            </div>
+          </form>
+      </div>
+
+      <div class="xl:col-span-7">
+        <div class="glass-panel rounded-3xl overflow-hidden flex flex-col h-full max-h-[800px] bg-white">
+            <div class="p-5 border-b border-slate-200 flex justify-between items-center bg-slate-50">
+                <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fas fa-list-ul text-cyan-600"></i> Current Listings
+                </h2>
+                <span id="jobCount" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-200 text-cyan-700">0 Jobs</span>
+            </div>
+
+            <div class="overflow-auto flex-1">
+                <table class="w-full text-sm text-left">
+                    <thead class="table-head">
+                    <tr>
+                        <th class="px-4 py-3">Job Details</th>
+                        <th class="px-4 py-3">Category</th>
+                        <th class="px-4 py-3">Location/Exp</th>
+                        <th class="px-4 py-3 text-right">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="rows" class="divide-y divide-slate-200">
+                        </tbody>
+                </table>
+            </div>
+            <div id="emptyState" class="hidden flex-1 flex flex-col items-center justify-center p-10 text-slate-400">
+                <i class="far fa-folder-open text-5xl mb-4 opacity-50"></i>
+                <p>No jobs added yet.</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const f = document.getElementById('f');
+    const rows = document.getElementById('rows');
+    const emptyState = document.getElementById('emptyState');
+    const jobCountLabel = document.getElementById('jobCount');
+    const downloadBtn = document.getElementById('download');
+    const resetBtn = document.getElementById('resetBtn');
+
+    f.postedOn.valueAsDate = new Date();
+    let jobs = [];
+
+    function toList(v) {
+      return (v||'').split(',').map(s=>s.trim()).filter(Boolean);
+    }
+
+    function fillForm(j) {
+      f.id.value = j.id||'';
+      f.category.value = j.category||'IT';
+      f.title.value = j.title||'';
+      f.department.value = j.department||'';
+      f.location.value = j.location||'';
+      f.experience.value = j.experience||'';
+      f.salary.value = j.salary||'';
+      f.summary.value = j.summary||'';
+      f.skills.value = (j.skills||[]).join(', ');
+      f.nice.value = (j.nice||[]).join(', ');
+      f.responsibilities.value = (j.responsibilities||[]).join(', ');
+      f.postedOn.value = j.postedOn||'';
+      f.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function rowHTML(j, idx){
+      let catIcon = 'fa-laptop-code';
+      if(j.category === 'Non-IT') catIcon = 'fa-user-tie';
+      if(j.category === 'International') catIcon = 'fa-globe-americas';
+      if(j.category === 'Remote') catIcon = 'fa-wifi';
+
+      return `
+        <tr class="table-row transition-colors">
+          <td class="px-4 py-4">
+            <div class="font-bold text-slate-900 text-[15px] mb-1">${j.title||'Untitled'}</div>
+            <div class="flex items-center gap-2 text-xs">
+                <code class="bg-slate-100 px-1.5 py-0.5 rounded text-cyan-700 font-semibold">${j.id||'No ID'}</code>
+                ${j.department ? `<span class="text-slate-500">• ${j.department}</span>` : ''}
+            </div>
+          </td>
+          <td class="px-4 py-4">
+             <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-xs font-semibold text-slate-600 border border-slate-200">
+                <i class="fas ${catIcon} text-cyan-600"></i> ${j.category}
+             </span>
+          </td>
+          <td class="px-4 py-4 text-sm text-slate-500">
+            <div class="flex flex-col gap-1">
+                <span class="flex items-center gap-1"><i class="fas fa-map-marker-alt text-slate-400 text-xs w-4"></i> ${j.location||'-'}</span>
+                <span class="flex items-center gap-1"><i class="fas fa-briefcase text-slate-400 text-xs w-4"></i> ${j.experience||'-'}</span>
+            </div>
+          </td>
+          <td class="px-4 py-4 text-right">
+            <div class="flex items-center justify-end gap-2">
+                <button class="group p-2 rounded-lg bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white transition-all shadow-sm" data-edit="${idx}" title="Edit Job">
+                    <i class="fas fa-pen text-sm pointer-events-none"></i>
+                </button>
+                <button class="group p-2 rounded-lg bg-rose-100 text-rose-600 hover:bg-rose-600 hover:text-white transition-all shadow-sm" data-del="${idx}" title="Delete Job">
+                    <i class="fas fa-trash text-sm pointer-events-none"></i>
+                </button>
+            </div>
+          </td>
+        </tr>`;
+    }
+
+    function render() {
+      if(jobs.length === 0) {
+          rows.innerHTML = '';
+          emptyState.classList.remove('hidden');
+          emptyState.classList.add('flex');
+      } else {
+          emptyState.classList.add('hidden');
+          emptyState.classList.remove('flex');
+          rows.innerHTML = jobs.map((j,i)=>rowHTML(j,i)).join('');
+      }
+      jobCountLabel.textContent = `${jobs.length} Jobs`;
+    }
+
+    rows.addEventListener('click', (e)=>{
+      const editBtn = e.target.closest('button[data-edit]');
+      const delBtn = e.target.closest('button[data-del]');
+
+      if (editBtn) {
+         const idx = editBtn.dataset.edit;
+         fillForm(jobs[+idx]);
+      }
+      else if (delBtn) {
+         const idx = delBtn.dataset.del;
+         // SweetAlert needs the 'swal2-dark' class added to the target body for theme overrides to work, even for light theme tweaks
+         Swal.fire({
+            title: 'Delete Job?',
+            text: `Are you sure you want to delete "${jobs[+idx].title}"?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#e11d48', cancelButtonColor: '#64748b',
+            confirmButtonText: 'Yes, delete it!',
+            customClass: { popup: 'swal2-dark', container: 'swal2-dark' }
+         }).then((result) => {
+            if (result.isConfirmed) {
+                jobs.splice(+idx,1);
+                render();
+                Swal.fire({ icon: 'success', title: 'Deleted!', showConfirmButton: false, timer: 1000, customClass: { popup: 'swal2-dark', container: 'swal2-dark' } });
+            }
+         });
+      }
+    });
+
+    f.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const j = {
+        id: f.id.value.trim(),
+        category: f.category.value,
+        title: f.title.value.trim(),
+        department: f.department.value.trim(),
+        location: f.location.value.trim(),
+        experience: f.experience.value.trim(),
+        salary: f.salary.value.trim(),
+        summary: f.summary.value.trim(),
+        skills: toList(f.skills.value),
+        nice: toList(f.nice.value),
+        responsibilities: toList(f.responsibilities.value),
+        postedOn: f.postedOn.value.trim()
+      };
+
+      const i = jobs.findIndex(x => x.id === j.id);
+      const swalOptions = { timer: 1500, showConfirmButton: false, customClass: { popup: 'swal2-dark', container: 'swal2-dark' } };
+      if (i >= 0) {
+          jobs[i] = j;
+          Swal.fire({ icon: 'success', title: 'Job Updated', text: `ID: ${j.id}`, ...swalOptions});
+      } else {
+          jobs.unshift(j);
+          Swal.fire({ icon: 'success', title: 'Job Added', text: `ID: ${j.id}`, ...swalOptions});
+      }
+      render();
+      f.reset();
+      f.postedOn.valueAsDate = new Date();
+    });
+
+    resetBtn.addEventListener('click', ()=> { f.reset(); f.postedOn.valueAsDate = new Date(); });
+
+    downloadBtn.addEventListener('click', ()=>{
+      if(jobs.length === 0) { Swal.fire({ icon: 'info', title: 'No Jobs', text: 'Add some jobs before downloading.', customClass: { popup: 'swal2-dark', container: 'swal2-dark' } }); return; }
+      const blob = new Blob([JSON.stringify({ jobs }, null, 2)], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = Object.assign(document.createElement('a'), { href:url, download:'jobs.json' });
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+      Swal.fire({ icon: 'success', title: 'Downloaded!', text: 'Save jobs.json next to jobs.html', customClass: { popup: 'swal2-dark', container: 'swal2-dark' } });
+    });
+
+    // --- Seed Data ---
+    jobs = [
+      {
+        id: "AMR-IT-001",
+        title: "Senior Software Engineer (React + Node)",
+        category: "IT",
+        department: "Engineering",
+        location: "Hyderabad",
+        experience: "5–8 Years",
+        salary: "₹18–26 LPA",
+        summary: "Build high-performance web apps, lead code reviews, mentor juniors, and collaborate with cross-functional teams.",
+        skills: ["React","Node.js","REST/GraphQL","SQL/NoSQL"],
+        nice: ["AWS","Docker","Kubernetes"],
+        responsibilities: ["Feature delivery","Quality ownership","Mentoring"],
+        postedOn: "2025-11-07"
+      },
+      {
+        id: "AMR-INT-102",
+        title: "Construction Project Manager",
+        category: "International",
+        department: "Operations",
+        location: "Dubai, UAE",
+        experience: "10+ Years",
+        salary: "$80k - $100k / yr",
+        summary: "Oversee large-scale construction projects in the UAE. Must have GCC experience and PMP certification.",
+        skills: ["PMP","GCC Experience","Site Management","Budgeting"],
+        nice: ["Arabic Language","High-rise experience"],
+        responsibilities: ["Project planning","Vendor management","Safety compliance"],
+        postedOn: "2025-11-20"
+      }
+    ];
+    render();
+  </script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+
+    <!-- injected-links-scripts -->
+    <script src="links/external-links.js"></script>
+    <script src="links/links-init.js"></script>
+    <!-- Razorpay helper (uses server-side create-payment.php) -->
+    <script>
+    async function openPaymentLink(payload){ 
+      try{
+        const res = await fetch('payment/create-payment.php', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(payload || {})
+        });
+        const data = await res.json();
+        if(data && data.short_url) window.open(data.short_url, '_blank');
+        else alert('Payment link creation failed.');
+      } catch(e){ console.error(e); alert('Payment error'); }
+    }
+    </script>
+    <!-- end injected-links-scripts -->
+    
+</body>
+</html>

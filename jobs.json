@@ -1,0 +1,35 @@
+{
+  "jobs": [
+    {
+      "id": "AMR-IT-001",
+      "title": "Senior Software Engineer (React + Node)",
+      "category": "IT",
+      "department": "Engineering",
+      "companyIcon": "https://cdn-icons-png.flaticon.com/512/5968/5968292.png",
+      "location": "Hyderabad",
+      "experience": "5–8 Years",
+      "salary": "₹18–26 LPA",
+      "summary": "Build high-performance web apps, lead code reviews, mentor juniors, and collaborate with cross-functional teams.",
+      "skills": [
+        "React",
+        "Node.js",
+        "REST/GraphQL",
+        "SQL/NoSQL",
+        "CI/CD"
+      ],
+      "nice": [
+        "AWS",
+        "Microservices",
+        "Docker",
+        "Kubernetes"
+      ],
+      "responsibilities": [
+        "Feature delivery",
+        "Quality ownership",
+        "Mentoring",
+        "Stakeholder communication"
+      ],
+      "postedOn": "2025-11-07"
+    }
+  ]
+}

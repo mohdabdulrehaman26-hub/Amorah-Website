@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Overseas Services — Amorah Group | Visas, PR, Jobs & Relocation</title>
+  <meta name="description" content="Student visas, tourist/visit visas, business visas, PR, overseas jobs & full landing support across 25+ countries. Trusted, ethical, women-led." />
+  <link rel="icon" href="https://amorahgroup.in/wp-content/uploads/2025/10/cropped-Amorah-Logo-PNG-1.png" />
+  <link rel="canonical" href="https://amorahgroup.in/overseas-services" />
+
+  <meta property="og:title" content="Overseas Services — Amorah Group" />
+  <meta property="og:description" content="Your trusted partner for global mobility — visas, PR, jobs & relocation." />
+  <meta property="og:image" content="https://amorahgroup.in/wp-content/uploads/2025/11/Untitled-design.png" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      /* White Theme Palette */
+      --primary-deep: #1e293b;  /* Dark Slate (Text) */
+      --primary: #4f46e5;       /* Indigo */
+      --accent-cyan: #00d4ff;   /* Electric Cyan */
+      --accent-royal: #4f46e5;  /* Royal Indigo */
+      
+      /* Glass Settings for White BG */
+      --glass: rgba(255, 255, 255, 0.9);
+      --glass-border: rgba(0, 0, 0, 0.05);
+      --text-dark: #1e293b;
+      --card-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+    }
+    
+    body { 
+      background: #ffffff; 
+      font-family: 'Poppins', sans-serif; 
+      color: var(--text-dark); 
+      -webkit-font-smoothing: antialiased; 
+    }
+    
+    h1, h2, h3, h4, h5, h6 { color: var(--primary-deep); }
+
+    /* --- Animations & Components --- */
+
+    /* 1. The Accent Underline */
+    .underline-accent { 
+      height: 5px; 
+      width: 100px; 
+      background: linear-gradient(90deg, var(--accent-royal), var(--accent-cyan)); 
+      border-radius: 10px; 
+    }
+
+    /* 2. Header Scroll State */
+    header { transition: all 0.4s ease-in-out; }
+    header.scrolled { 
+      background: rgba(255, 255, 255, 0.95); 
+      backdrop-filter: blur(12px);
+      padding-top: 12px; padding-bottom: 12px; 
+      box-shadow: 0 4px 20px -5px rgba(0,0,0,0.05); 
+    }
+
+    /* 3. Hero Background (Dark Overlay) */
+    .hero-bg {
+      background: 
+        linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 58, 138, 0.9)),
+        url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop'); /* Travel/Sky image */
+      background-size: cover;
+      background-position: center;
+      background-attachment: scroll;
+    }
+    @media (min-width: 1024px) { .hero-bg { background-attachment: fixed; } }
+
+    /* 4. Premium Glass Cards (White Theme) */
+    .service-card {
+      background: #ffffff;
+      border: 1px solid #f1f5f9;
+      border-radius: 24px;
+      transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card:hover { 
+      transform: translateY(-12px) scale(1.02); 
+      box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.15);
+      border-color: var(--accent-royal);
+    }
+
+    /* 5. Juicy Premium Buttons */
+    .btn-premium {
+      position: relative;
+      background: linear-gradient(90deg, var(--accent-royal), var(--accent-cyan), var(--accent-royal));
+      background-size: 200% auto;
+      color: white;
+      font-weight: 700;
+      border-radius: 9999px;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 20px -10px rgba(79, 70, 229, 0.3);
+    }
+    .btn-premium:hover {
+      background-position: right center; 
+      box-shadow: 0 15px 30px -10px rgba(0, 212, 255, 0.5);
+      transform: translateY(-3px);
+    }
+
+    /* Outline button variant (Adjusted for White BG) */
+    .btn-outline {
+      position: relative;
+      font-weight: 700;
+      color: white; /* Dark Text */
+      background: transparent;
+      border: 1px solid white;
+      border-radius: 9999px;
+      z-index: 1;
+      transition: all 0.4s ease;
+      overflow: hidden;
+    }
+    .btn-outline:hover {
+        background: white;
+        color: var(--primary-deep);
+        transform: translateY(-3px);
+    }
+
+    /* 6. Map Pulsing Dots */
+    .dot-container {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        display: flex; align-items: center; justify-content: center;
+    }
+    .dot-core {
+      width: 12px; height: 12px;
+      background: var(--accent-royal); /* Changed to indigo for contrast on white */
+      border-radius: 50%;
+      z-index: 2;
+    }
+    .dot-pulse {
+      position: absolute;
+      width: 30px; height: 30px;
+      background: var(--accent-royal);
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: pulse-ring 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(0.33); opacity: 0.6; }
+      80%, 100% { opacity: 0; transform: scale(2); }
+    }
+
+    /* WhatsApp float */
+    .wa-float { position: fixed; bottom: 30px; right: 30px; z-index: 1000; transition: transform 0.3s ease; }
+    .wa-float:hover { transform: scale(1.1) rotate(10deg); }
+    
+    /* Mobile Menu */
+    body.menu-open { overflow: hidden; }
+    
+    /* Explicit Footer Override */
+    #footer { background-color: #ffffff !important; }
+  </style>
+</head>
+<body class="antialiased">
+
+  <a href="https://wa.me/916301694153" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp with Amorah Group" class="wa-float">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp icon" class="w-14 h-14 md:w-16 md:h-16 drop-shadow-2xl" loading="lazy" width="64" height="64">
+  </a>
+
+  <div id="header"></div>
+
+  <div id="mobileMenu" class="fixed inset-0 bg-white/98 backdrop-blur-xl z-40 hidden flex-col items-center justify-center gap-8 text-3xl text-slate-800 font-bold transition-all duration-300 opacity-0 scale-95" role="dialog" aria-modal="true">
+    <button id="closeMenu" class="absolute top-8 right-8 text-5xl text-indigo-600 hover:rotate-90 transition-transform" aria-label="Close menu">&times;</button>
+    <a href="/" class="hover:text-indigo-600 transition">Home</a>
+    <a href="/services" class="hover:text-indigo-600 transition">Services</a>
+    <a href="/jobs" class="hover:text-indigo-600 transition">Jobs</a>
+    <a href="/about" class="hover:text-indigo-600 transition">About</a>
+    <a href="#contact" class="btn-premium px-12 py-4 text-2xl mt-4">Get Started</a>
+  </div>
+
+  <section class="hero-bg min-h-screen flex items-center justify-center text-center pt-20 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-40 mix-blend-multiply bg-[radial-gradient(circle_at_50%_50%,_rgba(200,230,255,0.4),transparent_60%)]"></div>
+
+    <div class="container mx-auto px-6 relative z-10" data-aos="fade-up" data-aos-duration="1000">
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tight text-white">
+        Your Global Future<br>Starts <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Here.</span>
+      </h1>
+      <p class="mt-8 text-xl md:text-3xl max-w-4xl mx-auto text-slate-200 font-light leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+        Visas • PR • Overseas Jobs • Full Landing Support<br>
+        <span class="font-semibold text-indigo-300 mt-2 block">25+ Countries • Ethical & Transparent Process</span>
+      </p>
+
+      <div class="mt-14 flex flex-wrap justify-center gap-6" data-aos="fade-up" data-aos-delay="400">
+        <a href="#contact" class="btn-premium px-12 py-5 text-lg">Start Free Assessment</a>
+        <a href="#country-coverage" class="btn-outline px-12 py-5 text-lg">View Countries</a>
+      </div>
+
+      <div class="mt-24 flex flex-wrap justify-center gap-x-16 gap-y-8 text-lg font-medium text-slate-300" data-aos="fade-up" data-aos-delay="600">
+        <div class="flex items-center gap-3"><i class="fas fa-check-circle text-indigo-400 text-2xl"></i> 94% Success Rate</div>
+        <div class="flex items-center gap-3"><i class="fas fa-history text-indigo-400 text-2xl"></i> 10+ Years Exp.</div>
+        <div class="flex items-center gap-3"><i class="fas fa-headset text-indigo-400 text-2xl"></i> 24/7 Support</div>
+      </div>
+    </div>
+    
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+        <svg class="relative block w-full h-[100px] md:h-[150px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-[#0f172a]"></path>
+        </svg>
+    </div>
+  </section>
+
+  <section id="services-cards" class="py-24 lg:py-32 container-fluid bg-slate-900 relative z-10">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-20" data-aos="fade-up">
+        <h2 class="text-4xl md:text-5xl font-black mb-6 text-white">Our Overseas Services</h2>
+        <div class="underline-accent mx-auto"></div>
+        <p class="mt-8 text-xl text-slate-300 max-w-3xl mx-auto">We don't just process applications; we engineer your entire relocation journey for success.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+        <article class="service-card p-10 group bg-white" data-aos="fade-up" data-aos-delay="100">
+            <div class="w-20 h-20 bg-indigo-50 rounded-2xl flex items-center justify-center text-4xl mb-8 text-indigo-600 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h3 class="text-2xl font-extrabold mb-4 text-slate-800">Student Visa</h3>
+            <p class="text-slate-600 mb-8 leading-relaxed">University shortlisting, SOP crafting, scholarship assistance, and complete pre-departure briefing.</p>
+            <a href="#contact" class="flex items-center gap-2 font-bold text-indigo-600 group-hover:text-cyan-500 transition-colors">
+                Apply Now <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+            </a>
+        </article>
+
+        <article class="service-card p-10 group bg-white" data-aos="fade-up" data-aos-delay="200">
+            <div class="w-20 h-20 bg-cyan-50 rounded-2xl flex items-center justify-center text-4xl mb-8 text-cyan-600 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-white transition-all duration-300 shadow-sm">
+                <i class="fas fa-plane-departure"></i>
+            </div>
+            <h3 class="text-2xl font-extrabold mb-4 text-slate-800">Tourist / Visit Visa</h3>
+            <p class="text-slate-600 mb-8 leading-relaxed">Fast-track processing for Tourist, Family Visit, and Schengen visas across UAE, Singapore, Europe & more.</p>
+            <a href="#contact" class="flex items-center gap-2 font-bold text-indigo-600 group-hover:text-cyan-500 transition-colors">
+                Apply Now <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+            </a>
+        </article>
+
+        <article class="service-card p-10 group bg-white" data-aos="fade-up" data-aos-delay="300">
+            <div class="w-20 h-20 bg-purple-50 rounded-2xl flex items-center justify-center text-4xl mb-8 text-purple-600 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                <i class="fas fa-briefcase"></i>
+            </div>
+            <h3 class="text-2xl font-extrabold mb-4 text-slate-800">Business Visa</h3>
+            <p class="text-slate-600 mb-8 leading-relaxed">End-to-end support for Entrepreneur and Investor visas, including company setup advisory.</p>
+            <a href="#contact" class="flex items-center gap-2 font-bold text-indigo-600 group-hover:text-cyan-500 transition-colors">
+                Apply Now <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+            </a>
+        </article>
+
+        <article class="service-card p-10 group bg-white" data-aos="fade-up" data-aos-delay="100">
+            <div class="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-4xl mb-8 text-emerald-600 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shadow-sm">
+                <i class="fas fa-passport"></i>
+            </div>
+            <h3 class="text-2xl font-extrabold mb-4 text-slate-800">PR Services</h3>
+            <p class="text-slate-600 mb-8 leading-relaxed">Expert handling of points-based systems for Canada, Australia, UK, and New Zealand PR.</p>
+            <a href="#contact" class="flex items-center gap-2 font-bold text-indigo-600 group-hover:text-cyan-500 transition-colors">
+                Check Eligibility <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+            </a>
+        </article>
+
+        <article class="service-card p-10 group bg-white" data-aos="fade-up" data-aos-delay="200">
+            <div class="w-20 h-20 bg-orange-50 rounded-2xl flex items-center justify-center text-4xl mb-8 text-orange-600 group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300 shadow-sm">
+                <i class="fas fa-search-dollar"></i>
+            </div>
+            <h3 class="text-2xl font-extrabold mb-4 text-slate-800">Overseas Jobs</h3>
+            <p class="text-slate-600 mb-8 leading-relaxed">Ethical job matching, resume building, interview preparation, and salary negotiation support.</p>
+            <a href="#contact" class="flex items-center gap-2 font-bold text-indigo-600 group-hover:text-cyan-500 transition-colors">
+                Find Jobs <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+            </a>
+        </article>
+
+        <article class="service-card p-10 group bg-white" data-aos="fade-up" data-aos-delay="300">
+            <div class="w-20 h-20 bg-rose-50 rounded-2xl flex items-center justify-center text-4xl mb-8 text-rose-600 group-hover:scale-110 group-hover:bg-rose-500 group-hover:text-white transition-all duration-300 shadow-sm">
+                <i class="fas fa-home"></i>
+            </div>
+            <h3 class="text-2xl font-extrabold mb-4 text-slate-800">Relocation</h3>
+            <p class="text-slate-600 mb-8 leading-relaxed">The final step made easy: Airport pickup, temporary housing, SIM card, and bank setup.</p>
+            <a href="#contact" class="flex items-center gap-2 font-bold text-indigo-600 group-hover:text-cyan-500 transition-colors">
+                Get Support <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+            </a>
+        </article>
+        </div>
+    </div>
+  </section>
+
+  <section id="country-coverage" class="py-24 relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-white skew-y-3 transform origin-top-right shadow-sm"></div>
+    
+    <div class="container mx-auto px-6 text-center relative z-10">
+      <h2 class="text-4xl md:text-5xl font-black mb-6 text-slate-900" data-aos="fade-up">25+ Countries & Growing</h2>
+      <div class="underline-accent mx-auto"></div>
+
+      <div class="mt-20 relative max-w-6xl mx-auto map-wrap">
+        <img src="https://raw.githubusercontent.com/iamolist/world-map/main/map-clean.svg" alt="World map showing Amorah Group country coverage" class="w-full opacity-10 drop-shadow-xl" loading="lazy">
+        
+        <div class="dot-container" style="top:42%; left:64%;" title="UAE"><div class="dot-pulse"></div><div class="dot-core"></div></div>
+        <div class="dot-container" style="top:35%; left:20%;" title="USA"><div class="dot-pulse"></div><div class="dot-core"></div></div>
+        <div class="dot-container" style="top:28%; left:42%;" title="UK"><div class="dot-pulse"></div><div class="dot-core"></div></div>
+        <div class="dot-container" style="top:58%; left:80%;" title="Australia"><div class="dot-pulse"></div><div class="dot-core"></div></div>
+        <div class="dot-container" style="top:38%; left:48%;" title="Germany"><div class="dot-pulse"></div><div class="dot-core"></div></div>
+        <div class="dot-container" style="top:50%; left:75%;" title="Singapore"><div class="dot-pulse"></div><div class="dot-core"></div></div>
+
+        <div class="mt-16">
+          <div class="swiper countrySwiper">
+            <div class="swiper-wrapper text-xl font-bold">
+              <div class="swiper-slide py-6 px-4 bg-white border border-slate-100 rounded-3xl shadow-lg text-slate-800 flex items-center justify-center gap-3"><img src="https://flagcdn.com/w40/ae.png" alt="UAE" class="w-8 h-auto rounded-sm"> UAE</div>
+              <div class="swiper-slide py-6 px-4 bg-white border border-slate-100 rounded-3xl shadow-lg text-slate-800 flex items-center justify-center gap-3"><img src="https://flagcdn.com/w40/ca.png" alt="Canada" class="w-8 h-auto rounded-sm"> Canada</div>
+              <div class="swiper-slide py-6 px-4 bg-white border border-slate-100 rounded-3xl shadow-lg text-slate-800 flex items-center justify-center gap-3"><img src="https://flagcdn.com/w40/gb.png" alt="UK" class="w-8 h-auto rounded-sm"> UK</div>
+              <div class="swiper-slide py-6 px-4 bg-white border border-slate-100 rounded-3xl shadow-lg text-slate-800 flex items-center justify-center gap-3"><img src="https://flagcdn.com/w40/au.png" alt="Australia" class="w-8 h-auto rounded-sm"> Australia</div>
+              <div class="swiper-slide py-6 px-4 bg-white border border-slate-100 rounded-3xl shadow-lg text-slate-800 flex items-center justify-center gap-3"><img src="https://flagcdn.com/w40/de.png" alt="Germany" class="w-8 h-auto rounded-sm"> Germany</div>
+              <div class="swiper-slide py-6 px-4 bg-white border border-slate-100 rounded-3xl shadow-lg text-slate-800 flex items-center justify-center gap-3"><img src="https://flagcdn.com/w40/sg.png" alt="Singapore" class="w-8 h-auto rounded-sm"> Singapore</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-slate-900 container-fluid">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-20" data-aos="fade-up">
+        <h2 class="text-4xl md:text-5xl font-black mb-6 text-white">Your Roadmap to Success</h2>
+        <div class="underline-accent mx-auto"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 max-w-6xl mx-auto relative">
+        <div class="hidden lg:block absolute top-24 left-[10%] right-[10%] h-1 bg-slate-700 -z-10"></div>
+        
+        <div class="text-center group p-6 relative bg-white border border-slate-100 rounded-3xl transition-all hover:-translate-y-2 shadow-lg shadow-slate-200/50" data-aos="fade-up" data-aos-delay="100">
+            <div class="w-24 h-24 mx-auto bg-gradient-to-br from-indigo-500 to-cyan-400 rounded-full flex items-center justify-center text-4xl font-black text-white mb-8 shadow-lg group-hover:shadow-cyan-200/50 transition-all">1</div>
+            <h4 class="text-xl font-bold mb-3 text-slate-800">Free Counselling</h4>
+            <p class="text-slate-600">In-depth profile assessment & best route mapping tailored to your goals.</p>
+        </div>
+        <div class="text-center group p-6 relative bg-white border border-slate-100 rounded-3xl transition-all hover:-translate-y-2 shadow-lg shadow-slate-200/50" data-aos="fade-up" data-aos-delay="200">
+            <div class="w-24 h-24 mx-auto bg-gradient-to-br from-indigo-500 to-cyan-400 rounded-full flex items-center justify-center text-4xl font-black text-white mb-8 shadow-lg group-hover:shadow-cyan-200/50 transition-all">2</div>
+            <h4 class="text-xl font-bold mb-3 text-slate-800">Documentation</h4>
+            <p class="text-slate-600">Error-free application, SOP crafting, and document verification.</p>
+        </div>
+        <div class="text-center group p-6 relative bg-white border border-slate-100 rounded-3xl transition-all hover:-translate-y-2 shadow-lg shadow-slate-200/50" data-aos="fade-up" data-aos-delay="300">
+            <div class="w-24 h-24 mx-auto bg-gradient-to-br from-indigo-500 to-cyan-400 rounded-full flex items-center justify-center text-4xl font-black text-white mb-8 shadow-lg group-hover:shadow-cyan-200/50 transition-all">3</div>
+            <h4 class="text-xl font-bold mb-3 text-slate-800">Visa Decision</h4>
+            <p class="text-slate-600">Intensive interview preparation and real-time application tracking.</p>
+        </div>
+        <div class="text-center group p-6 relative bg-white border border-slate-100 rounded-3xl transition-all hover:-translate-y-2 shadow-lg shadow-slate-200/50" data-aos="fade-up" data-aos-delay="400">
+            <div class="w-24 h-24 mx-auto bg-gradient-to-br from-indigo-500 to-cyan-400 rounded-full flex items-center justify-center text-4xl font-black text-white mb-8 shadow-lg group-hover:shadow-cyan-200/50 transition-all">4</div>
+            <h4 class="text-xl font-bold mb-3 text-slate-800">Land & Settle</h4>
+            <p class="text-slate-600">Post-landing support including housing, banking, and community integration.</p>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white relative">
+      <div class="absolute top-0 left-0 w-64 h-64 bg-cyan-100/50 rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+     <div class="absolute bottom-0 right-0 w-80 h-80 bg-indigo-100/50 rounded-full filter blur-3xl translate-x-1/2 translate-y-1/2"></div>
+
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="text-center mb-20" data-aos="fade-up">
+        <h2 class="text-4xl md:text-5xl font-black mb-6 text-slate-900">What Our Clients Say</h2>
+        <div class="underline-accent mx-auto"></div>
+        <p class="mt-6 text-xl text-slate-600">Real stories of global success.</p>
+      </div>
+
+      <div class="max-w-5xl mx-auto">
+        <div class="swiper testimonialsSwiper px-4 py-10">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="service-card p-12 text-center max-w-2xl mx-auto relative bg-white">
+                <div class="text-6xl text-indigo-100 absolute top-4 left-8 opacity-50">“</div>
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya Sharma" class="w-24 h-24 rounded-full ring-4 ring-indigo-100 mx-auto mb-8 shadow-xl" loading="lazy" width="96" height="96">
+                <p class="text-lg italic text-slate-600 mb-8 leading-relaxed">"Amorah helped me get my Canada study visa in just 28 days! Their SOP guidance was outstanding and the pre-departure session made landing in Toronto so smooth. Highly recommend!"</p>
+                <h4 class="font-extrabold text-2xl text-slate-900">Priya Sharma</h4>
+                <p class="text-indigo-500 font-bold mt-1">MS Computer Science • University of Toronto</p>
+              </div>
+            </div>
+             <div class="swiper-slide">
+              <div class="service-card p-12 text-center max-w-2xl mx-auto relative bg-white">
+                <div class="text-6xl text-indigo-100 absolute top-4 left-8 opacity-50">“</div>
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Mohammed Ali" class="w-24 h-24 rounded-full ring-4 ring-indigo-100 mx-auto mb-8 shadow-xl" loading="lazy" width="96" height="96">
+                <p class="text-lg italic text-slate-600 mb-8 leading-relaxed">"Got my UAE Golden Visa approved in 42 days. They handled everything — company setup, bank account, even my family visas. Truly professional investor team."</p>
+                <h4 class="font-extrabold text-2xl text-slate-900">Mohammed Ali</h4>
+                <p class="text-indigo-500 font-bold mt-1">Business Owner • Dubai, UAE</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="service-card p-12 text-center max-w-2xl mx-auto relative bg-white">
+                  <div class="text-6xl text-indigo-100 absolute top-4 left-8 opacity-50">“</div>
+                  <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="Rahul Verma" class="w-24 h-24 rounded-full ring-4 ring-indigo-100 mx-auto mb-8 shadow-xl" loading="lazy" width="96" height="96">
+                  <p class="text-lg italic text-slate-600 mb-8 leading-relaxed">"Landed a senior software role in Germany through Amorah's job assistance program. They prepared me for interviews and negotiated my salary beautifully."</p>
+                  <h4 class="font-extrabold text-2xl text-slate-900">Rahul Verma</h4>
+                  <p class="text-indigo-500 font-bold mt-1">Senior Developer • Berlin, Germany</p>
+                </div>
+              </div>
+          </div>
+          <div class="swiper-pagination !bottom-0"></div>
+          <div class="swiper-button-next !text-indigo-500 !w-12 !h-12 bg-white rounded-full shadow-md hover:bg-indigo-50 transition-all after:!text-2xl"></div>
+          <div class="swiper-button-prev !text-indigo-500 !w-12 !h-12 bg-white rounded-full shadow-md hover:bg-indigo-50 transition-all after:!text-2xl"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-4xl md:text-5xl font-black mb-6 text-slate-900">Common Questions</h2>
+        <div class="underline-accent mx-auto"></div>
+      </div>
+
+      <div class="space-y-6">
+        <details class="service-card p-6 group bg-white" data-aos="fade-up">
+          <summary class="text-xl font-bold cursor-pointer flex justify-between items-center text-slate-800 list-none marker:hidden">
+            <span>Do you help with business setup abroad?</span>
+            <span class="text-3xl text-indigo-500 transition-transform group-open:rotate-45">+</span>
+          </summary>
+          <div class="mt-6 text-slate-600 leading-relaxed pl-4 border-l-4 border-indigo-200">Yes, we guide on investor & entrepreneur visas, company registration, and banking setup in UAE, Singapore, Canada, and various European nations.</div>
+        </details>
+        
+        <details class="service-card p-6 group bg-white" data-aos="fade-up" data-aos-delay="100">
+          <summary class="text-xl font-bold cursor-pointer flex justify-between items-center text-slate-800 list-none marker:hidden">
+             <span>Can you source jobs directly?</span>
+             <span class="text-3xl text-indigo-500 transition-transform group-open:rotate-45">+</span>
+          </summary>
+          <div class="mt-6 text-slate-600 leading-relaxed pl-4 border-l-4 border-indigo-200">Yes — we have direct employer partnerships and recruitment networks in GCC, Europe, Canada, Australia & Asia-Pacific specifically for skilled professionals.</div>
+        </details>
+
+         <details class="service-card p-6 group bg-white" data-aos="fade-up" data-aos-delay="200">
+          <summary class="text-xl font-bold cursor-pointer flex justify-between items-center text-slate-800 list-none marker:hidden">
+             <span>What is your success rate?</span>
+             <span class="text-3xl text-indigo-500 transition-transform group-open:rotate-45">+</span>
+          </summary>
+          <div class="mt-6 text-slate-600 leading-relaxed pl-4 border-l-4 border-indigo-200">We maintain a 94%+ visa success rate (2024–2025 statistics). We conduct thorough pre-assessments and only onboard cases we are confident in representing ethically.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-24 container-fluid bg-slate-900 relative overflow-hidden">
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-indigo-100/10 rounded-full filter blur-3xl -z-10"></div>
+
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-20" data-aos="fade-up">
+        <h2 class="text-4xl md:text-6xl font-black mb-6 text-white">Ready to Move Abroad?</h2>
+        <div class="underline-accent mx-auto"></div>
+        </div>
+
+        <div class="grid lg:grid-cols-5 gap-12 max-w-6xl mx-auto items-start">
+        <div class="lg:col-span-2 service-card p-10 text-left bg-white border border-indigo-100" data-aos="fade-right">
+            <h3 class="text-3xl font-black mb-6 text-slate-900">Start Your Application</h3>
+            <p class="text-lg text-slate-600 mb-10 leading-relaxed">Don't know where to begin? Fill out our short assessment form. We will analyze your profile and call you with a personalized immigration plan within 4 hours.</p>
+            <a href="YOUR_GOOGLE_FORM_URL_HERE" target="_blank" rel="noopener noreferrer" class="btn-premium text-white w-full block text-center py-4 text-xl hover:shadow-xl">Open Application Form</a>
+            
+            <div class="mt-12 pt-8 border-t border-indigo-100">
+                <h4 class="font-bold mb-4 text-slate-800">Direct Support:</h4>
+                <p class="flex items-center gap-3 mb-2 text-slate-600"><i class="fas fa-phone-alt text-indigo-500"></i> +91 63016 94153</p>
+                <p class="flex items-center gap-3 text-slate-600"><i class="fas fa-envelope text-indigo-500"></i> info@amorahgroup.in</p>
+            </div>
+        </div>
+
+        <div class="lg:col-span-3 service-card p-10 lg:p-12 bg-white" data-aos="fade-left">
+            <h3 class="text-3xl font-black mb-8 text-slate-900">Request a Callback</h3>
+
+            <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="space-y-6" novalidate>
+            <div class="grid md:grid-cols-2 gap-6">
+                <input name="name" type="text" placeholder="Full Name*" required class="w-full p-5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 transition-all text-slate-800" aria-label="Full Name">
+                <input name="phone" type="tel" placeholder="Phone Number*" required class="w-full p-5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 transition-all text-slate-800" aria-label="Phone">
+            </div>
+            <input name="email" type="email" placeholder="Email Address*" required class="w-full p-5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 transition-all text-slate-800" aria-label="Email">
+            
+            <select name="interest" class="w-full p-5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 transition-all appearance-none text-slate-800" required aria-label="Interested in">
+                <option value="">Where do you want to go / What service?*</option>
+                <option>Student Visa (Canada/UK/Aus/EU)</option>
+                <option>Tourist/Visit Visa</option>
+                <option>Business/Investor Visa</option>
+                <option>Permanent Residency (PR)</option>
+                <option>Job Seeker / Work Visa</option>
+                <option>Post-Landing Support</option>
+            </select>
+            
+            <button type="submit" class="btn-premium w-full py-5 text-xl mt-4">Submit Request</button>
+            <p class="text-xs text-slate-500 text-center mt-4">By submitting, you agree to our privacy policy. We guarantee 100% data privacy.</p>
+            </form>
+
+            <p class="mt-10 text-center text-lg text-slate-600">Prefer chatting? <a href="https://wa.me/916301694153" class="text-green-600 font-black hover:underline" rel="noopener noreferrer"><i class="fab fa-whatsapp text-xl mr-1"></i> WhatsApp Us Now</a></p>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+  <script defer>
+  document.addEventListener('DOMContentLoaded', function() {
+    // AOS init with slightly refined settings
+    if(window.AOS) AOS.init({ duration: 800, once: true, offset: 100, easing: 'ease-out-cubic' });
+
+    // Header scroll toggler
+    const siteHeader = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      siteHeader.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // Mobile menu with smooth fade/scale transition
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    if (menuBtn && mobileMenu) {
+      function openMenu(){
+        mobileMenu.classList.remove('hidden');
+        setTimeout(() => {
+            mobileMenu.classList.remove('opacity-0', 'scale-95');
+            mobileMenu.classList.add('opacity-100', 'scale-100');
+        }, 10);
+        document.body.classList.add('menu-open');
+        menuBtn.setAttribute('aria-expanded', 'true');
+      }
+      function closeMenuFn(){
+        mobileMenu.classList.remove('opacity-100', 'scale-100');
+        mobileMenu.classList.add('opacity-0', 'scale-95');
+        setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+        }, 300);
+        document.body.classList.remove('menu-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      menuBtn.addEventListener('click', openMenu);
+      closeMenu.addEventListener('click', closeMenuFn);
+      mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenuFn)); 
+    }
+
+    // Swiper Init
+    if (window.Swiper) {
+      try {
+        // Country Swiper
+        new Swiper('.countrySwiper', {
+          loop: true,
+          autoplay: { delay: 2500, disableOnInteraction: false },
+          slidesPerView: 'auto', 
+          centeredSlides: true,
+          spaceBetween: 20,
+           breakpoints: {
+            640: { slidesPerView: 3, centeredSlides: false },
+            1024: { slidesPerView: 5, centeredSlides: false }
+          }
+        });
+
+        // Testimonial Swiper
+        new Swiper('.testimonialsSwiper', {
+          loop: true,
+          autoplay: { delay: 6000, disableOnInteraction: false },
+          speed: 1000,
+          grabCursor: true,
+          autoHeight: true, 
+          pagination: { el: '.swiper-pagination', clickable: true, dynamicBullets: true },
+          navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
+        });
+      } catch (err) { console.warn('Swiper init failed', err); }
+    }
+
+    // Form Submission
+    const form = document.getElementById('contactForm');
+    if (form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; } 
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerText;
+        if(submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Sending...';
+        }
+
+        const formData = new FormData(form);
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: formData
+          });
+          if (res.ok) {
+            form.innerHTML = '<div class="text-center py-10"><div class="text-6xl mb-4">🎉</div><h4 class="text-2xl font-bold text-slate-900 mb-2">Application Submitted!</h4><p class="text-slate-600">Our team will review your profile and contact you within 4 hours.</p></div>';
+          } else {
+            const data = await res.json();
+            alert(data?.error || 'Submission failed. Please try again.');
+            if(submitBtn) { submitBtn.disabled = false; submitBtn.innerText = originalBtnText; }
+          }
+        } catch (err) {
+          alert('Network error. Please check your connection.');
+          if(submitBtn) { submitBtn.disabled = false; submitBtn.innerText = originalBtnText; }
+        }
+      });
+    }
+  });
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"Organization",
+        "@id":"https://amorahgroup.in/#org",
+        "name":"Amorah Group",
+        "url":"https://amorahgroup.in/",
+        "logo":"https://amorahgroup.in/wp-content/uploads/2025/10/cropped-Amorah-Logo-PNG-1.png",
+        "contactPoint":[{"@type":"ContactPoint","telephone":"+91 63016 94153","contactType":"customer service","areaServed":"IN"}]
+      },
+      {
+        "@type":"LocalBusiness",
+        "@id":"https://amorahgroup.in/#localbusiness",
+        "name":"Amorah Group - Overseas Services",
+         "image":"https://amorahgroup.in/wp-content/uploads/2025/11/Untitled-design.png",
+        "telephone":"+91 63016 94153",
+        "address":{"@type":"PostalAddress","addressLocality":"Hyderabad","addressRegion":"Telangana","addressCountry":"IN"},
+        "url":"https://amorahgroup.in/overseas-services",
+        "priceRange":"$$"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"Do you help with business setup abroad?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes, we guide on investor & entrepreneur visas, company registration, and banking setup in UAE, Singapore, Canada, etc."}
+      },
+      {
+        "@type":"Question",
+        "name":"Can you source jobs directly?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes — we have direct employer partnerships in GCC, Europe, Canada, Australia & Asia-Pacific for skilled professionals."}
+      },
+      {
+        "@type":"Question",
+        "name":"What is your success rate?",
+        "acceptedAnswer":{"@type":"Answer","text":"94%+ visa success rate in 2024–2025. We conduct thorough pre-assessments and only take cases we are confident ethically representing."}
+      },
+      {
+        "@type":"Question",
+        "name":"Do you offer post-landing support?",
+        "acceptedAnswer":{"@type":"Answer","text":"Absolutely — airport pickup, temporary stay, SIM, bank account, orientation — everything for first 30 days."}
+      }
+    ]
+  }
+  </script>
+<div id="header"></div>
+<script src="header.js"></script>
+<div id="footer"></div>
+<script src="footer.js"></script>
+
+
+    <script src="links/external-links.js"></script>
+    <script src="links/links-init.js"></script>
+    <script>
+    async function openPaymentLink(payload){ 
+      try{
+        const res = await fetch('payment/create-payment.php', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(payload || {})
+        });
+        const data = await res.json();
+        if(data && data.short_url) window.open(data.short_url, '_blank');
+        else alert('Payment link creation failed.');
+      } catch(e){ console.error(e); alert('Payment error'); }
+    }
+    </script>
+    </body>
+</html>

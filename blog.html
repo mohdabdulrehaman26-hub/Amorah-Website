@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog & Insights — Amorah Group</title>
+  <meta name="description" content="Amorah Group blog: insights on IT, recruitment, training, and overseas careers." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/png" href="https://amorahgroup.in/wp-content/uploads/2025/10/cropped-Amorah-Logo-PNG-1.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
+
+  <style>
+    :root {
+      /* White Theme Palette */
+      --primary-deep: #ffffff;  /* Background White */
+      --accent-cyan: #00d4ff;   
+      --accent-royal: #4f46e5;  
+      
+      /* White Theme Glass Settings */
+      --glass: #ffffff;
+      --glass-border: #e2e8f0;
+      --text-light: #1e293b;    /* Dark text for light bg */
+      --text-muted: #64748b;    /* Gray text */
+      --card-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+    }
+    
+    body { 
+      background: var(--primary-deep); 
+      font-family: 'Poppins', sans-serif; 
+      color: var(--text-light); 
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden; 
+    }
+
+    /* Accent Underline */
+    .underline-accent { 
+      height: 4px; width: 80px; 
+      background: linear-gradient(90deg, var(--accent-royal), var(--accent-cyan)); 
+      border-radius: 10px;
+      margin: 10px auto 0;
+    }
+
+    /* Header Scroll State */
+    header { transition: all 0.4s ease-in-out; }
+    header.scrolled { 
+      background: rgba(255, 255, 255, 0.95); 
+      backdrop-filter: blur(12px);
+      padding-top: 12px; padding-bottom: 12px; 
+      box-shadow: 0 4px 20px -5px rgba(0,0,0,0.05); 
+    }
+
+    /* Premium Cards (White Theme) */
+    .glass-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+    }
+    /* Hover Effect */
+    .glass-card:hover { 
+      border-color: var(--accent-royal);
+      box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.15);
+      transform: translateY(-5px);
+    }
+
+    /* Juicy Premium Buttons */
+    .btn-premium {
+      position: relative;
+      background: linear-gradient(90deg, var(--accent-royal), var(--accent-cyan), var(--accent-royal));
+      background-size: 200% auto;
+      color: white; font-weight: 700; border-radius: 9999px;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 20px -10px rgba(79, 70, 229, 0.3);
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .btn-premium:hover {
+      background-position: right center;
+      box-shadow: 0 15px 30px -10px rgba(0, 212, 255, 0.5);
+      transform: translateY(-3px);
+    }
+
+    /* Floating WA Bot */
+    .wa-float { position: fixed; bottom: 30px; right: 30px; z-index: 999; animation: bounce 2s infinite; }
+    @keyframes bounce { 0%,20%,50%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-10px)} 60%{transform:translateY(-5px)} }
+
+    /* Mobile Menu */
+    body.menu-open { overflow: hidden; }
+    #mobileMenu .dropdown-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+    #mobileMenu .dropdown-content.open { max-height: 300px; }
+
+    /* Blog Specific Styles (White Theme) */
+    .chip {
+        padding: 8px 16px; border-radius: 999px; background: #f1f5f9;
+        color: var(--text-muted); font-weight: 600; border: 1px solid transparent;
+        cursor: pointer; transition: all 0.3s ease;
+    }
+    .chip.active, .chip:hover {
+        background: linear-gradient(90deg, var(--accent-royal), var(--accent-cyan));
+        color: white; 
+        box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+    }
+    .tag {
+        background: rgba(79, 70, 229, 0.1); color: var(--accent-royal);
+        font-weight: 700; border-radius: 8px; padding: 4px 12px; font-size: 0.75rem;
+        border: 1px solid rgba(79, 70, 229, 0.2);
+    }
+    .blog-card img.blog-img {
+        width: 100%; height: 220px; object-fit: cover;
+        transition: transform 0.5s ease; grayscale: 0%; /* Removed grayscale for cleaner look */
+    }
+    .blog-card:hover img.blog-img { transform: scale(1.05); }
+    
+    .read-link { font-weight: 700; color: var(--accent-royal); transition: all 0.3s; }
+    .read-link:hover { color: var(--accent-cyan); letter-spacing: 0.5px; }
+
+    /* Swiper Pagination */
+    .swiper-pagination-bullet { background: var(--accent-royal) !important; opacity: 0.4; width: 10px; height: 10px; }
+    .swiper-pagination-bullet-active { opacity: 1; transform: scale(1.2); background: var(--accent-royal) !important; }
+
+    /* Modal (White Theme) */
+    .modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 9999; }
+    .modal.show { display: flex; animation: fadeIn 0.3s ease-out; }
+    .modal-backdrop { position: absolute; inset: 0; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); }
+    .modal-card {
+        position: relative; max-width: 880px; width: 94%; max-height: 90vh; overflow-y: auto;
+        background: #ffffff; border: 1px solid var(--glass-border);
+        border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+        animation: slideUp 0.4s ease-out;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Prose (for modal content) */
+    .prose { color: var(--text-light); }
+    .prose p { line-height: 1.8; margin-bottom: 1.5em; color: var(--text-muted); }
+    .prose strong { color: var(--text-light); }
+    .prose a { color: var(--accent-royal); text-decoration: underline; }
+
+    /* Explicit Footer White Background */
+    #footer { background-color: #ffffff !important; }
+  </style>
+</head>
+<body class="antialiased">
+
+  <a href="https://wa.me/916301694153" target="_blank" rel="noopener noreferrer" class="wa-float flex items-center justify-center w-16 h-16 bg-[#25D366] rounded-full shadow-2xl hover:scale-110 transition text-white text-3xl">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <div id="header"></div>
+
+  <div id="mobileMenu" class="fixed inset-0 bg-white/98 backdrop-blur-xl z-40 hidden flex-col p-8 text-slate-800 overflow-y-auto transition-all opacity-0 scale-95">
+    <div class="flex justify-between items-center mb-8">
+        <img src="https://amorahgroup.in/wp-content/uploads/2025/10/cropped-Amorah-Logo-PNG-1.png" alt="Amorah Group logo" class="h-10">
+        <button id="closeMenu" class="text-4xl text-indigo-600"><i class="fas fa-times"></i></button>
+    </div>
+    
+    <div class="flex flex-col gap-6 text-xl font-bold">
+        <a href="/" class="hover:text-indigo-600 transition">Home</a>
+        <div>
+            <button class="mobile-dropdown-toggle flex items-center justify-between w-full hover:text-indigo-600 transition">Services <i class="fas fa-chevron-down transition-transform"></i></button>
+            <div class="dropdown-content pl-4 text-lg text-slate-600 flex flex-col gap-3 mt-3">
+                <a href="/services#it">IT & Software</a>
+                <a href="/services#recruitment">Recruitment</a>
+                <a href="/services#training">Training & Placement</a>
+            </div>
+        </div>
+        <div>
+            <button class="mobile-dropdown-toggle flex items-center justify-between w-full hover:text-indigo-600 transition">Overseas <i class="fas fa-chevron-down transition-transform"></i></button>
+            <div class="dropdown-content pl-4 text-lg text-slate-600 flex flex-col gap-3 mt-3">
+                <a href="/overseas">Student Visa</a>
+                <a href="/overseas">Visit Visa</a>
+                <a href="/overseas">PR Visa</a>
+            </div>
+        </div>
+        <a href="/blog" class="text-indigo-600 transition">Blog</a>
+        <a href="/about" class="hover:text-indigo-600 transition">About Us</a>
+        <a href="/contact" class="btn-premium px-10 py-4 text-center mt-4">Contact Us</a>
+    </div>
+  </div>
+
+  <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden z-10 text-center">
+    <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_#f1f5f9_0%,_#ffffff_100%)] -z-20"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-200/30 rounded-full filter blur-[150px] -z-10 animate-pulse"></div>
+    <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-cyan-100/40 rounded-full filter blur-[150px] -z-10 animate-pulse" style="animation-delay: 1s;"></div>
+
+    <div class="container mx-auto px-6 relative z-10" data-aos="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold bg-indigo-50 text-indigo-600 border border-indigo-100 mb-6">
+            <i class="fas fa-newspaper"></i> Blog & Insights
+        </span>
+      <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6 text-slate-900">
+        Ideas, Tech & <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-cyan-500">Global Careers</span>
+      </h1>
+      <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-8 leading-relaxed">
+        Practical strategies and insights from the Amorah team across Software, Recruitment, Training and Overseas opportunities.
+      </p>
+      
+      <div class="flex items-center justify-center gap-6 text-slate-500 text-sm">
+        <div class="flex items-center gap-2">
+          <i class="far fa-calendar-alt text-indigo-500"></i> Updated regularly
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="far fa-clock text-indigo-500"></i> 4–6 min reads
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-8 relative z-10 border-t border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-[72px]">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col lg:flex-row items-stretch gap-6">
+        <div class="relative flex-1 group">
+          <input id="searchInput" type="search" placeholder="Search articles..."
+                 class="w-full rounded-full bg-slate-50 border border-slate-200 px-6 py-3 pr-12 focus:outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400 text-slate-800 placeholder-slate-400 transition-all">
+          <i class="fas fa-search absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 group-hover:text-indigo-500 transition-colors"></i>
+        </div>
+        <div class="flex items-center gap-3 flex-wrap justify-center lg:justify-start">
+          <button class="chip active" data-cat="all">All</button>
+          <button class="chip" data-cat="Technology">Technology</button>
+          <button class="chip" data-cat="Recruitment">Recruitment</button>
+          <button class="chip" data-cat="Training">Training</button>
+          <button class="chip" data-cat="Overseas">Overseas</button>
+        </div>
+        <div>
+          <select id="sortSelect" class="rounded-full bg-slate-50 border border-slate-200 px-6 py-3 focus:outline-none focus:border-indigo-400 text-slate-800 transition-all cursor-pointer">
+            <option value="new">Newest First</option>
+            <option value="popular">Most Popular</option>
+            <option value="az">A → Z</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 relative z-10 bg-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-2xl font-bold mb-8 flex items-center gap-3 text-slate-900"><i class="fas fa-star text-indigo-500"></i> Featured Stories</h2>
+      <div class="swiper featuredSwiper rounded-3xl overflow-hidden shadow-xl ring-1 ring-slate-200">
+        <div class="swiper-wrapper" id="featuredSlides"></div>
+        <div class="swiper-pagination !bottom-6"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 relative z-10 bg-slate-50">
+    <div class="container mx-auto px-6">
+        <h2 class="text-2xl font-bold mb-8 flex items-center gap-3 text-slate-900"><i class="fas fa-th-large text-indigo-500"></i> Latest Articles</h2>
+      <div id="gridWrap" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10"></div>
+
+      <div class="mt-16 flex items-center justify-center gap-6">
+        <button id="prevPage" class="chip flex items-center gap-2 px-6 py-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 transition-transform"><i class="fas fa-chevron-left"></i> Prev</button>
+        <span id="pageInfo" class="text-lg font-semibold text-indigo-600"></span>
+        <button id="nextPage" class="chip flex items-center gap-2 px-6 py-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 transition-transform">Next <i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <div id="readModal" class="modal">
+    <div class="modal-backdrop" onclick="closeModal()"></div>
+    <div class="modal-card p-6 md:p-10">
+      <button class="absolute right-6 top-6 text-slate-400 hover:text-slate-800 transition-colors z-10 bg-white/80 rounded-full w-10 h-10 flex items-center justify-center shadow-md" onclick="closeModal()">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+      <img id="modalImg" src="" class="w-full h-72 md:h-96 object-cover rounded-2xl mb-8 shadow-lg" alt="">
+      
+      <div class="flex items-center gap-4 text-sm text-slate-500 mb-6">
+        <span id="modalTag" class="tag"></span>
+        <span id="modalMeta"></span>
+      </div>
+
+      <h3 id="modalTitle" class="text-3xl md:text-4xl font-black text-slate-900 mb-8 leading-tight"></h3>
+      
+      <div id="modalBody" class="prose max-w-none text-lg text-slate-700"></div>
+      
+      <div class="mt-10 pt-8 border-t border-slate-200 flex flex-wrap items-center gap-6">
+        <span class="text-slate-500 font-semibold">Share this article:</span>
+        <a id="modalShareLn" target="_blank" rel="noopener" class="chip flex items-center gap-2 text-[#0077b5] hover:text-white !bg-[#0077b5]/10 hover:!bg-[#0077b5]">
+          <i class="fab fa-linkedin text-lg"></i> LinkedIn
+        </a>
+        <a id="modalShareX" target="_blank" rel="noopener" class="chip flex items-center gap-2 text-slate-600 hover:text-white !bg-slate-100 hover:!bg-black">
+          <i class="fab fa-x-twitter text-lg"></i> X (Twitter)
+        </a>
+        <a id="modalShareWa" target="_blank" rel="noopener" class="chip flex items-center gap-2 text-[#25D366] hover:text-white !bg-[#25D366]/10 hover:!bg-[#25D366]">
+          <i class="fab fa-whatsapp text-lg"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer"></div>
+
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 1. Initialize AOS
+    if(window.AOS) AOS.init({ duration: 800, once: true, offset: 60, easing: 'ease-out-cubic' });
+
+    // 2. Header Scroll
+    const siteHeader = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) siteHeader.classList.add('scrolled');
+      else siteHeader.classList.remove('scrolled');
+    });
+
+    // 3. Mobile Menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        setTimeout(() => {
+            mobileMenu.classList.remove('opacity-0', 'scale-95');
+            mobileMenu.classList.add('opacity-100', 'scale-100');
+        }, 10);
+        document.body.classList.add('menu-open');
+      });
+
+      const closeMenuFn = () => {
+        mobileMenu.classList.remove('opacity-100', 'scale-100');
+        mobileMenu.classList.add('opacity-0', 'scale-95');
+        setTimeout(() => { mobileMenu.classList.add('hidden'); }, 300);
+        document.body.classList.remove('menu-open');
+      };
+      closeMenu.addEventListener('click', closeMenuFn);
+
+      dropdownToggles.forEach(toggle => {
+          toggle.addEventListener('click', (e) => {
+              e.preventDefault();
+              const content = toggle.nextElementSibling;
+              const icon = toggle.querySelector('.fa-chevron-down');
+              content.classList.toggle('open');
+              icon.classList.toggle('rotate-180');
+          });
+      });
+    }
+
+    /* ------------------ BLOG LOGIC (Same data, updated styling) ------------------ */
+    const POSTS = [
+      {
+        id:'ai-hiring-2025',
+        title:'AI in Hiring: What Changes in 2025 (and What Doesn’t)',
+        tag:'Recruitment',
+        date:'2025-10-15',
+        read:6,
+        img:'https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'From AI screening to skills-first pipelines—how to keep hiring ethical, fast and unbiased.',
+        body:`<p>AI is accelerating screening and matching, but human oversight matters. We cover compliant usage, practical tooling, and skills-first pipelines that reduce bias.</p>
+              <p>Key takeaways: define success metrics, create reviewer loops, and audit your prompts and datasets regularly.</p>`,
+        popular: true, featured: true
+      },
+      {
+        id:'cloud-cost-guardrails',
+        title:'Cut Cloud Costs Without Slowing Product Teams',
+        tag:'Technology',
+        date:'2025-09-30',
+        read:5,
+        img:'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'A developer-first playbook: tagging, budgets, scale-to-zero, and continuous profiling.',
+        body:`<p>Control planes beat ad hoc scripts. Add budgets, alerts, pre-approved instance types, and “scale-to-zero” for bursty workloads.</p>`,
+        popular: true, featured: true
+      },
+      {
+        id:'overseas-checklist',
+        title:'Overseas Job Checklist: Documents, Timelines, and Red Flags',
+        tag:'Overseas',
+        date:'2025-08-22',
+        read:7,
+        img:'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'Avoid pitfalls and plan a clean, ethical migration.',
+        body:`<p>Prepare notarized documents, validate employer credentials, and understand visa pathway timelines. Never pay for a job offer.</p>`,
+        popular:false, featured:true
+      },
+      {
+        id:'learning-sprints',
+        title:'Learning Sprints that Actually Lead to Jobs',
+        tag:'Training',
+        date:'2025-07-18',
+        read:4,
+        img:'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'Portfolio-first, mentor-backed sprints that convert to interviews.',
+        body:`<p>Short sprints with real product artifacts outperform generic courses. Pair with mock interviews and recruiter feedback.</p>`,
+        popular:true, featured:false
+      },
+      {
+        id:'devops-hiring-signals',
+        title:'Hiring DevOps? 9 Signals That Predict Success',
+        tag:'Recruitment',
+        date:'2025-09-02',
+        read:5,
+        img:'https://images.unsplash.com/photo-1555949963-aa79dcee981d?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'From on-call hygiene to change-failure-rate, measure what matters.',
+        body:`<p>Look beyond tools. Probe incident retros, DORA metrics, and migration stories to gauge practical maturity.</p>`,
+        popular:false, featured:false
+      },
+      {
+        id:'ai-copilots',
+        title:'Copilots in Production: Governance for CTOs',
+        tag:'Technology',
+        date:'2025-10-05',
+        read:6,
+        img:'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'Frameworks to govern prompts, privacy, telemetry, and ROI.',
+        body:`<p>Ship copilots safely with data minimization, prompt walls, and red-teaming. Track ROI via time-to-spec and review velocity.</p>`,
+        popular:true, featured:false
+      }
+    ];
+
+    const fmtDate = (iso) => new Date(iso).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' });
+    function shareLinks(url, title) {
+      return {
+        ln: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+        x: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
+        wa: `https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`
+      };
+    }
+
+    function renderFeatured() {
+      const wrap = document.getElementById('featuredSlides');
+      wrap.innerHTML = '';
+      POSTS.filter(p => p.featured).forEach(p => {
+        const slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+        slide.innerHTML = `
+          <div class="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden group cursor-pointer shadow-lg" onclick="openModal('${p.id}')">
+            <img src="${p.img}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+              <span class="tag mb-4 inline-block bg-white/90 border-0 backdrop-blur-md">${p.tag}</span>
+              <h3 class="text-white text-3xl md:text-5xl font-black leading-tight mb-4 group-hover:text-indigo-300 transition-colors">${p.title}</h3>
+              <div class="text-slate-300 text-sm mb-4 flex items-center gap-3">
+                  <span><i class="far fa-calendar-alt mr-1"></i> ${fmtDate(p.date)}</span>
+                  <span>•</span>
+                  <span><i class="far fa-clock mr-1"></i> ${p.read} min read</span>
+              </div>
+              <p class="text-slate-200/90 hidden md:block max-w-3xl text-lg mb-6">${p.excerpt}</p>
+              <button class="btn-premium px-6 py-3">Read Article <i class="fas fa-arrow-right ml-2"></i></button>
+            </div>
+          </div>`;
+        wrap.appendChild(slide);
+      });
+
+      new Swiper('.featuredSwiper', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: { delay: 5000, disableOnInteraction: false },
+        pagination: { el: '.featuredSwiper .swiper-pagination', clickable: true },
+        effect: 'fade',
+        fadeEffect: { crossFade: true }
+      });
+    }
+
+    let state = { page: 1, perPage: 6, cat: 'all', q: '', sort: 'new' };
+
+    function applyFilters() {
+      let list = [...POSTS];
+      if (state.cat !== 'all') { list = list.filter(p => p.tag === state.cat); }
+      if (state.q) {
+        const t = state.q.toLowerCase();
+        list = list.filter(p => p.title.toLowerCase().includes(t) || p.excerpt.toLowerCase().includes(t) || p.tag.toLowerCase().includes(t));
+      }
+      if (state.sort === 'new') list.sort((a, b) => new Date(b.date) - new Date(a.date));
+      if (state.sort === 'popular') list.sort((a, b) => (b.popular ? 1 : 0) - (a.popular ? 1 : 0));
+      if (state.sort === 'az') list.sort((a, b) => a.title.localeCompare(b.title));
+      return list;
+    }
+
+    function renderGrid() {
+      const grid = document.getElementById('gridWrap');
+      const pageInfo = document.getElementById('pageInfo');
+      const prevBtn = document.getElementById('prevPage');
+      const nextBtn = document.getElementById('nextPage');
+
+      const rows = applyFilters();
+      const totalPages = Math.max(1, Math.ceil(rows.length / state.perPage));
+      state.page = Math.min(state.page, totalPages);
+
+      const start = (state.page - 1) * state.perPage;
+      const pageRows = rows.slice(start, start + state.perPage);
+
+      grid.innerHTML = pageRows.map(p => `
+        <article class="glass-card group bg-white" data-tilt data-aos="fade-up">
+          <div class="relative overflow-hidden h-60">
+            <img src="${p.img}" alt="" class="blog-img absolute inset-0 w-full h-full object-cover">
+            <div class="absolute top-4 left-4">
+                <span class="tag backdrop-blur-md bg-white/90 border-0 shadow-sm">${p.tag}</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between gap-2 mb-3 text-sm text-slate-500">
+              <span><i class="far fa-calendar-alt mr-1 text-indigo-500"></i> ${fmtDate(p.date)}</span>
+              <span><i class="far fa-clock mr-1 text-indigo-500"></i> ${p.read} min</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-indigo-600 transition-colors">${p.title}</h3>
+            <p class="text-slate-600 mb-6 line-clamp-3">${p.excerpt}</p>
+            <div class="flex items-center justify-between">
+              <button class="read-link flex items-center gap-1" onclick="openModal('${p.id}')">Read More <i class="fas fa-arrow-right text-xs"></i></button>
+              <div class="flex items-center gap-3 text-slate-400">
+                <a href="${shareLinks(location.href + '#' + p.id).ln}" target="_blank" rel="noopener" class="hover:text-indigo-500 transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                <a href="${shareLinks(location.href + '#' + p.id).x}" target="_blank" rel="noopener" class="hover:text-indigo-500 transition-colors"><i class="fab fa-x-twitter"></i></a>
+                <a href="${shareLinks(location.href + '#' + p.id).wa}" target="_blank" rel="noopener" class="hover:text-indigo-500 transition-colors"><i class="fab fa-whatsapp"></i></a>
+              </div>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      pageInfo.textContent = `Page ${state.page} of ${totalPages}`;
+      prevBtn.disabled = state.page === 1;
+      nextBtn.disabled = state.page === totalPages;
+
+      if (window.AOS) AOS.refreshHard();
+      if (window.VanillaTilt) VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
+
+      prevBtn.onclick = () => { if (state.page > 1) { state.page--; renderGrid(); grid.scrollIntoView({ behavior: 'smooth', block: 'start' }); } };
+      nextBtn.onclick = () => { if (state.page < totalPages) { state.page++; renderGrid(); grid.scrollIntoView({ behavior: 'smooth', block: 'start' }); } };
+    }
+
+    function openModal(id) {
+      const p = POSTS.find(x => x.id === id); if (!p) return;
+      document.getElementById('modalImg').src = p.img;
+      document.getElementById('modalTitle').textContent = p.title;
+      document.getElementById('modalMeta').innerHTML = `<span><i class="far fa-calendar-alt mr-1"></i> ${fmtDate(p.date)}</span> • <span><i class="far fa-clock mr-1"></i> ${p.read} min read</span>`;
+      document.getElementById('modalTag').textContent = p.tag;
+      document.getElementById('modalBody').innerHTML = p.body;
+
+      const url = location.origin + location.pathname + '#' + p.id;
+      const s = shareLinks(url, p.title);
+      document.getElementById('modalShareLn').href = s.ln;
+      document.getElementById('modalShareX').href = s.x;
+      document.getElementById('modalShareWa').href = s.wa;
+
+      document.getElementById('readModal').classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('readModal').classList.remove('show');
+      document.body.style.overflow = '';
+    }
+    window.openModal = openModal; window.closeModal = closeModal;
+
+    // UI Events
+    document.querySelectorAll('.chip[data-cat]').forEach(ch => {
+      ch.addEventListener('click', () => {
+        document.querySelectorAll('.chip[data-cat]').forEach(c => c.classList.remove('active'));
+        ch.classList.add('active');
+        state.cat = ch.dataset.cat;
+        state.page = 1;
+        renderGrid();
+      });
+    });
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      state.q = e.target.value.trim();
+      state.page = 1;
+      renderGrid();
+    });
+    document.getElementById('sortSelect').addEventListener('change', (e) => {
+      state.sort = e.target.value;
+      state.page = 1;
+      renderGrid();
+    });
+
+    // Initialize
+    renderFeatured();
+    renderGrid();
+    
+    if(location.hash) {
+        const id = location.hash.substring(1);
+        if(POSTS.find(p => p.id === id)) {
+            openModal(id);
+        }
+    }
+  });
+  </script>
+<div id="header"></div>
+<script src="header.js"></script>
+<div id="footer"></div>
+<script src="footer.js"></script>
+
+    <!-- injected-links-scripts -->
+    <script src="links/external-links.js"></script>
+    <script src="links/links-init.js"></script>
+    <!-- Razorpay helper (uses server-side create-payment.php) -->
+    <script>
+    async function openPaymentLink(payload){ 
+      try{
+        const res = await fetch('payment/create-payment.php', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(payload || {})
+        });
+        const data = await res.json();
+        if(data && data.short_url) window.open(data.short_url, '_blank');
+        else alert('Payment link creation failed.');
+      } catch(e){ console.error(e); alert('Payment error'); }
+    }
+    </script>
+    <!-- end injected-links-scripts -->
+    
+</body>
+</html>
