@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Amorah Group</title>
+    <meta name="robots" content="noindex, follow">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="links/external-links.js" defer></script>
+    <script src="links/links-init.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+
+<body class="bg-slate-50 text-gray-900 flex flex-col min-h-screen">
+
+    <div id="header"></div>
+
+    <section class="flex-grow flex items-center justify-center py-32 px-6 text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5 pointer-events-none" 
+             style="background-image: radial-gradient(#4f46e5 1px, transparent 1px); background-size: 30px 30px;">
+        </div>
+
+        <div class="relative z-10" data-aos="fade-up">
+            <h1 class="text-[10rem] md:text-[12rem] font-black text-slate-200 leading-none select-none">404</h1>
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 -mt-10 mb-6 relative">Page Not Found</h2>
+            
+            <p class="text-slate-600 text-lg mb-10 max-w-md mx-auto leading-relaxed">
+                Oops! The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+            </p>
+            
+            <a href="index.html" class="btn-premium px-10 py-4 text-lg no-underline inline-flex items-center gap-3 shadow-xl hover:shadow-2xl hover:-translate-y-1 transform transition-all">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <a data-link="whatsapp" href="#" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if(window.AOS) AOS.init({ duration: 800, once: true });
+        });
+    </script>
+</body>
+</html>

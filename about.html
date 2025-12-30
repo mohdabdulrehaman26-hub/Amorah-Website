@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>About Us — Amorah Group | Innovation, Integrity & Global Reach</title>
+    <meta name="description" content="Meet the leadership behind Amorah Group. A women-led, innovation-driven company delivering IT, Recruitment, Training & Global Overseas Services.">
+    <link rel="canonical" href="https://amorahgroup.in/about">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="links/external-links.js" defer></script>
+    <script src="links/links-init.js" defer></script>
+    <script src="js/main.js" defer></script>
+
+    <style>
+        /* --- Page Specific Styles --- */
+        .hero-bg-img { object-fit: cover; width: 100%; height: 100%; }
+        
+        /* About Image Style (Team Photo) */
+        .image-wrapper { 
+            position: relative; overflow: hidden; border-radius: 20px; 
+            transform-style: preserve-3d; perspective: 1000px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15); 
+        }
+        .image-wrapper img { transition: transform 0.8s ease; width: 100%; display: block; }
+        .image-wrapper:hover img { transform: scale(1.05); }
+
+        /* Timeline Styling */
+        .timeline-item { 
+            position: relative; padding-left: 2.5rem; border-left: 2px solid #e2e8f0; padding-bottom: 2.5rem; 
+        }
+        .timeline-dot { 
+            position: absolute; left: -9px; top: 0; width: 16px; height: 16px; 
+            border-radius: 50%; background: #4f46e5; border: 2px solid white; 
+            box-shadow: 0 0 0 4px #e0e7ff; 
+        }
+
+        /* Canvas Positioning */
+        #particle-bg { 
+            position: absolute; inset: 0; width: 100%; height: 100%; 
+            pointer-events: none; z-index: 0; opacity: 0.6; 
+        }
+
+        /* Leader Round Image Specifics */
+        .leader-img-box {
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%; /* CIRCLE SHAPE */
+            box-shadow: 0 20px 40px -5px rgba(0,0,0,0.15);
+            border: 4px solid #fff; /* White border for emphasis */
+            aspect-ratio: 1 / 1; /* Force Square Aspect Ratio */
+        }
+        .leader-img-box::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+            opacity: 0; transition: 0.4s;
+        }
+        .leader-img-box:hover::after { opacity: 1; }
+        
+        /* Ensure image fills the circle */
+        .leader-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-gray-900 font-inter">
+
+    <div id="header"></div>
+
+    <section class="relative w-full h-[60vh] md:h-[70vh] overflow-hidden bg-slate-900">
+    <img src="https://amorahgroup.in/assets/images/Gemini_Generated_Image_o3u52jo3u52jo3u5.png" alt="Amorah Image">
+" 
+             alt="Amorah Group Corporate Headquarters" 
+             class="hero-bg-img absolute inset-0 w-full h-full opacity-60">
+        
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/50 to-slate-900/80"></div>
+        
+        <div class="absolute inset-0 flex flex-col items-center justify-center z-10 pt-16 px-6" data-aos="fade-up">
+            <div class="text-center text-white max-w-4xl">
+                <span class="text-blue-400 font-bold tracking-widest uppercase mb-4 block">Our Journey & Purpose</span>
+                <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight">Building the Future, <br>Together.</h1>
+                <p class="text-xl md:text-2xl text-slate-200 font-light leading-relaxed">
+                    We are a team of visionaries bridging the gap between talent and opportunity. 
+                    Driving global innovation with integrity since 2020.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white relative overflow-hidden py-24">
+        <canvas id="particle-bg"></canvas>
+
+        <div class="container mx-auto px-6 lg:px-16 flex flex-col lg:flex-row items-center justify-between gap-16 relative z-10">
+            <div class="w-full lg:w-1/2" data-aos="fade-right">
+                <div class="mb-8 text-left">
+                    <h1 class="text-5xl md:text-6xl font-black text-slate-900 mb-4 tracking-tight leading-none">
+                        Who We Are
+                    </h1>
+                    <h2 class="text-xl md:text-2xl font-bold text-blue-600 leading-relaxed">
+                        Empowering Growth Through <span class="text-cyan-500">Global Solutions</span>
+                    </h2>
+                </div>
+
+                <div class="text-slate-600 text-lg leading-relaxed text-left space-y-6">
+                    <p>
+                        At Amorah Group, we believe that empowerment creates lasting impact.
+                        Founded in India and now serving clients across the globe, we bring
+                        together innovation, integrity, and world-class expertise to
+                        redefine what’s possible in Technology, Recruitment, and Overseas Services.
+                    </p>
+                    <p>
+                        Our journey began with a simple yet powerful purpose: to bridge the gap between talent and opportunity. 
+                        Whether it is helping a student achieve their dream of studying abroad, assisting a company in finding their next CTO, 
+                        or building a custom software solution for a startup, we treat every project with the same level of dedication.
+                    </p>
+                    <p class="font-medium text-slate-800">
+                        With over 400+ satisfied clients and partnerships with 500+ universities worldwide, Amorah Group stands as a beacon of trust and excellence.
+                    </p>
+                </div>
+
+                <div class="mt-8 text-left">
+                    <a href="#vision-mission" class="btn-premium inline-flex text-lg group">
+                        Explore Our Values <i class="fa-solid fa-arrow-down ml-3 group-hover:translate-y-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-1/2 flex justify-center" data-aos="fade-left">
+                <div class="image-wrapper max-w-lg w-full" data-tilt>
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop" alt="Team Amorah" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vision-mission" class="py-24 bg-slate-50 relative z-10 border-t border-b border-slate-200">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Vision, Mission & <span class="text-blue-600">Core Values</span></h2>
+                <div class="mx-auto mt-4 h-1 w-24 bg-gradient-to-r from-blue-600 to-cyan-500 rounded"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="glass-card p-8 text-center group h-full" data-tilt data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600 text-3xl group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">Our Vision</h3>
+                    <p class="text-slate-600 leading-relaxed">To be a global leader in digital innovation, empowering individuals and businesses through technology and opportunities.</p>
+                </div>
+
+                <div class="glass-card p-8 text-center group h-full" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600 text-3xl group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">Our Mission</h3>
+                    <p class="text-slate-600 leading-relaxed">To deliver high-quality, cost-effective solutions across IT, recruitment, and overseas services with integrity.</p>
+                </div>
+
+                <div class="glass-card p-8 text-center group h-full" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600 text-3xl group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">Core Values</h3>
+                    <p class="text-slate-600 leading-relaxed">Integrity, Innovation, Transparency, Customer Success, and Excellence in everything we do.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white relative z-10">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900">Our Leadership</h2>
+                <p class="mt-4 text-slate-600 text-lg">Driven by passion, guided by experience.</p>
+                <div class="mx-auto mt-4 h-1 w-24 bg-gradient-to-r from-blue-600 to-cyan-500 rounded"></div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-12 mb-24">
+                <div class="w-full md:w-1/3 flex justify-center" data-aos="fade-right">
+                    <div class="leader-img-box w-72 h-72 md:w-80 md:h-80 mx-auto">
+                        <img src="https://placehold.co/400x500/f1f5f9/94a3b8?text=Uzma+Unnisa" alt="Uzma Unnisa">
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3 text-center md:text-left" data-aos="fade-left">
+                    <h3 class="text-3xl font-bold text-slate-900 mb-1">Uzma Unnisa</h3>
+                    <p class="text-blue-600 font-bold uppercase tracking-wider text-sm mb-6">Founder & Managing Director</p>
+                    
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6 text-left">
+                        As the visionary behind Amorah Group, Uzma brings over <strong>12+ years of experience</strong> in Global Mobility and Educational Consulting. Her deep understanding of international visa regulations and university admissions has helped thousands of students and professionals realize their global dreams. She spearheads the Overseas division, ensuring 100% transparency and ethical guidance.
+                    </p>
+                    
+                    <div class="flex items-center justify-center md:justify-start gap-4 mb-6">
+                        <div class="bg-blue-50 px-4 py-2 rounded-lg text-sm font-semibold text-blue-700">Overseas Expert</div>
+                        <div class="bg-blue-50 px-4 py-2 rounded-lg text-sm font-semibold text-blue-700">Strategic Planning</div>
+                    </div>
+
+                    <div class="flex justify-center md:justify-start gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-blue-600 hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:info@amorahgroup.in" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-blue-600 hover:text-white transition-colors"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-24">
+                <div class="w-full md:w-1/3 flex justify-center" data-aos="fade-left">
+                    <div class="leader-img-box w-72 h-72 md:w-80 md:h-80 mx-auto">
+                        <img src="https://placehold.co/400x500/f1f5f9/94a3b8?text=Sadia+Unnisa" alt="Sadia Unnisa">
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3 text-center md:text-right" data-aos="fade-right">
+                    <h3 class="text-3xl font-bold text-slate-900 mb-1">Sadia Unnisa</h3>
+                    <p class="text-blue-600 font-bold uppercase tracking-wider text-sm mb-6">Co-Founder & Operations Head</p>
+                    
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6 text-left md:text-right">
+                        With a robust background in Operations Management and <strong>10+ years of industry expertise</strong>, Sadia ensures the seamless execution of Amorah's diverse verticals. From overseeing IT project deliveries to streamlining recruitment workflows, her operational excellence is the backbone of the company. She focuses on quality assurance and client satisfaction.
+                    </p>
+                    
+                    <div class="flex items-center justify-center md:justify-end gap-4 mb-6">
+                        <div class="bg-purple-50 px-4 py-2 rounded-lg text-sm font-semibold text-purple-700">Operations Mgmt</div>
+                        <div class="bg-purple-50 px-4 py-2 rounded-lg text-sm font-semibold text-purple-700">Client Relations</div>
+                    </div>
+
+                    <div class="flex justify-center md:justify-end gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-purple-600 hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:info@amorahgroup.in" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-purple-600 hover:text-white transition-colors"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="w-full md:w-1/3 flex justify-center" data-aos="fade-right">
+                    <div class="leader-img-box w-72 h-72 md:w-80 md:h-80 mx-auto">
+                        <img src="https://placehold.co/400x500/f1f5f9/94a3b8?text=Abdul+Rahman" alt="Md Abdul Rahman">
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3 text-center md:text-left" data-aos="fade-left">
+                    <h3 class="text-3xl font-bold text-slate-900 mb-1">Md Abdul Rahman</h3>
+                    <p class="text-blue-600 font-bold uppercase tracking-wider text-sm mb-6">Director & Head of Recruitment</p>
+                    
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6 text-left">
+                        Abdul Rahman is a seasoned HR strategist with <strong>8+ years of experience</strong> in Talent Acquisition and Corporate Training. He specializes in bridging the gap between skilled professionals and top-tier companies. His expertise in spotting talent and understanding corporate requirements has been pivotal in placing 500+ candidates in reputed MNCs across India and abroad.
+                    </p>
+                    
+                    <div class="flex items-center justify-center md:justify-start gap-4 mb-6">
+                        <div class="bg-green-50 px-4 py-2 rounded-lg text-sm font-semibold text-green-700">Talent Acquisition</div>
+                        <div class="bg-green-50 px-4 py-2 rounded-lg text-sm font-semibold text-green-700">Corporate Training</div>
+                    </div>
+
+                    <div class="flex justify-center md:justify-start gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-green-600 hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:info@amorahgroup.in" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-green-600 hover:text-white transition-colors"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Why <span class="text-blue-600">Choose Amorah?</span></h2>
+                <div class="mx-auto mt-4 h-1 w-24 bg-gradient-to-r from-blue-600 to-cyan-500 rounded"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-100" data-aos="fade-up">
+                    <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center text-green-600 text-2xl mb-6">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-slate-900">100% Transparency</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        We believe in clear communication. Whether it's visa fees, recruitment charges, or project timelines, everything is documented and shared upfront.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-100" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 text-2xl mb-6">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-slate-900">Global Network</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Our partnerships extend to 500+ universities and hiring networks across the UK, USA, Canada, Australia, and UAE, giving you exclusive access.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-100" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-pink-100 rounded-lg flex items-center justify-center text-pink-600 text-2xl mb-6">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-slate-900">Expert Counsel</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Our team consists of certified counselors, HR veterans, and technical architects with decades of combined industry experience.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white border-t border-slate-200">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Our Journey</h2>
+                <div class="mx-auto mt-4 h-1 w-24 bg-gradient-to-r from-blue-600 to-cyan-500 rounded"></div>
+            </div>
+
+            <div class="pl-4 md:pl-10" data-aos="fade-up">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <span class="text-sm font-bold text-slate-400 mb-1 block">2020</span>
+                    <h3 class="text-xl font-bold text-blue-600 mb-2">Founded in Hyderabad</h3>
+                    <p class="text-slate-600 text-lg">Built on a mission to empower people through technology, skills and opportunities.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <span class="text-sm font-bold text-slate-400 mb-1 block">2021</span>
+                    <h3 class="text-xl font-bold text-blue-600 mb-2">Recruitment Division</h3>
+                    <p class="text-slate-600 text-lg">Scaled hiring across IT & non-IT with AI-assisted screening and assessments.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <span class="text-sm font-bold text-slate-400 mb-1 block">2023</span>
+                    <h3 class="text-xl font-bold text-blue-600 mb-2">Overseas Expansion</h3>
+                    <p class="text-slate-600 text-lg">Expanded globally: UAE, Saudi, USA, UK, Canada, Australia & Europe.</p>
+                </div>
+                <div class="timeline-item border-l-0">
+                    <div class="timeline-dot"></div>
+                    <span class="text-sm font-bold text-slate-400 mb-1 block">2025</span>
+                    <h3 class="text-xl font-bold text-blue-600 mb-2">400+ Global Clients</h3>
+                    <p class="text-slate-600 text-lg">Delivering excellence across technology, recruitment and international mobility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 relative bg-slate-900">
+        <div class="absolute inset-0 z-0">
+            <img src="assets/images/contact-bg.jpg" 
+                 onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop'"
+                 class="w-full h-full object-cover opacity-20" alt="Tech Background">
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
+        </div>
+
+        <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="text-white" data-aos="fade-right">
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-6">Let’s Build Your Future</h2>
+                <p class="mb-10 text-slate-300 text-lg leading-relaxed">
+                    Whether you need IT solutions, top talent, or a visa to your dream country, Amorah Group is here to help.
+                </p>
+                
+                <div class="space-y-6">
+                    <div class="flex items-center gap-6">
+                        <div class="w-14 h-14 bg-indigo-600/30 border border-indigo-500 rounded-full flex items-center justify-center text-indigo-400 text-2xl"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <p class="text-xs text-slate-400 uppercase tracking-wide font-bold">Email Us</p>
+                            <a data-link="email" href="#" class="text-white text-xl font-bold hover:text-indigo-400 transition">info@amorahgroup.in</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <div class="w-14 h-14 bg-indigo-600/30 border border-indigo-500 rounded-full flex items-center justify-center text-indigo-400 text-2xl"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <p class="text-xs text-slate-400 uppercase tracking-wide font-bold">Call Us</p>
+                            <a data-link="phone" href="#" class="text-white text-xl font-bold hover:text-indigo-400 transition">+91 63016 94153</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-left">
+                <div class="bg-white/10 backdrop-blur-md p-8 md:p-10 rounded-3xl border border-white/20 shadow-2xl">
+                    <form id="contactForm" autocomplete="on" novalidate class="space-y-5">
+                        <h3 class="text-2xl font-bold text-white mb-6">Send a Request</h3>
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <input name="name" type="text" placeholder="Full Name*" required class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition">
+                            <input name="phone" type="tel" placeholder="Phone Number*" required class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition">
+                        </div>
+                        <input name="email" type="email" placeholder="Email Address*" required class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition">
+                        
+                        <select name="interest" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition">
+                            <option value="" class="text-slate-800">Interested in...*</option>
+                            <option value="IT Services" class="text-slate-800">IT Services</option>
+                            <option value="Recruitment" class="text-slate-800">Recruitment</option>
+                            <option value="IT Training" class="text-slate-800">IT Training</option>
+                            <option value="English Coaching" class="text-slate-800">English Coaching (IELTS/PTE)</option>
+                            <option value="Overseas Services" class="text-slate-800">Overseas Services</option>
+                        </select>
+                        
+                        <textarea name="message" rows="4" placeholder="Brief Message..." class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition"></textarea>
+
+                        <button type="submit" class="btn-premium w-full text-xl mt-2 shadow-lg">Submit Request <i class="fas fa-arrow-right ml-3"></i></button>
+                        <p id="formMsg" class="hidden text-center mt-4 text-sm font-bold text-white"></p>
+                        
+                        <input type="text" name="bot_check" class="hidden" autocomplete="off" tabindex="-1">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a data-link="whatsapp_chat" href="#" target="_blank" class="wa-float"><i class="fab fa-whatsapp"></i></a>
+
+    <div id="footer"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js" defer></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if(window.AOS) AOS.init({ duration: 800, once: true });
+
+        const pCanvas = document.getElementById("particle-bg");
+        if(pCanvas){
+            const pCtx = pCanvas.getContext("2d");
+            function resizePCanvas() { 
+                pCanvas.width = pCanvas.parentElement.offsetWidth; 
+                pCanvas.height = pCanvas.parentElement.offsetHeight; 
+            }
+            resizePCanvas(); window.addEventListener('resize', resizePCanvas);
+            
+            let particles = []; 
+            for(let i=0; i<40; i++) particles.push({x:Math.random()*pCanvas.width, y:Math.random()*pCanvas.height, r:Math.random()*4+1, s:(Math.random()-0.5)*0.5});
+            
+            function animateParticles(){
+                pCtx.clearRect(0,0,pCanvas.width, pCanvas.height);
+                particles.forEach(p => {
+                    p.y -= p.s; 
+                    if(p.y < 0) p.y = pCanvas.height; 
+                    if(p.y > pCanvas.height) p.y = 0;
+                    pCtx.beginPath(); pCtx.arc(p.x, p.y, p.r, 0, Math.PI*2); 
+                    pCtx.fillStyle = "rgba(59,130,246,0.1)"; pCtx.fill();
+                });
+                requestAnimationFrame(animateParticles);
+            }
+            animateParticles();
+        }
+    });
+    </script>
+
+</body>
+</html>

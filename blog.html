@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title>Blog & Insights — Amorah Group | Trends in IT, Visa & Recruitment</title>
+  <meta name="description" content="Read the latest insights from Amorah Group on IT trends, recruitment strategies, corporate training, and overseas immigration guides.">
+  <link rel="canonical" href="https://amorahgroup.in/blog">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+
+  <script src="js/main.js" defer></script>
+  <script src="links/external-links.js" defer></script>
+  <script src="links/links-init.js" defer></script>
+
+  <style>
+    /* --- PAGE SPECIFIC STYLES --- */
+    
+    /* Filter Chips */
+    .chip {
+        padding: 10px 20px; border-radius: 999px; background: #f1f5f9;
+        color: #64748b; font-weight: 600; border: 1px solid transparent;
+        cursor: pointer; transition: all 0.2s ease;
+        white-space: nowrap;
+    }
+    .chip.active, .chip:hover {
+        background: linear-gradient(90deg, #4f46e5, #06b6d4); /* Matches .btn-premium gradient */
+        color: white; 
+        box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+    }
+    
+    /* Blog Tags */
+    .tag {
+        background: rgba(255, 255, 255, 0.95); color: #2563eb;
+        font-weight: 700; border-radius: 8px; padding: 6px 14px; font-size: 0.8rem;
+        backdrop-filter: blur(4px); border: 1px solid #e2e8f0;
+    }
+
+    /* Article Modal */
+    .modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 9999; }
+    .modal.show { display: flex; animation: fadeIn 0.2s ease-out; }
+    .modal-backdrop { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(4px); }
+    .modal-card {
+        position: relative; max-width: 900px; width: 94%; max-height: 90vh; overflow-y: auto;
+        background: #ffffff; 
+        border-radius: 12px; 
+        animation: slideUp 0.3s ease-out;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-gray-900">
+
+<div id="header"></div>
+
+<section class="relative w-full py-32 bg-slate-900 overflow-hidden">
+  <div class="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center text-center h-full">
+      <span class="text-blue-400 font-bold tracking-widest uppercase mb-4 block">Knowledge Hub</span>
+      <h1 class="text-4xl md:text-6xl font-black text-white mb-6">Insights & <span class="text-blue-500">Updates</span></h1>
+      <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-light">
+          Expert advice on Career Growth, Technology Trends, and Global Mobility.
+      </p>
+  </div>
+</section>
+
+<section class="py-8 bg-white border-b border-slate-200 sticky top-[60px] z-40 shadow-sm">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col lg:flex-row items-center gap-6">
+        <div class="relative w-full lg:w-1/3 group">
+          <input id="searchInput" type="search" placeholder="Search insights..."
+                 class="w-full rounded-lg bg-slate-50 border border-slate-200 px-6 py-3 pr-12 focus:outline-none focus:border-blue-600 text-slate-800 placeholder-slate-400 transition-colors">
+          <i class="fas fa-search absolute right-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+        </div>
+        
+        <div class="flex items-center gap-3 overflow-x-auto no-scrollbar w-full lg:w-auto pb-2 lg:pb-0">
+          <button class="chip active" data-cat="all">All</button>
+          <button class="chip" data-cat="Technology">Technology</button>
+          <button class="chip" data-cat="Recruitment">Recruitment</button>
+          <button class="chip" data-cat="Training">Training</button>
+          <button class="chip" data-cat="Overseas">Overseas</button>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="py-12 bg-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-extrabold mb-8 flex items-center gap-3 text-slate-900"><i class="fas fa-star text-yellow-500"></i> Featured Stories</h2>
+        <div class="swiper featuredSwiper rounded-xl overflow-hidden border border-slate-200">
+            <div class="swiper-wrapper" id="featuredSlides">
+                </div>
+            <div class="swiper-pagination !bottom-8"></div>
+        </div>
+    </div>
+</section>
+
+<section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-extrabold mb-10 flex items-center gap-3 text-slate-900"><i class="fas fa-layer-group text-blue-600"></i> Latest Insights</h2>
+        
+        <div id="gridWrap" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+            </div>
+
+        <div class="mt-20 flex items-center justify-center gap-6">
+            <button id="prevPage" class="chip flex items-center gap-2 px-8 py-3 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-200"><i class="fas fa-chevron-left"></i> Prev</button>
+            <span id="pageInfo" class="text-lg font-bold text-slate-700"></span>
+            <button id="nextPage" class="chip flex items-center gap-2 px-8 py-3 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-200">Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="py-24 relative bg-slate-900">
+    <div class="absolute inset-0 z-0">
+        <img src="assets/images/contact-bg.jpg" 
+             onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop'"
+             class="w-full h-full object-cover opacity-20" alt="Tech Background">
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
+    </div>
+
+    <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+        <div class="text-white" data-aos="fade-right">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-6">Stay Updated</h2>
+            <p class="mb-10 text-slate-300 text-lg leading-relaxed">
+                Subscribe to our newsletter for the latest updates on IT trends, visa policies, and recruitment strategies.
+            </p>
+            
+            <div class="space-y-6">
+                <div class="flex items-center gap-6">
+                   <div class="w-14 h-14 bg-indigo-600/30 border border-indigo-500 rounded-full flex items-center justify-center text-indigo-400 text-2xl"><i class="fas fa-envelope"></i></div>
+                   <div>
+                       <p class="text-xs text-slate-400 uppercase tracking-wide font-bold">Email Us</p>
+                       <a data-link="email" href="#" class="text-white text-xl font-bold hover:text-indigo-400 transition">info@amorahgroup.in</a>
+                   </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-aos="fade-left">
+            <div class="bg-white/10 backdrop-blur-md p-8 md:p-10 rounded-3xl border border-white/20 shadow-2xl">
+                <form id="contactForm" autocomplete="on" novalidate class="space-y-5">
+                    <h3 class="text-2xl font-bold text-white mb-6">Subscribe / Contact</h3>
+                    <div class="grid md:grid-cols-2 gap-5">
+                        <input name="name" type="text" placeholder="Full Name*" required class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition">
+                        <input name="phone" type="tel" placeholder="Phone Number*" required class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition">
+                    </div>
+                    <input name="email" type="email" placeholder="Email Address*" required class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition">
+                    
+                    <select name="interest" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition">
+                        <option value="Newsletter" class="text-slate-800">Newsletter Subscription</option>
+                        <option value="IT Services" class="text-slate-800">IT Services</option>
+                        <option value="Recruitment" class="text-slate-800">Recruitment</option>
+                        <option value="Overseas" class="text-slate-800">Overseas Services</option>
+                    </select>
+                    
+                    <button type="submit" class="btn-premium w-full text-xl mt-2 shadow-lg">Submit Request <i class="fas fa-arrow-right ml-3"></i></button>
+                    
+                    <p id="formMsg" class="hidden text-center mt-4 text-sm font-bold text-white"></p>
+                    <input type="text" name="bot_check" style="display:none !important;" autocomplete="off">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="readModal" class="modal">
+    <div class="modal-backdrop" onclick="closeModal()"></div>
+    <div class="modal-card p-6 md:p-10">
+      <button class="absolute right-6 top-6 text-slate-400 hover:text-slate-800 transition-colors z-10 bg-white/80 rounded-full w-10 h-10 flex items-center justify-center shadow-md backdrop-blur-sm" onclick="closeModal()">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+      <img id="modalImg" src="" class="w-full h-64 md:h-96 object-cover rounded-xl mb-8 shadow-sm" alt="">
+      
+      <div class="flex items-center gap-4 text-sm text-slate-500 mb-6">
+        <span id="modalTag" class="tag bg-blue-50 text-blue-600 px-3 py-1 rounded-md font-bold border border-blue-100"></span>
+        <span id="modalMeta"></span>
+      </div>
+
+      <h3 id="modalTitle" class="text-3xl md:text-4xl font-bold text-slate-900 mb-8 leading-tight"></h3>
+      <div id="modalBody" class="prose max-w-none text-lg text-slate-700 leading-relaxed space-y-4"></div>
+      
+      <div class="mt-10 pt-8 border-t border-slate-200 flex flex-wrap items-center gap-6">
+        <span class="text-slate-500 font-semibold">Share:</span>
+        <a id="modalShareWa" target="_blank" rel="noopener" class="chip flex items-center gap-2 text-[#25D366] hover:text-white !bg-[#25D366]/10 hover:!bg-[#25D366]">
+          <i class="fab fa-whatsapp text-lg"></i> WhatsApp
+        </a>
+      </div>
+      
+      <div class="mt-8 p-6 bg-slate-50 rounded-xl text-center border border-slate-100">
+          <p class="text-slate-600 mb-4 font-medium">Need professional assistance with this?</p>
+          <a href="#contact" onclick="closeModal()" class="btn-premium px-8 text-sm">Contact Amorah Group</a>
+      </div>
+    </div>
+</div>
+
+<a data-link="whatsapp_chat" href="#" target="_blank" class="wa-float"><i class="fab fa-whatsapp"></i></a>
+
+<div id="footer"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // 1. Initialize Libraries (AOS for scrolling, but removed VanillaTilt)
+    if(window.AOS) AOS.init({ duration: 800, once: true });
+
+    // 2. EXPANDED BLOG CONTENT (Including Gulf Countries)
+    const POSTS = [
+      // --- GULF & OVERSEAS FOCUSED ---
+      {
+        id:'dubai-job-market-2026',
+        title:'Dubai Job Market Outlook 2026: Tech & Construction',
+        tag:'Overseas',
+        date:'2025-12-12',
+        read:5,
+        img:'https://images.unsplash.com/photo-1512453979798-5ea904ac66de?q=80&w=1600&auto=format&fit=crop', // Dubai Skyline
+        excerpt:'Why Dubai remains the top destination for Indian professionals in IT and Real Estate.',
+        body:`<p>Dubai's digital economy strategy is creating thousands of jobs in AI, Blockchain, and Fintech. Simultaneously, the real estate boom requires skilled project managers and civil engineers.</p><p>Key sectors: Data Science, Cybersecurity, Construction Management, and Healthcare.</p>`,
+        popular: true, featured: true
+      },
+      {
+        id:'saudi-vision-2030-hiring',
+        title:'Saudi Vision 2030: Massive Hiring in NEOM & The Line',
+        tag:'Overseas',
+        date:'2025-12-01',
+        read:7,
+        img:'https://images.unsplash.com/photo-1586724237569-f3d0c1dee8c6?q=80&w=1600&auto=format&fit=crop', // Saudi Desert/Modern
+        excerpt:'Opportunities for engineers, architects, and IT experts in Saudi Arabia\'s Giga-Projects.',
+        body:`<p>The Kingdom of Saudi Arabia (KSA) is aggressively hiring for NEOM, The Line, and Red Sea Global. They need experienced professionals willing to relocate.</p><p>Salaries are tax-free and often include housing allowances. We discuss the cultural shift and visa processes for KSA.</p>`,
+        popular: true, featured: true
+      },
+      {
+        id:'uae-golden-visa-rules',
+        title:'UAE Golden Visa: New Rules for Professionals',
+        tag:'Overseas',
+        date:'2025-11-25',
+        read:6,
+        img:'https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=1600&auto=format&fit=crop', // UAE Flag/Business
+        excerpt:'How engineers, doctors, and coders can get a 10-year residency without a sponsor.',
+        body:`<p>The UAE Golden Visa is now accessible to professionals with a basic salary of AED 30,000+ per month. We break down the attestation requirements and application steps.</p>`,
+        popular: true, featured: false
+      },
+      {
+        id:'qatar-kuwait-opportunities',
+        title:'Qatar & Kuwait: Opportunities in Oil, Gas & Healthcare',
+        tag:'Overseas',
+        date:'2025-11-18',
+        read:5,
+        img:'https://images.unsplash.com/photo-1575351881847-b3bf188d9d0a?q=80&w=1600&auto=format&fit=crop', // Doha/Industry
+        excerpt:'Beyond Dubai: Why Qatar and Kuwait offer stability and high savings potential.',
+        body:`<p>While UAE gets the spotlight, Qatar and Kuwait offer competitive packages for Oil & Gas engineers and Medical staff (Nurses/Doctors). The cost of living is often lower than Dubai, leading to higher savings.</p>`,
+        popular: false, featured: false
+      },
+      {
+        id:'gulf-salary-guide',
+        title:'Gulf Salary Guide 2025: Cost of Living vs Savings',
+        tag:'Overseas',
+        date:'2025-11-10',
+        read:8,
+        img:'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=1600&auto=format&fit=crop', // Money/Business
+        excerpt:'A breakdown of average salaries for IT and Construction across UAE, KSA, and Qatar.',
+        body:`<p>Is AED 10,000 enough in Dubai? How much can you save in Riyadh? We compare rent, schooling, and grocery costs across major Gulf cities to help you negotiate better.</p>`,
+        popular: true, featured: false
+      },
+
+      // --- EXISTING CONTENT (Featured & Regular) ---
+      {
+        id:'ai-hiring-2025',
+        title:'AI in Hiring: What Changes in 2025',
+        tag:'Recruitment',
+        date:'2025-10-15',
+        read:6,
+        img:'https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'From AI screening to skills-first pipelines—how to keep hiring ethical, fast and unbiased.',
+        body:`<p>AI is accelerating screening and matching, but human oversight matters. We cover compliant usage, practical tooling, and skills-first pipelines that reduce bias.</p> <p>Key takeaways: define success metrics, create reviewer loops, and audit your prompts and datasets regularly.</p>`,
+        popular: true, featured: true
+      },
+      {
+        id:'cloud-cost-guardrails',
+        title:'Cut Cloud Costs Without Slowing Product Teams',
+        tag:'Technology',
+        date:'2025-09-30',
+        read:5,
+        img:'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'A developer-first playbook: tagging, budgets, scale-to-zero, and continuous profiling.',
+        body:`<p>Control planes beat ad hoc scripts. Add budgets, alerts, pre-approved instance types, and “scale-to-zero” for bursty workloads.</p>`,
+        popular: true, featured: true
+      },
+      {
+        id:'canada-express-entry',
+        title:'Canada Express Entry: Latest CRS Cutoff Trends',
+        tag:'Overseas',
+        date:'2025-11-02',
+        read:8,
+        img:'https://images.unsplash.com/photo-1517935706615-2717063c2225?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'Understanding the category-based draws for STEM and Healthcare professionals.',
+        body:`<p>IRCC has shifted focus to category-based selection. If you are in Healthcare, STEM, or Trades, your chances of PR just doubled. Learn how to optimize your profile.</p>`,
+        popular: true, featured: false
+      },
+      {
+        id:'full-stack-roadmap',
+        title:'The 2026 Full Stack Developer Roadmap',
+        tag:'Training',
+        date:'2025-10-20',
+        read:7,
+        img:'https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'Why Next.js, Rust, and AI integration are the new standard.',
+        body:`<p>The MERN stack is evolving. Employers now demand type-safety (TypeScript), performance (Rust/Go modules), and the ability to integrate LLMs into web apps.</p>`,
+        popular: true, featured: false
+      },
+      {
+        id:'overseas-checklist',
+        title:'Overseas Job Checklist: Documents & Red Flags',
+        tag:'Overseas',
+        date:'2025-08-22',
+        read:7,
+        img:'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'Avoid pitfalls and plan a clean, ethical migration.',
+        body:`<p>Prepare notarized documents, validate employer credentials, and understand visa pathway timelines. Never pay for a job offer.</p>`,
+        popular:false, featured:false
+      },
+      {
+        id:'learning-sprints',
+        title:'Learning Sprints that Actually Lead to Jobs',
+        tag:'Training',
+        date:'2025-07-18',
+        read:4,
+        img:'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'Portfolio-first, mentor-backed sprints that convert to interviews.',
+        body:`<p>Short sprints with real product artifacts outperform generic courses. Pair with mock interviews and recruiter feedback.</p>`,
+        popular:true, featured:false
+      },
+      {
+        id:'devops-hiring-signals',
+        title:'Hiring DevOps? 9 Signals That Predict Success',
+        tag:'Recruitment',
+        date:'2025-09-02',
+        read:5,
+        img:'https://images.unsplash.com/photo-1555949963-aa79dcee981d?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'From on-call hygiene to change-failure-rate, measure what matters.',
+        body:`<p>Look beyond tools. Probe incident retros, DORA metrics, and migration stories to gauge practical maturity.</p>`,
+        popular:false, featured:false
+      },
+      {
+        id:'ai-copilots',
+        title:'Copilots in Production: Governance for CTOs',
+        tag:'Technology',
+        date:'2025-10-05',
+        read:6,
+        img:'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'Frameworks to govern prompts, privacy, telemetry, and ROI.',
+        body:`<p>Ship copilots safely with data minimization, prompt walls, and red-teaming. Track ROI via time-to-spec and review velocity.</p>`,
+        popular:true, featured:false
+      },
+      {
+        id:'uk-student-visa-guide',
+        title:'UK Student Visa: Post-Study Work Rights Explained',
+        tag:'Overseas',
+        date:'2025-11-10',
+        read:5,
+        img:'https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'How the Graduate Route visa helps you stay for 2 years after graduation.',
+        body:`<p>The UK Graduate Route allows international students to stay and work for 2 years (3 for PhDs) without a sponsor. Here is how to transition smoothly.</p>`,
+        popular: false, featured: false
+      },
+      {
+        id:'ielts-vs-pte',
+        title:'IELTS vs PTE: Which is Easier for Canada PR?',
+        tag:'Training',
+        date:'2025-10-25',
+        read:4,
+        img:'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'A data-backed comparison of scoring patterns and acceptance rates.',
+        body:`<p>While IELTS is the gold standard, PTE is gaining traction for its quick results. We break down the sections to help you choose the right test.</p>`,
+        popular: false, featured: false
+      },
+      {
+        id:'cybersecurity-trends',
+        title:'Zero Trust Architecture: Not Just a Buzzword',
+        tag:'Technology',
+        date:'2025-11-05',
+        read:6,
+        img:'https://images.unsplash.com/photo-1563206767-5b1d972d9fb7?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'Why perimeter security is dead and identity is the new firewall.',
+        body:`<p>In a distributed world, trust nothing. Verify everything. Implement MFA, least privilege access, and continuous monitoring.</p>`,
+        popular: false, featured: false
+      },
+      {
+        id:'soft-skills-hiring',
+        title:'The Soft Skills Crisis in Tech Recruitment',
+        tag:'Recruitment',
+        date:'2025-09-15',
+        read:5,
+        img:'https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'Why communication beats coding speed for senior roles.',
+        body:`<p>Technical brilliance cannot save a toxic culture. We discuss how behavioral interviews predict team longevity better than whiteboard tests.</p>`,
+        popular: false, featured: false
+      },
+      {
+        id:'germany-opportunity-card',
+        title:'Germany’s Opportunity Card (Chancenkarte) De-coded',
+        tag:'Overseas',
+        date:'2025-10-01',
+        read:6,
+        img:'https://images.unsplash.com/photo-1467269204594-9661b133dd2b?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'Points-based system allowing non-EU job seekers to enter Germany.',
+        body:`<p>Germany needs skilled workers. The new Opportunity Card allows you to enter for a year to look for work based on language, age, and qualifications.</p>`,
+        popular: false, featured: false
+      },
+      {
+        id:'data-science-roadmap',
+        title:'Data Science in 2025: Beyond Model Training',
+        tag:'Technology',
+        date:'2025-08-30',
+        read:7,
+        img:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'Focus on Data Engineering, MLOps, and Business Impact.',
+        body:`<p>The sexy part is modeling, but the money is in cleaning data and deploying pipes. Shift your focus to SQL, Airflow, and Cloud Data Warehouses.</p>`,
+        popular: false, featured: false
+      },
+      {
+        id:'remote-work-culture',
+        title:'Building Trust in Fully Remote Teams',
+        tag:'Recruitment',
+        date:'2025-07-25',
+        read:5,
+        img:'https://images.unsplash.com/photo-1593642532400-2682810df593?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'Async communication and outcome-based management.',
+        body:`<p>Stop counting hours. Start measuring output. Tools like Notion and Slack are great, but a culture of documentation is better.</p>`,
+        popular: false, featured: false
+      },
+      {
+        id:'australia-subclass-189',
+        title:'Australia PR: Maximizing Points for Subclass 189',
+        tag:'Overseas',
+        date:'2025-06-10',
+        read:6,
+        img:'https://images.unsplash.com/photo-1523482580638-016775bc2522?q=80&w=1600&auto=format&fit=crop',
+        excerpt:'Strategies to boost your score above the 85-point threshold.',
+        body:`<p>Age, English, and Experience are key. But did you know about the NAATI credential and State Nomination points? We explain the math.</p>`,
+        popular: false, featured: false
+      }
+    ];
+
+    const fmtDate = (iso) => new Date(iso).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' });
+    function shareLinks(url, title) {
+      return {
+        wa: `https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`
+      };
+    }
+
+    function renderFeatured() {
+      const wrap = document.getElementById('featuredSlides');
+      wrap.innerHTML = '';
+      POSTS.filter(p => p.featured).forEach(p => {
+        const slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+        // REPLACED OLD BUTTON WITH .btn-premium
+        slide.innerHTML = `
+          <div class="relative h-[450px] md:h-[550px] overflow-hidden group cursor-pointer bg-slate-900" onclick="openModal('${p.id}')">
+            <img src="${p.img}" class="absolute inset-0 w-full h-full object-cover opacity-80" alt="">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+              <span class="tag mb-4 inline-block bg-white text-blue-600 border-none shadow-sm">${p.tag}</span>
+              <h3 class="text-white text-3xl md:text-5xl font-black leading-tight mb-4 group-hover:text-blue-300 transition-colors">${p.title}</h3>
+              <div class="text-slate-300 text-sm mb-6 flex items-center gap-3">
+                  <span><i class="far fa-calendar-alt mr-1"></i> ${fmtDate(p.date)}</span>
+                  <span>•</span>
+                  <span><i class="far fa-clock mr-1"></i> ${p.read} min read</span>
+              </div>
+              <p class="text-slate-200/90 hidden md:block max-w-3xl text-lg mb-8 line-clamp-2">${p.excerpt}</p>
+              <button class="btn-premium px-8 py-3 text-base flex items-center gap-2">Read Article <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>`;
+        wrap.appendChild(slide);
+      });
+
+      new Swiper('.featuredSwiper', {
+        slidesPerView: 1, spaceBetween: 30, loop: true,
+        autoplay: { delay: 5000, disableOnInteraction: false },
+        pagination: { el: '.featuredSwiper .swiper-pagination', clickable: true },
+        effect: 'fade', fadeEffect: { crossFade: true }
+      });
+    }
+
+    let state = { page: 1, perPage: 6, cat: 'all', q: '', sort: 'new' };
+
+    function applyFilters() {
+      let list = [...POSTS];
+      if (state.cat !== 'all') { list = list.filter(p => p.tag === state.cat); }
+      if (state.q) {
+        const t = state.q.toLowerCase();
+        list = list.filter(p => p.title.toLowerCase().includes(t) || p.excerpt.toLowerCase().includes(t) || p.tag.toLowerCase().includes(t));
+      }
+      return list;
+    }
+
+    function renderGrid() {
+      const grid = document.getElementById('gridWrap');
+      const pageInfo = document.getElementById('pageInfo');
+      const prevBtn = document.getElementById('prevPage');
+      const nextBtn = document.getElementById('nextPage');
+
+      const rows = applyFilters();
+      const totalPages = Math.max(1, Math.ceil(rows.length / state.perPage));
+      state.page = Math.min(state.page, totalPages);
+
+      const start = (state.page - 1) * state.perPage;
+      const pageRows = rows.slice(start, start + state.perPage);
+
+      // ADDED .btn-premium TO "READ MORE" BUTTON
+      grid.innerHTML = pageRows.map(p => `
+        <article class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-blue-600 hover:shadow-md transition-all duration-300" data-aos="fade-up">
+          <div class="relative h-60 bg-slate-100">
+            <img src="${p.img}" alt="" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute top-4 left-4">
+                <span class="tag bg-white shadow-sm border-0">${p.tag}</span>
+            </div>
+          </div>
+          <div class="p-8">
+            <div class="flex items-center justify-between gap-2 mb-3 text-xs font-bold text-slate-400 uppercase tracking-wider">
+              <span>${fmtDate(p.date)}</span>
+              <span>${p.read} MIN READ</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3 line-clamp-2 hover:text-blue-600 transition-colors cursor-pointer" onclick="openModal('${p.id}')">${p.title}</h3>
+            <p class="text-slate-600 mb-6 line-clamp-3 leading-relaxed">${p.excerpt}</p>
+            <button class="btn-premium px-6 py-2 text-sm w-full flex items-center justify-center gap-2" onclick="openModal('${p.id}')">
+                Read More <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </article>
+      `).join('');
+
+      pageInfo.textContent = `Page ${state.page} of ${totalPages}`;
+      prevBtn.disabled = state.page === 1;
+      nextBtn.disabled = state.page === totalPages;
+
+      if (window.AOS) AOS.refreshHard();
+      
+      prevBtn.onclick = () => { if (state.page > 1) { state.page--; renderGrid(); grid.scrollIntoView({ behavior: 'smooth', block: 'start' }); } };
+      nextBtn.onclick = () => { if (state.page < totalPages) { state.page++; renderGrid(); grid.scrollIntoView({ behavior: 'smooth', block: 'start' }); } };
+    }
+
+    function openModal(id) {
+      const p = POSTS.find(x => x.id === id); if (!p) return;
+      document.getElementById('modalImg').src = p.img;
+      document.getElementById('modalTitle').textContent = p.title;
+      document.getElementById('modalMeta').innerHTML = `<span><i class="far fa-calendar-alt mr-1"></i> ${fmtDate(p.date)}</span> • <span><i class="far fa-clock mr-1"></i> ${p.read} min read</span>`;
+      document.getElementById('modalTag').textContent = p.tag;
+      document.getElementById('modalBody').innerHTML = p.body;
+      const url = location.origin + location.pathname + '#' + p.id;
+      const s = shareLinks(url, p.title);
+      document.getElementById('modalShareWa').href = s.wa;
+      document.getElementById('readModal').classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    window.closeModal = function() {
+      document.getElementById('readModal').classList.remove('show');
+      document.body.style.overflow = '';
+    }
+    window.openModal = openModal;
+
+    document.querySelectorAll('.chip[data-cat]').forEach(ch => {
+      ch.addEventListener('click', () => {
+        document.querySelectorAll('.chip[data-cat]').forEach(c => c.classList.remove('active'));
+        ch.classList.add('active');
+        state.cat = ch.dataset.cat; state.page = 1; renderGrid();
+      });
+    });
+    document.getElementById('searchInput').addEventListener('input', (e) => { state.q = e.target.value.trim(); state.page = 1; renderGrid(); });
+
+    renderFeatured(); renderGrid();
+});
+</script>
+
+</body>
+</html>

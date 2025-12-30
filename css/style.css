@@ -1,0 +1,720 @@
+/* =====================================================
+   1. GLOBAL RESET & BASE
+===================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  /* UNIFIED FONT: Open Sans for body text */
+  font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings Font: Poppins */
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.2;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* =====================================================
+   2. BUTTONS & UI COMPONENTS
+===================================================== */
+.btn-premium {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+}
+
+.btn-premium:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 35px rgba(37, 99, 235, 0.45);
+  color: #ffffff;
+}
+
+.underline-blue {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, #2563eb, #06b6d4);
+  border-radius: 2px;
+}
+
+/* Glass Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 1.25rem;
+  border: 1px solid rgba(226, 232, 240, 0.7);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+
+/* Image Wrappers */
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+    /* Ensure border-radius is respected */
+    transform: translateZ(0); 
+}
+
+/* =====================================================
+   3. HEADER
+===================================================== */
+.header {
+  height: 92px;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  transition: all 0.35s ease;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 50;
+}
+
+.header.scrolled {
+  background: #ffffff;
+  height: 72px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Logo */
+.logo-img {
+  height: 70px;
+  width: auto;
+  transition: height 0.3s ease;
+}
+
+.header.scrolled .logo-img {
+  height: 58px;
+}
+
+/* Desktop Nav Links */
+.desktop-nav {
+  gap: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  position: relative;
+  font-weight: 600;
+  color: #ffffff !important;
+  text-decoration: none;
+  padding: 0.6rem 0.3rem;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.header.scrolled .nav-link {
+  color: #0f172a !important;
+}
+
+.nav-link:hover,
+.header.scrolled .nav-link:hover {
+  color: #2563eb !important;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #2563eb;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Header CTA */
+.header-cta {
+  padding: 0.65rem 1.5rem;
+  border-radius: 999px;
+  background: #25d366;
+  color: #ffffff !important;
+  font-weight: 800;
+  transition: all 0.3s ease;
+}
+
+.header-cta:hover {
+  background: #20bd5a;
+  transform: translateY(-2px);
+  color: #ffffff !important;
+}
+
+/* =====================================================
+   4. DROPDOWNS
+===================================================== */
+.nav-item-group {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Main Dropdown */
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200px;
+  min-width: 200px;
+  background: #ffffff;
+  border-radius: 0 0 14px 14px;
+  border-top: 3px solid #2563eb;
+  padding: 0.5rem 0;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.nav-item-group:hover .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  position: relative;
+  display: block;
+}
+
+/* Sub Dropdown */
+.sub-dropdown {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  width: 270px;
+  min-width: 270px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  padding: 0.5rem 0;
+  opacity: 0;
+  visibility: hidden;
+  margin-left: 2px;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover .sub-dropdown {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* =====================================================
+   5. MOBILE MENU
+===================================================== */
+#mobileMenu {
+  background: #ffffff;
+  transform: translateX(100%);
+  will-change: transform;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 300px;
+  z-index: 60;
+  box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-toggle-btn {
+  font-weight: 600;
+}
+
+.mobile-submenu a {
+  transition: all 0.25s ease;
+}
+
+.mobile-submenu a:hover {
+  color: #2563eb;
+  padding-left: 1.25rem;
+}
+
+#mobileOverlay {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 55;
+}
+
+/* =====================================================
+   6. FOOTER
+===================================================== */
+footer {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  position: relative;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 2.5rem; 
+  padding-bottom: 1.5rem;
+}
+
+/* Footer Container */
+footer .container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Footer Grid Gap */
+footer .grid {
+  gap: 2rem;
+}
+
+/* Map Background */
+.footer-map-bg {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/2000px-World_map_-_low_resolution.svg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.05;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Logo */
+.footer-logo {
+  width: 85px;
+  margin-bottom: 0.8rem;
+}
+
+/* Titles */
+.footer-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Links Container */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* List Items */
+.footer-links li {
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Link Styling */
+.footer-links li a {
+  position: relative;
+  padding-left: 20px;
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+/* Animated Arrow */
+.footer-links li a::before {
+  content: "➜";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  font-size: 0.75rem;
+  color: #dc2626;
+  transition: all 0.3s ease;
+}
+
+/* Hover Effects */
+.footer-links li a:hover {
+  color: #2563eb;
+  transform: translateX(5px);
+}
+
+.footer-links li a:hover::before {
+  color: #2563eb;
+}
+
+/* Footer Follow Text */
+.footer-follow-text {
+  margin-top: 0.8rem;
+  font-weight: 800;
+  font-style: italic;
+  color: #dc2626;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Social Icons Container */
+.social-links-container {
+  display: flex;
+  gap: 0.6rem;
+}
+
+/* Social Icons */
+.social-hover {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-hover:hover {
+  transform: translateY(-3px);
+  color: #ffffff;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+
+.social-hover.facebook:hover { background: #1877f2; }
+.social-hover.instagram:hover { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+.social-hover.linkedin:hover { background: #0a66c2; }
+.social-hover.twitter:hover { background: #000000; }
+.social-hover.youtube:hover { background: #ff0000; }
+.social-hover.telegram:hover { background: #229ed9; }
+
+/* Globe Icon */
+.footer-globe {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.2rem;
+  box-shadow: 0 10px 25px rgba(37,99,235,0.35);
+  transition: all 0.35s ease;
+  margin-right: 10px;
+}
+
+.footer-globe:hover {
+  transform: rotate(12deg) scale(1.08);
+}
+
+/* Footer WhatsApp Button */
+.footer-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #25d366, #20bd5a);
+  color: #ffffff !important;
+  font-weight: 800;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(37,211,102,0.3);
+}
+
+.footer-whatsapp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(37,211,102,0.5);
+}
+
+/* Contact List Spacing */
+.space-y-3 > li {
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.space-y-3 i {
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+/* Footer Badges */
+.footer-badge {
+  width: 80px;
+  filter: grayscale(100%);
+  transition: all 0.35s ease;
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+.footer-badge:hover {
+  filter: grayscale(0);
+  transform: scale(1.05);
+}
+
+/* =====================================================
+   7. PAGE SPECIFIC & RESPONSIVE
+===================================================== */
+/* Sticky Nav */
+.sticky-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  transition: top 0.3s;
+}
+
+@media (min-width: 1024px) {
+  .sticky-tabs {
+    top: 72px;
+  }
+}
+
+.tab-link.active-tab {
+  color: #2563eb !important;
+  background-color: #eff6ff !important;
+  border: 1px solid #dbeafe;
+}
+
+/* Country Card */
+.country-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 2rem 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.country-card:hover {
+  transform: translateY(-5px);
+  border-color: #3b82f6;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+}
+
+/* =====================================================
+   8. GLOBAL PRESENCE FIXES (V3.0)
+===================================================== */
+
+/* 1. Force Center Alignment for Cards */
+.gp-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding: 1.5rem;
+    height: 100%; /* Ensure full height */
+    /* Ensure no stray margins push text to side */
+}
+
+/* 2. Top Text Slider (Badge Style) */
+.gp-badge {
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 1rem;
+    white-space: nowrap;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 50px;
+}
+
+/* 3. Active State for Top Text (Blue & Big) */
+.swiper-slide-thumb-active .gp-badge {
+    opacity: 1;
+    color: #2563eb; /* Blue-600 */
+    background: #eff6ff; /* Blue-50 */
+    font-weight: 800;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+/* 4. Fix Swiper Wrapper Alignment */
+.gpMainSwiper .swiper-wrapper {
+    align-items: center;
+}
+
+/* =====================================================
+   9. FLOATING WHATSAPP
+===================================================== */
+.wa-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background: #25d366;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  z-index: 100;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.wa-float:hover {
+  transform: translateY(-5px);
+}
+
+/* =====================================================
+   10. RESPONSIVE ADJUSTMENTS
+===================================================== */
+@media (max-width: 1024px) {
+  .header {
+    height: 70px;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  .header.scrolled {
+    height: 70px;
+  }
+  .logo-img, .header.scrolled .logo-img {
+    height: 50px;
+  }
+  .nav-link {
+    color: #0f172a !important;
+  }
+  .footer-logo {
+    width: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn-premium {
+    width: 100%;
+  }
+  footer .grid {
+    gap: 2.5rem;
+  }
+}
+
+/* =====================================================
+   11. TEXT ALIGNMENT & ANIMATIONS (INTEGRATED)
+===================================================== */
+
+/* Force default paragraph alignment */
+.prose p, p {
+  text-align: left;
+}
+
+/* Desktop: Allow justified text where specifically asked */
+@media (min-width: 1024px) {
+  .text-justify {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+}
+
+/* Mobile: Force Left align to prevent gaps */
+@media (max-width: 1023px) {
+  .text-justify {
+    text-align: left !important;
+  }
+}
+
+/* =========================================
+   FIX: MARQUEE ANIMATION & SIZING
+   (Added this missing part to ensure flow)
+========================================= */
+
+/* 1. Force Linear Animation (Smooth Flow) */
+.clientsSwiper .swiper-wrapper,
+.toolsSwiper .swiper-wrapper {
+    -webkit-transition-timing-function: linear !important;
+    -o-transition-timing-function: linear !important;
+    transition-timing-function: linear !important;
+}
+
+/* 2. Force Slides to Fit Content (Critical for loop) */
+.clientsSwiper .swiper-slide,
+.toolsSwiper .swiper-slide {
+    width: auto !important;  /* Creates the "auto" width behavior */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 3. Ensure Images don't collapse */
+.clientsSwiper img,
+.toolsSwiper img {
+    display: block;
+    max-height: 50px; /* Sets a consistent height */
+    width: auto;      /* Allows width to adjust based on height */
+}
+
+/* =========================================
+   TABLET OPTIMIZATION (iPad / Tab View)
+   Target: Screen width between 768px and 1024px
+========================================= */
+@media (min-width: 768px) and (max-width: 1024px) {
+    
+    /* Increase container padding so content isn't stuck to edges */
+    .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    /* Fix Grid Gap: Prevent columns from touching */
+    .grid {
+        gap: 1.5rem !important; 
+    }
+
+    /* Stack flex containers that might be too squeezed */
+    .flex-col-tablet {
+        flex-direction: column !important;
+    }
+    
+    /* Ensure images don't overflow */
+    .image-wrapper {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Make text slightly smaller to fit side-by-side layouts */
+    h1 { font-size: 2.5rem !important; }
+    h2 { font-size: 2rem !important; }
+    p  { font-size: 1rem !important; }
+}
