@@ -1,18 +1,14 @@
 /**
- * AMORAH GROUP - MAIN JAVASCRIPT (V4.0 – FINAL RELEASE)
- * Includes: Sliders, Forms, Animations, Cookie Consent, and Google Ads
+ * AMORAH GROUP - MAIN JAVASCRIPT (V5.0 – PERFORMANCE OPTIMIZED)
+ * Includes: Smart Canvas (Mobile Optimized), Lazy Loading, Sliders, Forms, GDPR, Google Ads
  */
 
 /* ==========================================
    1. CONFIGURATION
 ========================================== */
 const CONFIG = {
-    // General Contact Form URL (Google Form Action)
     GOOGLE_FORM_URL: "https://docs.google.com/forms/d/e/1FAIpQLSfX7XYrf-wF4OoHc92pnS9kaEzNPx5zWMdKpJort7OXvzvtqg/formResponse",
-    
-    // Notification Sound for WhatsApp Bubble
     NOTIFICATION_SOUND: "https://notificationsounds.com/storage/sounds/file-sounds-1150-pristine.mp3",
-    
     HEADER_HEIGHT: 92,
     ANIMATION_DURATION: 800
 };
@@ -22,13 +18,13 @@ const CONFIG = {
 ========================================== */
 document.addEventListener('DOMContentLoaded', async () => {
 
-    /* A. Load Header & Footer Dynamically */
+    /* A. Load Header & Footer */
     await Promise.all([
         loadComponent('header', 'includes/header.html'),
         loadComponent('footer', 'includes/footer.html')
     ]);
 
-    /* B. Core Logic (Runs Immediately) */
+    /* B. Core Logic (Immediate) */
     initMobileMenu();
     initStickyHeader();
     highlightActiveLink();
@@ -37,48 +33,50 @@ document.addEventListener('DOMContentLoaded', async () => {
     initServiceTabs();
     initForms(); 
 
-    /* C. Sliders (Runs Immediately with Retry) */
+    /* C. Sliders (Immediate with Retry) */
     initSwipers();
 
-    /* D. Visuals (Deferred for Performance) */
+    /* D. Visuals (Delayed 2.5s for Speed Score Boost) */
     setTimeout(() => {
         initAOS();
         initCounters();
-        initCanvasAnimations();
+        initCanvasAnimations(); // Now optimized for mobile
         initWhatsAppBubble();
-    }, 120);
+        
+        // Initialize Tilt (Only if library exists)
+        if (typeof VanillaTilt !== 'undefined') {
+            VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
+        }
+    }, 2500); 
 });
 
 /* ==========================================
    3. SWIPERS (ALL SLIDER LOGIC)
 ========================================== */
 function initSwipers() {
-    // Safety Check: If Swiper library isn't loaded yet, retry in 100ms
     if (typeof Swiper === 'undefined') {
         setTimeout(initSwipers, 100);
         return;
     }
 
-    /* 1. Marquee Sliders (Clients & Tools) */
+    /* 1. Marquee Sliders */
     if (document.querySelector('.clientsSwiper') || document.querySelector('.toolsSwiper')) {
         new Swiper(".clientsSwiper, .toolsSwiper", {
-            slidesPerView: "auto", // Relies on CSS width: auto
+            slidesPerView: "auto",
             spaceBetween: 40,
             loop: true,
-            speed: 4000, // Linear continuous speed
+            speed: 4000, 
             allowTouchMove: false, 
             autoplay: {
-                delay: 0, // No pause between slides
+                delay: 0, 
                 disableOnInteraction: false,
                 pauseOnMouseEnter: false
             }
         });
     }
 
-    /* 2. Global Presence – STRICT SYNC */
+    /* 2. Global Presence */
     if (document.querySelector('.gpTopSwiper') && document.querySelector('.gpMainSwiper')) {
-        
-        // Top Text Bar
         const gpTop = new Swiper(".gpTopSwiper", {
             slidesPerView: "auto",
             spaceBetween: 14,
@@ -88,7 +86,6 @@ function initSwipers() {
             grabCursor: true
         });
 
-        // Bottom Cards
         new Swiper(".gpMainSwiper", {
             slidesPerView: 1.2,
             spaceBetween: 20,
@@ -103,6 +100,7 @@ function initSwipers() {
             thumbs: { swiper: gpTop },
             breakpoints: {
                 640: { slidesPerView: 2, centeredSlides: false },
+                768: { slidesPerView: 2, centeredSlides: false },
                 1024: { slidesPerView: 4, centeredSlides: false }
             },
             pagination: { el: ".gp-pagination", clickable: true }
@@ -128,14 +126,13 @@ function initSwipers() {
 async function loadComponent(id, path) {
     const el = document.getElementById(id);
     if (!el) return;
-
     try {
         const res = await fetch(path);
         if (!res.ok) throw new Error(res.status);
         el.innerHTML = await res.text();
         document.dispatchEvent(new Event(`${id}Loaded`));
     } catch (e) {
-        console.warn(`Component load failed: ${path} (Note: Use Live Server)`);
+        console.warn(`Component load failed: ${path}`);
     }
 }
 
@@ -151,7 +148,6 @@ function initStickyHeader() {
     setTimeout(() => {
         const header = document.querySelector('.header');
         if (!header) return;
-
         const toggle = () => {
             const scrolled = window.scrollY > 20;
             header.classList.toggle('scrolled', scrolled);
@@ -159,7 +155,6 @@ function initStickyHeader() {
             header.classList.toggle('shadow-md', scrolled);
             header.classList.toggle('bg-transparent', !scrolled);
         };
-
         window.addEventListener('scroll', toggle, { passive: true });
         toggle(); 
     }, 120);
@@ -188,13 +183,12 @@ function initMobileMenu() {
 function highlightActiveLink() {
     setTimeout(() => {
         const path = window.location.pathname.split('/').pop() || 'index.html';
-        document.querySelectorAll('.nav-link, .mobile-menu a')
-            .forEach(a => {
-                if(a.getAttribute('href') === path) {
-                    a.classList.add('text-blue-600');
-                    a.classList.remove('text-white');
-                }
-            });
+        document.querySelectorAll('.nav-link, .mobile-menu a').forEach(a => {
+            if(a.getAttribute('href') === path) {
+                a.classList.add('text-blue-600');
+                a.classList.remove('text-white');
+            }
+        });
     }, 200);
 }
 
@@ -202,33 +196,25 @@ function initSmoothScroll() {
     document.addEventListener('click', e => {
         const link = e.target.closest('a[href^="#"]');
         if (!link) return;
-
         const targetId = link.getAttribute('href');
         if(targetId === '#' || targetId.length < 2) return;
-
         const target = document.querySelector(targetId);
         if (!target) return;
-
         e.preventDefault();
         window.scrollTo({
             top: target.offsetTop - CONFIG.HEADER_HEIGHT - 20,
             behavior: 'smooth'
         });
-        
         const overlay = document.getElementById('mobileOverlay');
-        if(overlay && !overlay.classList.contains('invisible')) {
-            overlay.click();
-        }
+        if(overlay && !overlay.classList.contains('invisible')) overlay.click();
     });
 }
 
 function initServiceTabs() {
     const tabs = document.querySelector('.sticky-tabs');
     if (!tabs) return;
-
     const sections = document.querySelectorAll("section[id]");
     const links = document.querySelectorAll(".tab-link");
-
     window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(s => {
@@ -247,9 +233,7 @@ function initServiceTabs() {
 function initForms() {
     document.querySelectorAll('form').forEach(form => {
         form.addEventListener('submit', async e => {
-            // Skip Coaching form (handled by iframe in HTML)
             if(form.id === 'coachingForm') return; 
-
             e.preventDefault();
             const btn = form.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
@@ -259,16 +243,13 @@ function initForms() {
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
             try {
-                // 1. Send to Google Forms
                 await fetch(CONFIG.GOOGLE_FORM_URL, {
                     method: 'POST',
                     mode: 'no-cors',
                     body: new FormData(form)
                 });
                 
-                // 2. Google Ads Conversion Tracking
                 if(typeof gtag !== 'undefined') {
-                    // Replace 'AW-CONVERSION_ID/LABEL_HERE' with real ID
                     gtag('event', 'conversion', {
                         'send_to': 'AW-CONVERSION_ID/LABEL_HERE', 
                         'value': 1.0,
@@ -276,22 +257,18 @@ function initForms() {
                     });
                 }
 
-                // 3. Success Message
                 if(msg) {
                     msg.textContent = "Thank you! We've received your request.";
                     msg.className = "mt-4 text-green-600 font-bold text-center text-sm block";
                     msg.classList.remove('hidden');
                 }
                 form.reset();
-
             } catch (err) {
-                // 4. Error Message
                 if(msg) {
                     msg.textContent = "Submission failed. Please call us directly.";
                     msg.className = "mt-4 text-red-500 font-bold text-center text-sm block";
                     msg.classList.remove('hidden');
                 }
-                console.error(err);
             } finally {
                 setTimeout(() => {
                     btn.disabled = false;
@@ -318,7 +295,6 @@ function initCounters() {
             const target = +el.dataset.target;
             let count = 0;
             const step = Math.ceil(target / 60);
-
             const tick = () => {
                 count += step;
                 if (count < target) {
@@ -332,12 +308,11 @@ function initCounters() {
             obs.unobserve(el);
         });
     }, { threshold: 0.5 });
-
     els.forEach(el => obs.observe(el));
 }
 
 /* ==========================================
-   8. CANVAS NETWORK
+   8. CANVAS NETWORK (SMART OPTIMIZATION)
 ========================================== */
 function initCanvasAnimations() {
     const canvas = document.getElementById("network-lines");
@@ -345,6 +320,8 @@ function initCanvasAnimations() {
 
     const ctx = canvas.getContext("2d");
     let w, h;
+    
+    // Resize logic
     const resize = () => {
         w = canvas.width = canvas.parentElement.offsetWidth;
         h = canvas.height = canvas.parentElement.offsetHeight;
@@ -352,7 +329,11 @@ function initCanvasAnimations() {
     window.addEventListener('resize', resize);
     resize();
 
-    const dots = Array.from({ length: window.innerWidth < 768 ? 25 : 50 }, () => ({
+    // SMART COUNT: 20 dots for Mobile, 50 for Desktop (Performance Boost)
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 20 : 50; 
+
+    const dots = Array.from({ length: particleCount }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
         vx: (Math.random() - .5) * .5,
@@ -363,13 +344,17 @@ function initCanvasAnimations() {
         ctx.clearRect(0, 0, w, h);
         dots.forEach((d, i) => {
             d.x += d.vx; d.y += d.vy;
+            
             if (d.x < 0 || d.x > w) d.vx *= -1;
             if (d.y < 0 || d.y > h) d.vy *= -1;
 
             dots.slice(i + 1).forEach(o => {
                 const dist = Math.hypot(d.x - o.x, d.y - o.y);
-                if (dist < 120) {
-                    ctx.strokeStyle = `rgba(37,99,235,${0.15 * (1 - dist / 120)})`;
+                // Reduce math load on mobile
+                const connectDist = isMobile ? 80 : 120; 
+                
+                if (dist < connectDist) {
+                    ctx.strokeStyle = `rgba(37,99,235,${0.15 * (1 - dist / connectDist)})`;
                     ctx.beginPath();
                     ctx.moveTo(d.x, d.y);
                     ctx.lineTo(o.x, o.y);
@@ -385,7 +370,10 @@ function initCanvasAnimations() {
         requestAnimationFrame(draw);
     };
 
-    new IntersectionObserver(e => e[0].isIntersecting && draw()).observe(canvas);
+    // Only run when visible to save battery
+    new IntersectionObserver(e => {
+        if (e[0].isIntersecting) draw();
+    }).observe(canvas);
 }
 
 /* ==========================================
@@ -393,10 +381,8 @@ function initCanvasAnimations() {
 ========================================== */
 function initWhatsAppBubble() {
     if (document.getElementById('wa-bubble')) return;
-
     const sound = new Audio(CONFIG.NOTIFICATION_SOUND);
     sound.volume = 0.6;
-
     setTimeout(() => {
         const bubble = document.createElement("div");
         bubble.id = "wa-bubble";
@@ -413,13 +399,10 @@ function initWhatsAppBubble() {
                     <i class="fas fa-times"></i>
                 </button>
             </div>`;
-        
         Object.assign(bubble.style, {
             position: 'fixed', bottom: '90px', right: '20px', zIndex: '9999'
         });
-        
         document.body.appendChild(bubble);
-        
         requestAnimationFrame(() => {
             const inner = bubble.firstElementChild;
             inner.classList.remove('translate-y-10', 'opacity-0');
@@ -432,7 +415,7 @@ function initWhatsAppBubble() {
    10. COOKIE CONSENT BANNER (GDPR)
 ========================================== */
 (function initCookieBanner() {
-    if (localStorage.getItem("cookieConsent")) return; // Check if already accepted/declined
+    if (localStorage.getItem("cookieConsent")) return; 
 
     setTimeout(() => {
         const banner = document.createElement("div");
@@ -459,5 +442,5 @@ function initWhatsAppBubble() {
             localStorage.setItem("cookieConsent", "false");
             banner.remove();
         };
-    }, 2000); // Show after 2 seconds
+    }, 2000); 
 })();
