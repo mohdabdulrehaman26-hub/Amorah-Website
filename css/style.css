@@ -718,3 +718,9 @@ footer .grid {
     h2 { font-size: 2rem !important; }
     p  { font-size: 1rem !important; }
 }
+
+/* TABLET OPTIMIZATION (iPad / Tab View) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container { padding-left: 2rem; padding-right: 2rem; }
+    /* ... other adjustments ... */
+}
