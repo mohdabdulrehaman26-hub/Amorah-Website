@@ -1,162 +1,187 @@
-<header class="header fixed w-full top-0 z-50 transition-all duration-300 bg-transparent">
+<header class="header fixed w-full top-0 z-[999] transition-all duration-300 bg-transparent">
     <div class="container mx-auto px-6 flex items-center justify-between h-full">
 
-        <!-- LOGO -->
         <a href="index.html" class="logo-link z-50 flex items-center">
-            <img src="https://amorahgroup.in/assets/images/amorah-logo.png"
+            <img src="https://amorahgroup.in/assets/images/amorah%20logo.png"
                  alt="Amorah Group"
-                 class="logo-img object-contain"
-                 width="180"
-                 height="64"
-                 loading="eager">
+                 class="logo-img h-[70px] w-auto transition-all duration-300 object-contain"
+                 width="180" height="64">
         </a>
 
-        <!-- DESKTOP NAV -->
-        <nav class="desktop-nav hidden lg:flex items-center text-sm font-medium">
-
-            <a href="index.html" class="nav-link">Home</a>
-
-            <!-- SERVICES DROPDOWN -->
-            <div class="nav-item-group group h-full flex items-center relative">
-                <a href="services.html" class="nav-link flex items-center gap-1">
+        <nav class="desktop-nav hidden lg:flex items-center text-sm font-medium gap-5">
+            <a href="index.html" class="nav-link text-white font-semibold text-sm uppercase tracking-wide hover:text-blue-500 transition">Home</a>
+            
+            <div class="nav-item-group group h-full flex items-center relative cursor-pointer">
+                <a href="services.html" class="nav-link text-white font-semibold text-sm uppercase tracking-wide flex items-center">
                     Services
                 </a>
-
-                <div class="nav-dropdown absolute top-full left-0 bg-white shadow-xl rounded-b-xl border-t-2 border-blue-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 py-2">
-
-                    <!-- IT -->
-                    <div class="dropdown-item group/sub relative px-4 py-3 hover:bg-slate-50 flex justify-between items-center cursor-pointer">
-                        <a href="it.html" class="block w-full text-slate-700 hover:text-blue-600 font-semibold">
-                            IT Services
-                        </a>
-
-                        <div class="sub-dropdown absolute left-full top-0 bg-white shadow-lg rounded-xl border border-slate-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 p-2 ml-1">
-                            <a href="it.html#app-dev" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Mobile App Development</a>
-                            <a href="it.html#software-dev" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Software Development</a>
-                            <a href="it.html#web-dev" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Web Development</a>
-                            <a href="it.html#cloud" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Cloud Solutions</a>
-                            <a href="it.html#ai" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">AI & Automation</a>
+                
+                <div class="nav-dropdown absolute top-full mt-1 left-0 bg-white shadow-xl rounded-b-xl border-t-2 border-blue-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 py-2 w-64">
+                    
+                    <div class="dropdown-item group/sub relative px-4 py-1 hover:bg-slate-50 flex justify-between items-center">
+                        <a href="it.html" class="block w-full text-slate-700 hover:text-blue-600 font-semibold text-sm">IT Services</a>
+                        
+                        <div class="sub-dropdown absolute left-full top-0 bg-white shadow-lg rounded-xl border border-slate-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 p-2 ml-3 w-56">
+                            <a href="it.html#app-dev" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Mobile App Dev</a>
+                            <a href="it.html#software-dev" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Software Dev</a>
+                            <a href="it.html#web-dev" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Web Development</a>
+                            <a href="it.html#cloud" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Cloud Solutions</a>
+                            <a href="it.html#ai" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">AI & Automation</a>
                         </div>
                     </div>
 
-                    <!-- RECRUITMENT -->
-                    <div class="dropdown-item group/sub relative px-4 py-3 hover:bg-slate-50 flex justify-between items-center cursor-pointer">
-                        <a href="recruitment.html" class="block w-full text-slate-700 hover:text-blue-600 font-semibold">
-                            Recruitment
-                        </a>
-
-                        <div class="sub-dropdown absolute left-full top-0 bg-white shadow-lg rounded-xl border border-slate-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 p-2 ml-1">
-                            <a href="recruitment.html#executive" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Executive Search</a>
-                            <a href="recruitment.html#contract" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Contract to Hire</a>
-                            <a href="recruitment.html#staffing" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Staffing Solutions</a>
-                            <a href="recruitment.html#rpo" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">RPO Models</a>
+                    <div class="dropdown-item group/sub relative px-4 py-1 hover:bg-slate-50 flex justify-between items-center">
+                        <a href="recruitment.html" class="block w-full text-slate-700 hover:text-blue-600 font-semibold text-sm">Recruitment</a>
+                        
+                        <div class="sub-dropdown absolute left-full top-0 bg-white shadow-lg rounded-xl border border-slate-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 p-2 ml-3 w-56">
+                            <a href="recruitment.html#executive" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Executive Search</a>
+                            <a href="recruitment.html#contract" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Contract to Hire</a>
+                            <a href="recruitment.html#staffing" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Staffing Solutions</a>
+                            <a href="recruitment.html#rpo" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">RPO Models</a>
                         </div>
                     </div>
 
-                    <!-- TRAINING -->
-                    <div class="dropdown-item group/sub relative px-4 py-3 hover:bg-slate-50 flex justify-between items-center cursor-pointer">
-                        <a href="training.html" class="block w-full text-slate-700 hover:text-blue-600 font-semibold">
-                            Training
-                        </a>
-
-                        <div class="sub-dropdown absolute left-full top-0 bg-white shadow-lg rounded-xl border border-slate-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 p-2 ml-1">
-                            <a href="training.html#it-training" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">IT Training</a>
-                            <a href="training.html#interview" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Interview Prep</a>
-                            <a href="training.html#non-it" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Non-IT Training</a>
+                    <div class="dropdown-item group/sub relative px-4 py-1 hover:bg-slate-50 flex justify-between items-center">
+                        <a href="training.html" class="block w-full text-slate-700 hover:text-blue-600 font-semibold text-sm">Training</a>
+                        
+                        <div class="sub-dropdown absolute left-full top-0 bg-white shadow-lg rounded-xl border border-slate-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 p-2 ml-3 w-56">
+                            <a href="training.html#it-training" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">IT Training</a>
+                            <a href="training.html#interview" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Interview Prep</a>
+                            <a href="training.html#non-it" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Non-IT Training</a>
                         </div>
                     </div>
 
-                    <!-- OVERSEAS -->
-                    <div class="dropdown-item group/sub relative px-4 py-3 hover:bg-slate-50 flex justify-between items-center cursor-pointer">
-                        <a href="overseas.html" class="block w-full text-slate-700 hover:text-blue-600 font-semibold">
-                            Overseas
-                        </a>
-
-                        <div class="sub-dropdown absolute left-full top-0 bg-white shadow-lg rounded-xl border border-slate-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 p-2 ml-1">
-                            <a href="overseas.html#study" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Student Visa</a>
-                            <a href="overseas.html#work" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Job Visa</a>
-                            <a href="overseas.html#business" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Business Visa</a>
-                            <a href="overseas.html#visit" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Visit Visa</a>
+                    <div class="dropdown-item group/sub relative px-4 py-1 hover:bg-slate-50 flex justify-between items-center">
+                        <a href="overseas.html" class="block w-full text-slate-700 hover:text-blue-600 font-semibold text-sm">Overseas</a>
+                        
+                        <div class="sub-dropdown absolute left-full top-0 bg-white shadow-lg rounded-xl border border-slate-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 p-2 ml-3 w-56">
+                            <a href="overseas.html#study" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Student Visa</a>
+                            <a href="overseas.html#work" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Job Visa</a>
+                            <a href="overseas.html#business" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Business Visa</a>
+                            <a href="overseas.html#visit" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Visit Visa</a>
                         </div>
                     </div>
 
-                    <!-- ENGLISH COACHING -->
-                    <div class="dropdown-item group/sub relative px-4 py-3 hover:bg-slate-50 flex justify-between items-center cursor-pointer">
-                        <a href="coaching.html" class="block w-full text-slate-700 hover:text-blue-600 font-semibold">
-                            English Coaching
-                        </a>
-
-                        <div class="sub-dropdown absolute left-full top-0 bg-white shadow-lg rounded-xl border border-slate-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 p-2 ml-1">
-                            <a href="coaching.html#ielts" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">IELTS</a>
-                            <a href="coaching.html#pte" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">PTE</a>
-                            <a href="coaching.html#toefl" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">TOEFL</a>
-                            <a href="coaching.html#duolingo" class="sub-link block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Duolingo</a>
+                    <div class="dropdown-item group/sub relative px-4 py-1 hover:bg-slate-50 flex justify-between items-center">
+                        <a href="coaching.html" class="block w-full text-slate-700 hover:text-blue-600 font-semibold text-sm">English Coaching</a>
+                        
+                        <div class="sub-dropdown absolute left-full top-0 bg-white shadow-lg rounded-xl border border-slate-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 p-2 ml-3 w-56">
+                            <a href="coaching.html#ielts" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">IELTS</a>
+                            <a href="coaching.html#pte" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">PTE</a>
+                            <a href="coaching.html#toefl" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">TOEFL</a>
+                            <a href="coaching.html#duolingo" class="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg">Duolingo</a>
                         </div>
                     </div>
-
                 </div>
             </div>
 
-            <a href="about.html" class="nav-link">About</a>
-            <a href="blog.html" class="nav-link">Blog</a>
-            <a href="https://jobs.amorahgroup.in" target="_blank" class="nav-link">Careers</a>
-
-            <a href="https://wa.me/916301694153" target="_blank" class="header-cta ml-6">
-                Chat Now
+            <a href="about.html" class="nav-link text-white font-semibold text-sm uppercase tracking-wide hover:text-blue-500 transition">About</a>
+            <a href="blog.html" class="nav-link text-white font-semibold text-sm uppercase tracking-wide hover:text-blue-500 transition">Blog</a>
+            
+            <a href="https://jobs.amorahgroup.in" target="_blank" class="nav-link text-white font-semibold text-sm uppercase tracking-wide hover:text-blue-500 transition">Careers</a>
+            
+            <a href="https://wa.me/916301694153" target="_blank" class="header-cta ml-2 bg-[#25D366] text-white px-5 py-2.5 rounded-full font-bold hover:bg-[#20ba59] hover:shadow-lg transition-all flex items-center gap-2 text-sm transform hover:-translate-y-0.5">
+                <i class="fab fa-whatsapp text-lg"></i> Chat Now
             </a>
         </nav>
 
-        <!-- MOBILE TOGGLE -->
-        <button id="mobileBtn" class="mobile-toggle lg:hidden text-2xl z-50">
+        <button id="mobileBtn" class="lg:hidden text-2xl z-50 text-white focus:outline-none transition-colors">
             <i class="fas fa-bars"></i>
         </button>
     </div>
 </header>
 
-<!-- MOBILE OVERLAY -->
-<div id="mobileOverlay" class="fixed inset-0 bg-slate-900/60 opacity-0 invisible transition-all duration-300 z-40 lg:hidden backdrop-blur-sm"></div>
+<div id="mobileOverlay" class="fixed inset-0 bg-slate-900/60 opacity-0 invisible transition-all duration-300 z-[998] backdrop-blur-sm lg:hidden"></div>
 
-<!-- MOBILE MENU -->
-<div id="mobileMenu" class="fixed top-0 right-[-320px] w-[300px] h-full bg-white shadow-2xl z-50 transition-all duration-300 flex flex-col lg:hidden overflow-y-auto">
+<div id="mobileMenu" class="fixed top-0 right-0 w-[300px] h-full bg-white shadow-2xl z-[1000] transition-transform duration-300 translate-x-full flex flex-col lg:hidden overflow-y-auto">
 
     <div class="flex justify-between items-center p-6 border-b border-slate-100">
-        <span class="font-bold text-lg text-slate-800">Menu</span>
-        <button id="closeBtn" class="text-2xl text-slate-400 hover:text-red-500 transition">
+        <img src="assets/images/amorah%20logo.png" alt="Amorah" class="h-10 w-auto">
+        <button id="closeBtn" class="text-2xl text-slate-400 hover:text-red-500 transition focus:outline-none">
             <i class="fas fa-times"></i>
         </button>
     </div>
 
-    <nav class="flex flex-col p-4 text-slate-700 font-medium">
+    <nav class="flex flex-col p-4 text-slate-700 font-medium space-y-1">
+        <a href="index.html" class="block py-3 px-2 rounded-lg hover:bg-slate-50 hover:text-blue-600 transition-colors">Home</a>
 
-        <a href="index.html" class="py-3 border-b border-slate-100 hover:text-blue-600">Home</a>
-        <a href="services.html" class="py-3 border-b border-slate-100 hover:text-blue-600">Services</a>
-        <a href="overseas.html" class="py-3 border-b border-slate-100 hover:text-blue-600">Overseas</a>
-        <a href="about.html" class="py-3 border-b border-slate-100 hover:text-blue-600">About Us</a>
-        <a href="blog.html" class="py-3 border-b border-slate-100 hover:text-blue-600">Blog</a>
-        <a href="https://jobs.amorahgroup.in" target="_blank" class="py-3 border-b border-slate-100 hover:text-blue-600">Careers</a>
+        <div class="mobile-dropdown-group border-b border-slate-100 pb-2">
+            <button class="mobile-dropdown-btn flex items-center justify-between w-full py-3 px-2 text-slate-700 font-medium hover:text-blue-600 hover:bg-slate-50 rounded-lg focus:outline-none transition-colors">
+                <span>Services</span>
+                <i class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
+            </button>
+            
+            <div class="mobile-dropdown-content hidden pl-3 pb-2 space-y-1 bg-slate-50 rounded-lg mt-1">
+                
+                <div class="mobile-sub-group">
+                    <button class="mobile-dropdown-btn flex items-center justify-between w-full py-2 text-slate-600 hover:text-blue-600 text-sm focus:outline-none">
+                        <span>IT Services</span>
+                    </button>
+                    <div class="hidden pl-3 border-l-2 border-slate-200 ml-1 mt-1 space-y-2">
+                        <a href="it.html#app-dev" class="block py-1 text-xs text-slate-500 hover:text-blue-600">Mobile App Dev</a>
+                        <a href="it.html#software-dev" class="block py-1 text-xs text-slate-500 hover:text-blue-600">Software Dev</a>
+                        <a href="it.html#web-dev" class="block py-1 text-xs text-slate-500 hover:text-blue-600">Web Development</a>
+                        <a href="it.html#cloud" class="block py-1 text-xs text-slate-500 hover:text-blue-600">Cloud Solutions</a>
+                        <a href="it.html#ai" class="block py-1 text-xs text-slate-500 hover:text-blue-600">AI & Automation</a>
+                    </div>
+                </div>
 
-    </nav>
+                <div class="mobile-sub-group">
+                    <button class="mobile-dropdown-btn flex items-center justify-between w-full py-2 text-slate-600 hover:text-blue-600 text-sm focus:outline-none">
+                        <span>Recruitment</span>
+                    </button>
+                    <div class="hidden pl-3 border-l-2 border-slate-200 ml-1 mt-1 space-y-2">
+                        <a href="recruitment.html#executive" class="block py-1 text-xs text-slate-500 hover:text-blue-600">Executive Search</a>
+                        <a href="recruitment.html#contract" class="block py-1 text-xs text-slate-500 hover:text-blue-600">Contract to Hire</a>
+                        <a href="recruitment.html#staffing" class="block py-1 text-xs text-slate-500 hover:text-blue-600">Staffing Solutions</a>
+                        <a href="recruitment.html#rpo" class="block py-1 text-xs text-slate-500 hover:text-blue-600">RPO Models</a>
+                    </div>
+                </div>
 
-    <div class="p-6 mt-auto">
-        <a href="https://wa.me/916301694153" target="_blank"
-           class="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white py-3.5 rounded-xl font-bold shadow-lg transition-colors">
-            <i class="fab fa-whatsapp text-xl"></i> WhatsApp Us
+                <div class="mobile-sub-group">
+                    <button class="mobile-dropdown-btn flex items-center justify-between w-full py-2 text-slate-600 hover:text-blue-600 text-sm focus:outline-none">
+                        <span>Training</span>
+                    </button>
+                    <div class="hidden pl-3 border-l-2 border-slate-200 ml-1 mt-1 space-y-2">
+                        <a href="training.html#it-training" class="block py-1 text-xs text-slate-500 hover:text-blue-600">IT Training</a>
+                        <a href="training.html#interview" class="block py-1 text-xs text-slate-500 hover:text-blue-600">Interview Prep</a>
+                        <a href="training.html#non-it" class="block py-1 text-xs text-slate-500 hover:text-blue-600">Non-IT Training</a>
+                    </div>
+                </div>
+
+                <div class="mobile-sub-group">
+                    <button class="mobile-dropdown-btn flex items-center justify-between w-full py-2 text-slate-600 hover:text-blue-600 text-sm focus:outline-none">
+                        <span>Overseas</span>
+                    </button>
+                    <div class="hidden pl-3 border-l-2 border-slate-200 ml-1 mt-1 space-y-2">
+                        <a href="overseas.html#study" class="block py-1 text-xs text-slate-500 hover:text-blue-600">Student Visa</a>
+                        <a href="overseas.html#work" class="block py-1 text-xs text-slate-500 hover:text-blue-600">Job Visa</a>
+                        <a href="overseas.html#business" class="block py-1 text-xs text-slate-500 hover:text-blue-600">Business Visa</a>
+                        <a href="overseas.html#visit" class="block py-1 text-xs text-slate-500 hover:text-blue-600">Visit Visa</a>
+                    </div>
+                </div>
+
+                <div class="mobile-sub-group">
+                    <button class="mobile-dropdown-btn flex items-center justify-between w-full py-2 text-slate-600 hover:text-blue-600 text-sm focus:outline-none">
+                        <span>English Coaching</span>
+                    </button>
+                    <div class="hidden pl-3 border-l-2 border-slate-200 ml-1 mt-1 space-y-2">
+                        <a href="coaching.html#ielts" class="block py-1 text-xs text-slate-500 hover:text-blue-600">IELTS</a>
+                        <a href="coaching.html#pte" class="block py-1 text-xs text-slate-500 hover:text-blue-600">PTE</a>
+                        <a href="coaching.html#toefl" class="block py-1 text-xs text-slate-500 hover:text-blue-600">TOEFL</a>
+                        <a href="coaching.html#duolingo" class="block py-1 text-xs text-slate-500 hover:text-blue-600">Duolingo</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <a href="about.html" class="block py-3 px-2 rounded-lg hover:bg-slate-50 hover:text-blue-600 transition-colors">About Us</a>
+        <a href="blog.html" class="block py-3 px-2 rounded-lg hover:bg-slate-50 hover:text-blue-600 transition-colors">Blog</a>
+        <a href="https://jobs.amorahgroup.in" target="_blank" class="block py-3 px-2 rounded-lg hover:bg-slate-50 hover:text-blue-600 transition-colors border-b border-slate-100">Careers</a>
+
+        <a href="https://wa.me/916301694153" target="_blank" class="block mt-6 bg-[#25D366] text-white text-center py-3.5 rounded-xl font-bold shadow-lg hover:bg-[#20ba59] transition-all flex items-center justify-center gap-2 transform active:scale-95">
+            <i class="fab fa-whatsapp text-xl"></i> Chat on WhatsApp
         </a>
-    </div>
+    </nav>
 </div>
-
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', 'YOUR-PIXEL-ID-HERE'); // <--- Replace with your Pixel ID
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=YOUR-PIXEL-ID-HERE&ev=PageView&noscript=1"
-/></noscript>
