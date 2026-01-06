@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C6ZVCVHQB"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7C6ZVCVHQB');
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,9 +33,15 @@
 
     <script src="links/external-links.js" defer></script>
     <script src="links/links-init.js" defer></script>
+    <script src="js/main.js" defer></script>
 
     <style>
-        #network-lines { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.4; pointer-events: none; }
+        /* Canvas 1: Network Lines (Services) */
+        #network-lines-red { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        
+        /* Canvas 2: Dots (Why Choose Us) */
+        #canvas-dots { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+
         #services .container { position: relative; z-index: 2; }
         
         /* Global Presence Top Tabs Style */
@@ -58,7 +56,6 @@
             white-space: nowrap;
             border: 1px solid transparent;
         }
-        /* Active State handled by Swiper's class */
         .swiper-slide-thumb-active .gp-badge {
             background: #2563eb;
             color: white;
@@ -113,7 +110,7 @@
         </section>
 
         <section id="services" class="py-24 bg-slate-50 relative overflow-hidden">
-            <canvas id="network-lines"></canvas>
+            <canvas id="network-lines-red"></canvas> 
 
             <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center mb-16" data-aos="fade-up">
@@ -122,77 +119,111 @@
                     <p class="text-slate-500 text-lg max-w-2xl mx-auto leading-relaxed">Delivering integrated solutions across technology, human resources, and global mobility.</p>
                 </div>
 
-                <div class="flex flex-col md:flex-row items-center gap-12 mb-20 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100">
-                    <div class="w-full md:w-1/2" data-aos="fade-right">
+                <div class="flex flex-col md:flex-row items-center gap-12 mb-20 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100" data-aos="fade-right">
+                    <div class="w-full md:w-1/2">
                         <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[300px] md:h-[350px]">
                             <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="IT Services" loading="lazy">
                         </div>
                     </div>
-                    <div class="w-full md:w-1/2 text-left" data-aos="fade-left">
+                    <div class="w-full md:w-1/2 text-left">
                         <h3 class="text-3xl font-bold mb-4 text-slate-800 font-heading group-hover:text-blue-600 transition-colors">IT & Software</h3>
                         <p class="text-slate-600 text-lg mb-6 leading-relaxed text-left">We deliver Advanced Applications, AI Automation, and Cloud Solutions. Our expertise includes <strong>Digital Transformation, Cybersecurity Solutions, and Enterprise ERP</strong> development to scale your business efficiently.</p>
                         <a href="it.html" class="btn-premium shadow-md">Learn More</a>
                     </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-20 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100">
-                    <div class="w-full md:w-1/2" data-aos="fade-left">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-20 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100" data-aos="fade-left">
+                    <div class="w-full md:w-1/2">
                         <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[300px] md:h-[350px]">
                             <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Overseas Services" loading="lazy">
                         </div>
                     </div>
-                    <div class="w-full md:w-1/2 text-left" data-aos="fade-right">
+                    <div class="w-full md:w-1/2 text-left">
                         <h3 class="text-3xl font-bold mb-4 text-slate-800 font-heading group-hover:text-blue-600 transition-colors">Overseas Services</h3>
                         <p class="text-slate-600 text-lg mb-6 leading-relaxed text-left">We specialize in <strong>Student and Work Visas, Business Immigration, Investor Visas, and Real Estate programs</strong> for seamless global mobility.</p>
                         <a href="overseas.html" class="btn-premium shadow-md">Learn More</a>
                     </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row items-center gap-12 mb-20 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100">
-                    <div class="w-full md:w-1/2" data-aos="fade-right">
+                <div class="flex flex-col md:flex-row items-center gap-12 mb-20 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100" data-aos="fade-right">
+                    <div class="w-full md:w-1/2">
                         <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[300px] md:h-[350px]">
                             <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Recruitment" loading="lazy">
                         </div>
                     </div>
-                    <div class="w-full md:w-1/2 text-left" data-aos="fade-left">
+                    <div class="w-full md:w-1/2 text-left">
                         <h3 class="text-3xl font-bold mb-4 text-slate-800 font-heading group-hover:text-blue-600 transition-colors">Recruitment</h3>
                         <p class="text-slate-600 text-lg mb-6 leading-relaxed text-left">We bridge the gap between talent and opportunity. Our services cover <strong>Executive Search, RPO (Recruitment Process Outsourcing), and Contract Staffing</strong> to ensure you find the perfect fit for every role.</p>
                         <a href="recruitment.html" class="btn-premium shadow-md">Learn More</a>
                     </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-20 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100">
-                    <div class="w-full md:w-1/2" data-aos="fade-right">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-20 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100" data-aos="fade-left">
+                    <div class="w-full md:w-1/2">
                         <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[300px] md:h-[350px]">
                             <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Training" loading="lazy">
                         </div>
                     </div>
-                    <div class="w-full md:w-1/2 text-left" data-aos="fade-left">
+                    <div class="w-full md:w-1/2 text-left">
                         <h3 class="text-3xl font-bold mb-4 text-slate-800 font-heading group-hover:text-blue-600 transition-colors">Training & Placement</h3>
                         <p class="text-slate-600 text-lg mb-6 leading-relaxed text-left">We offer specialized training for <strong>IT (Java, Python, Full Stack) and Non-IT categories</strong>, including <strong>Banking & Finance jobs</strong>. Our comprehensive <strong>Interview Preparation</strong> ensures 100% placement assistance.</p>
                         <a href="training.html" class="btn-premium shadow-md">Learn More</a>
                     </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row items-center gap-12 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100">
-                    <div class="w-full md:w-1/2" data-aos="fade-right">
+                <div class="flex flex-col md:flex-row items-center gap-12 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100" data-aos="fade-right">
+                    <div class="w-full md:w-1/2">
                         <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[300px] md:h-[350px]">
                             <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="English Coaching" loading="lazy">
                         </div>
                     </div>
-                    <div class="w-full md:w-1/2 text-left" data-aos="fade-left">
+                    <div class="w-full md:w-1/2 text-left">
                         <h3 class="text-3xl font-bold mb-4 text-slate-800 font-heading group-hover:text-blue-600 transition-colors">English Coaching</h3>
                         <p class="text-slate-600 text-lg mb-6 leading-relaxed text-left">Expert coaching for <strong>IELTS, PTE, TOEFL, and Duolingo</strong>. Achieve your target score with our certified trainers and comprehensive study materials designed for global success.</p>
                         <a href="coaching.html" class="btn-premium shadow-md">Learn More</a>
                     </div>
                 </div>
+            </div>
+        </section>
 
+        <section id="why-choose-us" class="py-24 relative bg-white text-slate-900 overflow-hidden">
+            <canvas id="canvas-dots"></canvas> 
+            
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 font-heading mb-4">Why Choose <span class="text-blue-600">Amorah?</span></h2>
+                    <div class="underline-blue mx-auto mb-6"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition duration-300 group" data-aos="fade-up" data-aos-delay="0">
+                        <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-2xl mb-6 group-hover:bg-blue-600 group-hover:text-white transition"><i class="fas fa-globe"></i></div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-800">Global Reach</h3>
+                        <p class="text-slate-600 text-sm">Presence in 30+ countries facilitating seamless international mobility.</p>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center text-green-600 text-2xl mb-6 group-hover:bg-green-600 group-hover:text-white transition"><i class="fas fa-shield-alt"></i></div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-800">100% Transparency</h3>
+                        <p class="text-slate-600 text-sm">Ethical processing with clear documentation and no hidden costs.</p>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 text-2xl mb-6 group-hover:bg-purple-600 group-hover:text-white transition"><i class="fas fa-user-tie"></i></div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-800">Expert Team</h3>
+                        <p class="text-slate-600 text-sm">Certified consultants and industry veterans guiding your path.</p>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition duration-300 group" data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-14 h-14 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 text-2xl mb-6 group-hover:bg-orange-600 group-hover:text-white transition"><i class="fas fa-headset"></i></div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-800">24/7 Support</h3>
+                        <p class="text-slate-600 text-sm">Dedicated support team to assist you at every step of the journey.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="global-presence" class="py-20 bg-white relative overflow-hidden">
-            <img src="https://amorahgroup.in/assets/images/Gemini_Generated_Image_nfrwtfnfrwtfnfrw.png" 
-                 class="absolute inset-0 w-full h-full object-cover opacity-[0.15] pointer-events-none" 
+            <img src="assets/images/world-map-bg.png" 
+                 onerror="this.style.display='none'"
+                 class="absolute inset-0 w-full h-full object-cover opacity-[0.05] pointer-events-none" 
                  alt="Global Map Layer">
             
             <div class="relative z-[4] container mx-auto px-6 text-center">
@@ -219,97 +250,19 @@
 
                 <div class="swiper gpMainSwiper py-8 px-4 max-w-7xl mx-auto">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide flex justify-center">
-                            <div class="gp-card w-full flex flex-col items-center justify-center text-center">
-                                <img src="https://flagcdn.com/w160/in.png" class="w-16 mx-auto mb-4 rounded shadow-md" alt="India">
-                                <h3 class="gp-number text-4xl font-black text-blue-900 mb-1 font-heading" data-target="150">0</h3>
-                                <p class="font-bold text-blue-900 text-sm">Projects in India</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide flex justify-center">
-                            <div class="gp-card w-full flex flex-col items-center justify-center text-center">
-                                <img src="https://flagcdn.com/w160/ae.png" class="w-16 mx-auto mb-4 rounded shadow-md" alt="UAE">
-                                <h3 class="gp-number text-4xl font-black text-blue-900 mb-1 font-heading" data-target="90">0</h3>
-                                <p class="font-bold text-blue-900 text-sm">Visas for UAE</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide flex justify-center">
-                            <div class="gp-card w-full flex flex-col items-center justify-center text-center">
-                                <img src="https://flagcdn.com/w160/sa.png" class="w-16 mx-auto mb-4 rounded shadow-md" alt="Saudi">
-                                <h3 class="gp-number text-4xl font-black text-blue-900 mb-1 font-heading" data-target="60">0</h3>
-                                <p class="font-bold text-blue-900 text-sm">Hajj & Work</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide flex justify-center">
-                            <div class="gp-card w-full flex flex-col items-center justify-center text-center">
-                                <img src="https://flagcdn.com/w160/us.png" class="w-16 mx-auto mb-4 rounded shadow-md" alt="USA">
-                                <h3 class="gp-number text-4xl font-black text-blue-900 mb-1 font-heading" data-target="70">0</h3>
-                                <p class="font-bold text-blue-900 text-sm">Students in USA</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide flex justify-center">
-                            <div class="gp-card w-full flex flex-col items-center justify-center text-center">
-                                <img src="https://flagcdn.com/w160/gb.png" class="w-16 mx-auto mb-4 rounded shadow-md" alt="UK">
-                                <h3 class="gp-number text-4xl font-black text-blue-900 mb-1 font-heading" data-target="55">0</h3>
-                                <p class="font-bold text-blue-900 text-sm">Jobs in UK</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide flex justify-center">
-                            <div class="gp-card w-full flex flex-col items-center justify-center text-center">
-                                <img src="https://flagcdn.com/w160/ca.png" class="w-16 mx-auto mb-4 rounded shadow-md" alt="Canada">
-                                <h3 class="gp-number text-4xl font-black text-blue-900 mb-1 font-heading" data-target="40">0</h3>
-                                <p class="font-bold text-blue-900 text-sm">PRs for Canada</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide flex justify-center">
-                            <div class="gp-card w-full flex flex-col items-center justify-center text-center">
-                                <img src="https://flagcdn.com/w160/au.png" class="w-16 mx-auto mb-4 rounded shadow-md" alt="Australia">
-                                <h3 class="gp-number text-4xl font-black text-blue-900 mb-1 font-heading" data-target="35">0</h3>
-                                <p class="font-bold text-blue-900 text-sm">Study & Migrate</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide flex justify-center">
-                            <div class="gp-card w-full flex flex-col items-center justify-center text-center">
-                                <img src="https://flagcdn.com/w160/eu.png" class="w-16 mx-auto mb-4 rounded shadow-md" alt="Europe">
-                                <h3 class="gp-number text-4xl font-black text-blue-900 mb-1 font-heading" data-target="85">0</h3>
-                                <p class="font-bold text-blue-900 text-sm">Placements</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide flex justify-center">
-                            <div class="gp-card w-full flex flex-col items-center justify-center text-center">
-                                <img src="https://flagcdn.com/w160/de.png" class="w-16 mx-auto mb-4 rounded shadow-md" alt="Germany">
-                                <h3 class="gp-number text-4xl font-black text-blue-900 mb-1 font-heading" data-target="30">0</h3>
-                                <p class="font-bold text-blue-900 text-sm">Job Seekers</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide flex justify-center">
-                            <div class="gp-card w-full flex flex-col items-center justify-center text-center">
-                                <img src="https://flagcdn.com/w160/sg.png" class="w-16 mx-auto mb-4 rounded shadow-md" alt="Singapore">
-                                <h3 class="gp-number text-4xl font-black text-blue-900 mb-1 font-heading" data-target="25">0</h3>
-                                <p class="font-bold text-blue-900 text-sm">Business Visas</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide flex justify-center">
-                            <div class="gp-card w-full flex flex-col items-center justify-center text-center">
-                                <img src="https://flagcdn.com/w160/qa.png" class="w-16 mx-auto mb-4 rounded shadow-md" alt="Qatar">
-                                <h3 class="gp-number text-4xl font-black text-blue-900 mb-1 font-heading" data-target="45">0</h3>
-                                <p class="font-bold text-blue-900 text-sm">Projects</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide flex justify-center">
-                            <div class="gp-card w-full flex flex-col items-center justify-center text-center">
-                                <img src="https://flagcdn.com/w160/kw.png" class="w-16 mx-auto mb-4 rounded shadow-md" alt="Kuwait">
-                                <h3 class="gp-number text-4xl font-black text-blue-900 mb-1 font-heading" data-target="35">0</h3>
-                                <p class="font-bold text-blue-900 text-sm">Health Visas</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide flex justify-center">
-                            <div class="gp-card w-full flex flex-col items-center justify-center text-center">
-                                <img src="https://flagcdn.com/w160/ie.png" class="w-16 mx-auto mb-4 rounded shadow-md" alt="Ireland">
-                                <h3 class="gp-number text-4xl font-black text-blue-900 mb-1 font-heading" data-target="20">0</h3>
-                                <p class="font-bold text-blue-900 text-sm">Study Visa</p>
-                            </div>
-                        </div>
+                        <div class="swiper-slide flex justify-center"><div class="gp-card bg-white rounded-2xl shadow-sm border border-slate-200"><img src="https://flagcdn.com/w160/in.png" class="w-16 mx-auto mb-4 rounded shadow-md"><h3 class="gp-number text-4xl font-black text-blue-900" data-target="150">0</h3><p class="font-bold text-blue-900 text-sm">Projects in India</p></div></div>
+                        <div class="swiper-slide flex justify-center"><div class="gp-card bg-white rounded-2xl shadow-sm border border-slate-200"><img src="https://flagcdn.com/w160/ae.png" class="w-16 mx-auto mb-4 rounded shadow-md"><h3 class="gp-number text-4xl font-black text-blue-900" data-target="90">0</h3><p class="font-bold text-blue-900 text-sm">Visas for UAE</p></div></div>
+                        <div class="swiper-slide flex justify-center"><div class="gp-card bg-white rounded-2xl shadow-sm border border-slate-200"><img src="https://flagcdn.com/w160/sa.png" class="w-16 mx-auto mb-4 rounded shadow-md"><h3 class="gp-number text-4xl font-black text-blue-900" data-target="60">0</h3><p class="font-bold text-blue-900 text-sm">Hajj & Work</p></div></div>
+                        <div class="swiper-slide flex justify-center"><div class="gp-card bg-white rounded-2xl shadow-sm border border-slate-200"><img src="https://flagcdn.com/w160/us.png" class="w-16 mx-auto mb-4 rounded shadow-md"><h3 class="gp-number text-4xl font-black text-blue-900" data-target="70">0</h3><p class="font-bold text-blue-900 text-sm">Students in USA</p></div></div>
+                        <div class="swiper-slide flex justify-center"><div class="gp-card bg-white rounded-2xl shadow-sm border border-slate-200"><img src="https://flagcdn.com/w160/gb.png" class="w-16 mx-auto mb-4 rounded shadow-md"><h3 class="gp-number text-4xl font-black text-blue-900" data-target="55">0</h3><p class="font-bold text-blue-900 text-sm">Jobs in UK</p></div></div>
+                        <div class="swiper-slide flex justify-center"><div class="gp-card bg-white rounded-2xl shadow-sm border border-slate-200"><img src="https://flagcdn.com/w160/ca.png" class="w-16 mx-auto mb-4 rounded shadow-md"><h3 class="gp-number text-4xl font-black text-blue-900" data-target="40">0</h3><p class="font-bold text-blue-900 text-sm">PRs for Canada</p></div></div>
+                        <div class="swiper-slide flex justify-center"><div class="gp-card bg-white rounded-2xl shadow-sm border border-slate-200"><img src="https://flagcdn.com/w160/au.png" class="w-16 mx-auto mb-4 rounded shadow-md"><h3 class="gp-number text-4xl font-black text-blue-900" data-target="35">0</h3><p class="font-bold text-blue-900 text-sm">Study & Migrate</p></div></div>
+                        <div class="swiper-slide flex justify-center"><div class="gp-card bg-white rounded-2xl shadow-sm border border-slate-200"><img src="https://flagcdn.com/w160/eu.png" class="w-16 mx-auto mb-4 rounded shadow-md"><h3 class="gp-number text-4xl font-black text-blue-900" data-target="85">0</h3><p class="font-bold text-blue-900 text-sm">Placements</p></div></div>
+                        <div class="swiper-slide flex justify-center"><div class="gp-card bg-white rounded-2xl shadow-sm border border-slate-200"><img src="https://flagcdn.com/w160/de.png" class="w-16 mx-auto mb-4 rounded shadow-md"><h3 class="gp-number text-4xl font-black text-blue-900" data-target="30">0</h3><p class="font-bold text-blue-900 text-sm">Job Seekers</p></div></div>
+                        <div class="swiper-slide flex justify-center"><div class="gp-card bg-white rounded-2xl shadow-sm border border-slate-200"><img src="https://flagcdn.com/w160/sg.png" class="w-16 mx-auto mb-4 rounded shadow-md"><h3 class="gp-number text-4xl font-black text-blue-900" data-target="25">0</h3><p class="font-bold text-blue-900 text-sm">Business Visas</p></div></div>
+                        <div class="swiper-slide flex justify-center"><div class="gp-card bg-white rounded-2xl shadow-sm border border-slate-200"><img src="https://flagcdn.com/w160/qa.png" class="w-16 mx-auto mb-4 rounded shadow-md"><h3 class="gp-number text-4xl font-black text-blue-900" data-target="45">0</h3><p class="font-bold text-blue-900 text-sm">Projects</p></div></div>
+                        <div class="swiper-slide flex justify-center"><div class="gp-card bg-white rounded-2xl shadow-sm border border-slate-200"><img src="https://flagcdn.com/w160/kw.png" class="w-16 mx-auto mb-4 rounded shadow-md"><h3 class="gp-number text-4xl font-black text-blue-900" data-target="35">0</h3><p class="font-bold text-blue-900 text-sm">Health Visas</p></div></div>
+                        <div class="swiper-slide flex justify-center"><div class="gp-card bg-white rounded-2xl shadow-sm border border-slate-200"><img src="https://flagcdn.com/w160/ie.png" class="w-16 mx-auto mb-4 rounded shadow-md"><h3 class="gp-number text-4xl font-black text-blue-900" data-target="20">0</h3><p class="font-bold text-blue-900 text-sm">Study Visa</p></div></div>
                     </div>
                     <div class="swiper-pagination gp-pagination mt-8"></div>
                 </div>
@@ -388,14 +341,14 @@
             </div>
             <div class="swiper clientsSwiper w-full">
                 <div class="swiper-wrapper items-center">
-                    <div class="swiper-slide w-auto px-10 flex justify-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100"><img src="https://placehold.co/150x60?text=Client+1" class="h-12 w-auto object-contain" loading="lazy"></div>
-                    <div class="swiper-slide w-auto px-10 flex justify-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100"><img src="https://placehold.co/150x60?text=Client+2" class="h-12 w-auto object-contain" loading="lazy"></div>
-                    <div class="swiper-slide w-auto px-10 flex justify-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100"><img src="https://placehold.co/150x60?text=Client+3" class="h-12 w-auto object-contain" loading="lazy"></div>
-                    <div class="swiper-slide w-auto px-10 flex justify-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100"><img src="https://placehold.co/150x60?text=Client+4" class="h-12 w-auto object-contain" loading="lazy"></div>
-                    <div class="swiper-slide w-auto px-10 flex justify-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100"><img src="https://placehold.co/150x60?text=Client+5" class="h-12 w-auto object-contain" loading="lazy"></div>
-                    <div class="swiper-slide w-auto px-10 flex justify-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100"><img src="https://placehold.co/150x60?text=Client+6" class="h-12 w-auto object-contain" loading="lazy"></div>
-                    <div class="swiper-slide w-auto px-10 flex justify-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100"><img src="https://placehold.co/150x60?text=Client+7" class="h-12 w-auto object-contain" loading="lazy"></div>
-                    <div class="swiper-slide w-auto px-10 flex justify-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100"><img src="https://placehold.co/150x60?text=Client+8" class="h-12 w-auto object-contain" loading="lazy"></div>
+                    <div class="swiper-slide w-auto px-10 flex justify-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100"><img src="https://placehold.co/150x60?text=Client+1" class="h-12 w-auto object-contain" alt="Client 1"></div>
+                    <div class="swiper-slide w-auto px-10 flex justify-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100"><img src="https://placehold.co/150x60?text=Client+2" class="h-12 w-auto object-contain" alt="Client 2"></div>
+                    <div class="swiper-slide w-auto px-10 flex justify-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100"><img src="https://placehold.co/150x60?text=Client+3" class="h-12 w-auto object-contain" alt="Client 3"></div>
+                    <div class="swiper-slide w-auto px-10 flex justify-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100"><img src="https://placehold.co/150x60?text=Client+4" class="h-12 w-auto object-contain" alt="Client 4"></div>
+                    <div class="swiper-slide w-auto px-10 flex justify-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100"><img src="https://placehold.co/150x60?text=Client+5" class="h-12 w-auto object-contain" alt="Client 5"></div>
+                    <div class="swiper-slide w-auto px-10 flex justify-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100"><img src="https://placehold.co/150x60?text=Client+6" class="h-12 w-auto object-contain" alt="Client 6"></div>
+                    <div class="swiper-slide w-auto px-10 flex justify-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100"><img src="https://placehold.co/150x60?text=Client+7" class="h-12 w-auto object-contain" alt="Client 7"></div>
+                    <div class="swiper-slide w-auto px-10 flex justify-center grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100"><img src="https://placehold.co/150x60?text=Client+8" class="h-12 w-auto object-contain" alt="Client 8"></div>
                 </div>
             </div>
         </section>
@@ -410,7 +363,7 @@
                     <div class="swiper-slide h-auto">
                         <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-sm h-full hover:shadow-md transition-shadow">
                             <div class="text-6xl text-blue-600 opacity-20 mb-4 font-serif">“</div>
-                            <p class="text-slate-600 text-lg mb-6 leading-relaxed font-sans italic text-left">Amorah Group transformed my international career dreams into reality. Their overseas and job placement service is absolutely trustworthy.</p>
+                            <p class="text-slate-600 text-lg mb-6 leading-relaxed italic text-left">Amorah Group transformed my international career dreams into reality. Their overseas and job placement service is absolutely trustworthy.</p>
                             <h4 class="font-bold text-slate-900 text-lg font-heading">Ayesha Khan</h4>
                             <span class="text-blue-600 text-xs font-bold uppercase tracking-wide font-sans">UAE Work Visa Client</span>
                         </div>
@@ -418,7 +371,7 @@
                     <div class="swiper-slide h-auto">
                         <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-sm h-full hover:shadow-md transition-shadow">
                             <div class="text-6xl text-blue-600 opacity-20 mb-4 font-serif">“</div>
-                            <p class="text-slate-600 text-lg mb-6 leading-relaxed font-sans italic text-left">The recruitment team is extremely professional. Got placed in a top IT company within 30 days — highly recommended!</p>
+                            <p class="text-slate-600 text-lg mb-6 leading-relaxed italic text-left">The recruitment team is extremely professional. Got placed in a top IT company within 30 days — highly recommended!</p>
                             <h4 class="font-bold text-slate-900 text-lg font-heading">Rahul Verma</h4>
                             <span class="text-blue-600 text-xs font-bold uppercase tracking-wide font-sans">Software Engineer</span>
                         </div>
@@ -426,7 +379,7 @@
                     <div class="swiper-slide h-auto">
                         <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-sm h-full hover:shadow-md transition-shadow">
                             <div class="text-6xl text-blue-600 opacity-20 mb-4 font-serif">“</div>
-                            <p class="text-slate-600 text-lg mb-6 leading-relaxed font-sans italic text-left">Their training program is exceptional. Real-time projects and excellent support helped me secure a job in record time.</p>
+                            <p class="text-slate-600 text-lg mb-6 leading-relaxed italic text-left">Their training program is exceptional. Real-time projects and excellent support helped me secure a job in record time.</p>
                             <h4 class="font-bold text-slate-900 text-lg font-heading">Priya Desai</h4>
                             <span class="text-blue-600 text-xs font-bold uppercase tracking-wide font-sans">Digital Marketing</span>
                         </div>
@@ -434,7 +387,7 @@
                     <div class="swiper-slide h-auto">
                         <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-sm h-full hover:shadow-md transition-shadow">
                             <div class="text-6xl text-blue-600 opacity-20 mb-4 font-serif">“</div>
-                            <p class="text-slate-600 text-lg mb-6 leading-relaxed font-sans italic text-left">I was struggling to find a job after my gap year. Amorah's Java Full Stack training gave me the skills and confidence to land a package of 8 LPA in Pune.</p>
+                            <p class="text-slate-600 text-lg mb-6 leading-relaxed italic text-left">I was struggling to find a job after my gap year. Amorah's Java Full Stack training gave me the skills and confidence to land a package of 8 LPA in Pune.</p>
                             <h4 class="font-bold text-slate-900 text-lg font-heading">Sandeep Reddy</h4>
                             <span class="text-blue-600 text-xs font-bold uppercase tracking-wide font-sans">Java Developer</span>
                         </div>
@@ -442,7 +395,7 @@
                     <div class="swiper-slide h-auto">
                         <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-sm h-full hover:shadow-md transition-shadow">
                             <div class="text-6xl text-blue-600 opacity-20 mb-4 font-serif">“</div>
-                            <p class="text-slate-600 text-lg mb-6 leading-relaxed font-sans italic text-left">Seamless process for my UK Skilled Worker Visa. They handled all the documentation with precision. I am now happily working in London.</p>
+                            <p class="text-slate-600 text-lg mb-6 leading-relaxed italic text-left">Seamless process for my UK Skilled Worker Visa. They handled all the documentation with precision. I am now happily working in London.</p>
                             <h4 class="font-bold text-slate-900 text-lg font-heading">Vikram Singh</h4>
                             <span class="text-blue-600 text-xs font-bold uppercase tracking-wide font-sans">IT Analyst, UK</span>
                         </div>
@@ -507,7 +460,7 @@
                             
                             <textarea name="entry.767962263" rows="4" placeholder="Tell us briefly about your needs..." class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition"></textarea>
                             
-                            <input type="text" name="bot_check" style="display:none !important;" autocomplete="off" tabindex="-1">
+                            <input type="text" name="bot_check" class="hidden" autocomplete="off" tabindex="-1">
 
                             <button type="submit" class="btn-premium w-full shadow-lg text-lg mt-2 transform hover:-translate-y-1 transition-all">
                                 Send Message
@@ -529,6 +482,75 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
-    <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. SERVICES SECTION CANVAS (RED)
+            const canvasRed = document.getElementById("network-lines-red");
+            if (canvasRed) {
+                const ctxRed = canvasRed.getContext("2d");
+                let wRed, hRed, dotsRed = [];
+                const resizeRed = () => { wRed = canvasRed.width = canvasRed.parentElement.offsetWidth; hRed = canvasRed.height = canvasRed.parentElement.offsetHeight; initDotsRed(); };
+                
+                // UPDATED: Increased Line/Dot Count to 80
+                const initDotsRed = () => {
+                    dotsRed = Array.from({ length: 80 }, () => ({ x: Math.random() * wRed, y: Math.random() * hRed, vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5 }));
+                };
+                window.addEventListener('resize', resizeRed);
+                resizeRed();
+                const animateRed = () => {
+                    ctxRed.clearRect(0, 0, wRed, hRed);
+                    dotsRed.forEach((d, i) => {
+                        d.x += d.vx; d.y += d.vy;
+                        if(d.x<0||d.x>wRed) d.vx*=-1; if(d.y<0||d.y>hRed) d.vy*=-1;
+                        
+                        // Draw Lines (Red)
+                        dotsRed.slice(i+1).forEach(o => {
+                            const dist = Math.hypot(d.x - o.x, d.y - o.y);
+                            if (dist < 100) {
+                                ctxRed.strokeStyle = `rgba(220, 38, 38, ${0.4 * (1 - dist / 100)})`; // Red-600
+                                ctxRed.beginPath(); ctxRed.moveTo(d.x, d.y); ctxRed.lineTo(o.x, o.y); ctxRed.stroke();
+                            }
+                        });
+                        
+                        // Draw Dots (Red)
+                        ctxRed.fillStyle = "rgba(220, 38, 38, 0.5)"; // Red-600
+                        ctxRed.beginPath(); ctxRed.arc(d.x, d.y, 2, 0, Math.PI*2); ctxRed.fill();
+                    });
+                    requestAnimationFrame(animateRed);
+                };
+                animateRed();
+            }
+
+            // 2. WHY CHOOSE US CANVAS (DOTS - RED BUBBLES ADDED)
+            const canvasDots = document.getElementById("canvas-dots");
+            if (canvasDots) {
+                const ctx = canvasDots.getContext("2d");
+                let w, h, dots = [];
+                const resize = () => { w = canvasDots.width = canvasDots.parentElement.offsetWidth; h = canvasDots.height = canvasDots.parentElement.offsetHeight; initDots(); };
+                
+                // UPDATED: Increased Line/Dot Count to 80
+                const initDots = () => {
+                    dots = Array.from({ length: 80 }, () => ({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5 }));
+                };
+                window.addEventListener('resize', resize);
+                resize();
+                const animate = () => {
+                    ctx.clearRect(0, 0, w, h);
+                    dots.forEach(d => {
+                        d.x += d.vx; d.y += d.vy;
+                        if(d.x<0||d.x>w) d.vx*=-1; if(d.y<0||d.y>h) d.vy*=-1;
+                        
+                        // UPDATED: Dots are now Red-600 (rgba(220, 38, 38))
+                        ctx.fillStyle = "rgba(220, 38, 38, 0.25)"; 
+                        ctx.beginPath(); ctx.arc(d.x, d.y, 2, 0, Math.PI*2); ctx.fill();
+                    });
+                    requestAnimationFrame(animate);
+                };
+                animate();
+            }
+        });
+    </script>
 </body>
 </html>
