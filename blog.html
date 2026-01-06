@@ -27,6 +27,7 @@
 
   <style>
     /* --- PAGE SPECIFIC STYLES --- */
+    /* Kept here as requested for Chips & Modals */
     
     /* Filter Chips */
     .chip {
@@ -36,7 +37,7 @@
         white-space: nowrap;
     }
     .chip.active, .chip:hover {
-        background: linear-gradient(90deg, #4f46e5, #06b6d4); /* Matches .btn-premium gradient */
+        background: linear-gradient(90deg, #2563eb, #06b6d4);
         color: white; 
         box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
     }
@@ -154,18 +155,20 @@
                 <form id="contactForm" autocomplete="on" novalidate class="space-y-5">
                     <h3 class="text-2xl font-bold text-white mb-6">Subscribe / Contact</h3>
                     <div class="grid md:grid-cols-2 gap-5">
-                        <input name="name" type="text" placeholder="Full Name*" required class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition">
-                        <input name="phone" type="tel" placeholder="Phone Number*" required class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition">
+                        <input name="entry.27239600" type="text" placeholder="Full Name*" required class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition">
+                        <input name="entry.1740383347" type="tel" placeholder="Phone Number*" required class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition">
                     </div>
-                    <input name="email" type="email" placeholder="Email Address*" required class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition">
+                    <input name="entry.1615760396" type="email" placeholder="Email Address*" required class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition">
                     
-                    <select name="interest" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition">
+                    <select name="entry.1861341284" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition">
                         <option value="Newsletter" class="text-slate-800">Newsletter Subscription</option>
                         <option value="IT Services" class="text-slate-800">IT Services</option>
                         <option value="Recruitment" class="text-slate-800">Recruitment</option>
                         <option value="Overseas" class="text-slate-800">Overseas Services</option>
                     </select>
                     
+                    <textarea name="entry.767962263" class="hidden">Newsletter Subscription Request</textarea>
+
                     <button type="submit" class="btn-premium w-full text-xl mt-2 shadow-lg">Submit Request <i class="fas fa-arrow-right ml-3"></i></button>
                     
                     <p id="formMsg" class="hidden text-center mt-4 text-sm font-bold text-white"></p>
@@ -213,19 +216,18 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     
-    // 1. Initialize Libraries (AOS for scrolling, but removed VanillaTilt)
+    // 1. Initialize Libraries
     if(window.AOS) AOS.init({ duration: 800, once: true });
 
-    // 2. EXPANDED BLOG CONTENT (Including Gulf Countries)
+    // 2. BLOG CONTENT DATA (With Gulf & IT Content)
     const POSTS = [
-      // --- GULF & OVERSEAS FOCUSED ---
       {
         id:'dubai-job-market-2026',
         title:'Dubai Job Market Outlook 2026: Tech & Construction',
         tag:'Overseas',
         date:'2025-12-12',
         read:5,
-        img:'https://images.unsplash.com/photo-1512453979798-5ea904ac66de?q=80&w=1600&auto=format&fit=crop', // Dubai Skyline
+        img:'https://images.unsplash.com/photo-1512453979798-5ea904ac66de?q=80&w=1600&auto=format&fit=crop',
         excerpt:'Why Dubai remains the top destination for Indian professionals in IT and Real Estate.',
         body:`<p>Dubai's digital economy strategy is creating thousands of jobs in AI, Blockchain, and Fintech. Simultaneously, the real estate boom requires skilled project managers and civil engineers.</p><p>Key sectors: Data Science, Cybersecurity, Construction Management, and Healthcare.</p>`,
         popular: true, featured: true
@@ -236,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tag:'Overseas',
         date:'2025-12-01',
         read:7,
-        img:'https://images.unsplash.com/photo-1586724237569-f3d0c1dee8c6?q=80&w=1600&auto=format&fit=crop', // Saudi Desert/Modern
+        img:'https://images.unsplash.com/photo-1586724237569-f3d0c1dee8c6?q=80&w=1600&auto=format&fit=crop',
         excerpt:'Opportunities for engineers, architects, and IT experts in Saudi Arabia\'s Giga-Projects.',
         body:`<p>The Kingdom of Saudi Arabia (KSA) is aggressively hiring for NEOM, The Line, and Red Sea Global. They need experienced professionals willing to relocate.</p><p>Salaries are tax-free and often include housing allowances. We discuss the cultural shift and visa processes for KSA.</p>`,
         popular: true, featured: true
@@ -247,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tag:'Overseas',
         date:'2025-11-25',
         read:6,
-        img:'https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=1600&auto=format&fit=crop', // UAE Flag/Business
+        img:'https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=1600&auto=format&fit=crop',
         excerpt:'How engineers, doctors, and coders can get a 10-year residency without a sponsor.',
         body:`<p>The UAE Golden Visa is now accessible to professionals with a basic salary of AED 30,000+ per month. We break down the attestation requirements and application steps.</p>`,
         popular: true, featured: false
@@ -258,7 +260,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tag:'Overseas',
         date:'2025-11-18',
         read:5,
-        img:'https://images.unsplash.com/photo-1575351881847-b3bf188d9d0a?q=80&w=1600&auto=format&fit=crop', // Doha/Industry
+        img:'https://images.unsplash.com/photo-1575351881847-b3bf188d9d0a?q=80&w=1600&auto=format&fit=crop',
         excerpt:'Beyond Dubai: Why Qatar and Kuwait offer stability and high savings potential.',
         body:`<p>While UAE gets the spotlight, Qatar and Kuwait offer competitive packages for Oil & Gas engineers and Medical staff (Nurses/Doctors). The cost of living is often lower than Dubai, leading to higher savings.</p>`,
         popular: false, featured: false
@@ -269,13 +271,11 @@ document.addEventListener('DOMContentLoaded', function() {
         tag:'Overseas',
         date:'2025-11-10',
         read:8,
-        img:'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=1600&auto=format&fit=crop', // Money/Business
+        img:'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=1600&auto=format&fit=crop',
         excerpt:'A breakdown of average salaries for IT and Construction across UAE, KSA, and Qatar.',
         body:`<p>Is AED 10,000 enough in Dubai? How much can you save in Riyadh? We compare rent, schooling, and grocery costs across major Gulf cities to help you negotiate better.</p>`,
         popular: true, featured: false
       },
-
-      // --- EXISTING CONTENT (Featured & Regular) ---
       {
         id:'ai-hiring-2025',
         title:'AI in Hiring: What Changes in 2025',
@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function() {
         read:6,
         img:'https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1600&auto=format&fit=crop',
         excerpt:'From AI screening to skills-first pipelines—how to keep hiring ethical, fast and unbiased.',
-        body:`<p>AI is accelerating screening and matching, but human oversight matters. We cover compliant usage, practical tooling, and skills-first pipelines that reduce bias.</p> <p>Key takeaways: define success metrics, create reviewer loops, and audit your prompts and datasets regularly.</p>`,
+        body:`<p>AI is accelerating screening and matching, but human oversight matters. We cover compliant usage, practical tooling, and skills-first pipelines that reduce bias.</p>`,
         popular: true, featured: true
       },
       {
