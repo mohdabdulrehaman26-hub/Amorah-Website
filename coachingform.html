@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C6ZVCVHQB"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7C6ZVCVHQB');
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apply for Coaching | Amorah Group</title>
@@ -16,21 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['"Open Sans"', 'sans-serif'], heading: ['"Poppins"', 'sans-serif'] }
-                }
-            }
-        }
-    </script>
     <link rel="stylesheet" href="css/style.css">
     
+    <script src="links/external-links.js" defer></script>
+    <script src="links/links-init.js" defer></script>
     <script src="js/main.js" defer></script>
 </head>
 
@@ -55,12 +39,7 @@
                 <div class="bg-gradient-to-r from-blue-600 to-cyan-500 h-2 w-full"></div> 
                 
                 <div class="p-8 md:p-12">
-                    <form id="coachingForm" 
-                          action="https://docs.google.com/forms/d/e/1FAIpQLSfi7WtJPDe3aMmXxc7PMOJHzTv8t2x-EyfcUx_nfUq8JSzMLg/formResponse"
-                          method="POST"
-                          class="space-y-6"
-                          target="hidden_iframe"
-                          onsubmit="submitted=true;">
+                    <form id="coachingForm" class="space-y-6">
                         
                         <div>
                             <label class="block text-sm font-bold text-slate-700 mb-2">Full Name <span class="text-red-500">*</span></label>
@@ -89,8 +68,10 @@
                                 <option value="IELTS">IELTS</option>
                                 <option value="PTE">PTE (Pearson)</option>
                                 <option value="TOEFL">TOEFL</option>
-                                <option value="OET">OET</option>
                                 <option value="Duolingo">Duolingo</option>
+                                <option value="German">German Language</option>
+                                <option value="French">French Language</option>
+                                <option value="OET">OET (Medical)</option>
                                 <option value="Spoken English">Spoken English</option>
                             </select>
                         </div>
@@ -107,11 +88,8 @@
                             Submit Application <i class="fas fa-paper-plane ml-2"></i>
                         </button>
 
-                        <p id="formMsg" class="hidden text-center mt-4 text-sm font-bold text-green-600 bg-green-50 p-3 rounded-lg border border-green-200"></p>
+                        <p id="formMsg" class="hidden text-center mt-4 text-sm font-bold p-3 rounded-lg border"></p>
                     </form>
-                    
-                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {document.getElementById('formMsg').textContent='Thank you! Your application has been submitted successfully.'; document.getElementById('formMsg').classList.remove('hidden'); document.getElementById('coachingForm').reset();}"></iframe>
-                    <script>var submitted=false;</script>
                 </div>
             </div>
         </div>
@@ -123,11 +101,9 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <script src="links/external-links.js" defer></script>
-
     <script>
-        // Pre-select course if passed via URL parameter (e.g. coachingform.html?course=IELTS)
         document.addEventListener('DOMContentLoaded', function() {
+            // 1. Auto-select course from URL params
             const urlParams = new URLSearchParams(window.location.search);
             const course = urlParams.get('course');
             if (course) {
@@ -139,6 +115,51 @@
                     }
                 }
             }
+
+            // 2. Specific Form Submission Logic
+            document.getElementById('coachingForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const form = this;
+                const btn = form.querySelector('button[type="submit"]');
+                const msg = document.getElementById('formMsg');
+                const originalText = btn.innerHTML;
+
+                // Disable button
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+                // THE COACHING FORM URL
+                const COACHING_SHEET_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfi7WtJPDe3aMmXxc7PMOJHzTv8t2x-EyfcUx_nfUq8JSzMLg/formResponse";
+
+                try {
+                    await fetch(COACHING_SHEET_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        body: new FormData(form)
+                    });
+
+                    // Track Conversion (Specific for Coaching)
+                    if(typeof fbq !== 'undefined') fbq('track', 'SubmitApplication');
+
+                    // Success Message
+                    msg.classList.remove('hidden');
+                    msg.className = "text-center mt-4 text-sm font-bold text-green-600 bg-green-50 p-3 rounded-lg border border-green-200";
+                    msg.textContent = "Application Submitted Successfully! We will contact you soon.";
+                    form.reset();
+
+                } catch (error) {
+                    // Error Message
+                    msg.classList.remove('hidden');
+                    msg.className = "text-center mt-4 text-sm font-bold text-red-600 bg-red-50 p-3 rounded-lg border border-red-200";
+                    msg.textContent = "Something went wrong. Please check your connection.";
+                } finally {
+                    // Reset Button after 3 seconds
+                    setTimeout(() => {
+                        btn.disabled = false;
+                        btn.innerHTML = originalText;
+                    }, 3000);
+                }
+            });
         });
     </script>
 
