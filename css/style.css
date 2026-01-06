@@ -1,6 +1,8 @@
 /* =====================================================
    1. GLOBAL RESET & BASE
 ===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Poppins:wght@500;600;700;800&display=swap');
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -12,12 +14,12 @@ html {
 
 body {
   margin: 0;
-  /* UNIFIED FONT: Open Sans for body text */
   font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
   background-color: #f8fafc;
   color: #0f172a;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 /* Headings Font: Poppins */
@@ -26,19 +28,26 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   line-height: 1.2;
 }
 
-/* Container */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+/* Utilities */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.text-justify {
+  text-align: justify;
+  text-justify: inter-word;
 }
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+
+/* Accessibility Focus */
+a:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* =====================================================
@@ -50,10 +59,10 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 1.6rem;
-  border-radius: 999px;
+  border-radius: 9999px;
   font-weight: 800;
   background: linear-gradient(135deg, #2563eb, #06b6d4);
-  color: #ffffff;
+  color: #ffffff !important;
   text-decoration: none;
   border: none;
   cursor: pointer;
@@ -64,7 +73,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 .btn-premium:hover {
   transform: translateY(-3px);
   box-shadow: 0 18px 35px rgba(37, 99, 235, 0.45);
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .underline-blue {
@@ -74,7 +83,6 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   border-radius: 2px;
 }
 
-/* Glass Card */
 .glass-card {
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(12px);
@@ -85,16 +93,16 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   transition: transform 0.3s ease;
 }
 
-/* Image Wrappers */
 .image-wrapper {
     position: relative;
     overflow: hidden;
-    /* Ensure border-radius is respected */
     transform: translateZ(0); 
 }
+.image-wrapper img { transition: transform 0.5s ease; }
+.image-wrapper:hover img { transform: scale(1.05); }
 
 /* =====================================================
-   3. HEADER
+   3. HEADER & NAVIGATION
 ===================================================== */
 .header {
   height: 92px;
@@ -103,29 +111,31 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   background: transparent;
   transition: all 0.35s ease;
   width: 100%;
+  
+  /* Fixed Positioning */
   position: fixed;
   top: 0;
-  z-index: 50;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  
+  will-change: height, background, box-shadow;
 }
 
 .header.scrolled {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   height: 72px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
-/* Logo */
 .logo-img {
   height: 70px;
   width: auto;
   transition: height 0.3s ease;
 }
+.header.scrolled .logo-img { height: 58px; }
 
-.header.scrolled .logo-img {
-  height: 58px;
-}
-
-/* Desktop Nav Links */
 .desktop-nav {
   gap: 2rem;
   display: flex;
@@ -142,14 +152,8 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   font-size: 0.95rem;
 }
 
-.header.scrolled .nav-link {
-  color: #0f172a !important;
-}
-
-.nav-link:hover,
-.header.scrolled .nav-link:hover {
-  color: #2563eb !important;
-}
+.header.scrolled .nav-link { color: #0f172a !important; }
+.nav-link:hover, .header.scrolled .nav-link:hover { color: #2563eb !important; }
 
 .nav-link::after {
   content: "";
@@ -161,12 +165,8 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   background: #2563eb;
   transition: width 0.3s ease;
 }
+.nav-link:hover::after { width: 100%; }
 
-.nav-link:hover::after {
-  width: 100%;
-}
-
-/* Header CTA */
 .header-cta {
   padding: 0.65rem 1.5rem;
   border-radius: 999px;
@@ -174,8 +174,8 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   color: #ffffff !important;
   font-weight: 800;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
-
 .header-cta:hover {
   background: #20bd5a;
   transform: translateY(-2px);
@@ -183,7 +183,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 }
 
 /* =====================================================
-   4. DROPDOWNS
+   4. DROPDOWNS (FIXED BRIDGE)
 ===================================================== */
 .nav-item-group {
   position: relative;
@@ -192,22 +192,23 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   align-items: center;
 }
 
-/* Main Dropdown */
+/* 1. Main Dropdown Panel */
 .nav-dropdown {
   position: absolute;
   top: 100%;
   left: 0;
-  width: 200px;
-  min-width: 200px;
+  width: 220px;
   background: #ffffff;
-  border-radius: 0 0 14px 14px;
+  border-radius: 0 0 12px 12px;
   border-top: 3px solid #2563eb;
-  padding: 0.5rem 0;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  padding: 4px 0;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
   transition: all 0.3s ease;
+  z-index: 1000; 
 }
 
 .nav-item-group:hover .nav-dropdown {
@@ -216,31 +217,80 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   transform: translateY(0);
 }
 
+/* 2. Items */
 .dropdown-item {
   position: relative;
   display: block;
 }
 
-/* Sub Dropdown */
+.dropdown-item a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  color: #334155;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.dropdown-item:hover > a {
+    color: #2563eb;
+    background-color: #f8fafc;
+    border-left: 3px solid #2563eb;
+    padding-left: 1.2rem;
+}
+
+/* 3. Sub Dropdown (With Bridge) */
 .sub-dropdown {
   position: absolute;
   left: 100%;
   top: 0;
-  width: 270px;
-  min-width: 270px;
+  width: 240px;
   background: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  padding: 0.5rem 0;
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.1);
+  padding: 4px 0;
+  
   opacity: 0;
   visibility: hidden;
-  margin-left: 2px;
+  margin-left: 0; 
   transition: all 0.2s ease;
+  z-index: 1001;
+  border: 1px solid #f1f5f9;
+}
+
+/* Bridge Logic: Prevents closing gap */
+.sub-dropdown::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -15px; 
+    width: 20px; 
+    height: 100%;
+    background: transparent;
 }
 
 .dropdown-item:hover .sub-dropdown {
   opacity: 1;
   visibility: visible;
+}
+
+.sub-dropdown a {
+    display: block;
+    padding: 0.4rem 1rem;
+    color: #475569;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    border-left: none;
+}
+.sub-dropdown a:hover {
+    color: #2563eb;
+    background-color: #eff6ff;
+    padding-left: 1.2rem;
 }
 
 /* =====================================================
@@ -255,28 +305,19 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   right: 0;
   height: 100vh;
   width: 300px;
-  z-index: 60;
+  z-index: 1000;
   box-shadow: -5px 0 25px rgba(0,0,0,0.1);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
 }
 
-.mobile-toggle-btn {
-  font-weight: 600;
-}
-
-.mobile-submenu a {
-  transition: all 0.25s ease;
-}
-
-.mobile-submenu a:hover {
-  color: #2563eb;
-  padding-left: 1.25rem;
-}
+.mobile-toggle-btn { font-weight: 600; }
+.mobile-dropdown-btn { width: 100%; text-align: left; }
 
 #mobileOverlay {
   background: rgba(15, 23, 42, 0.7);
   backdrop-filter: blur(4px);
-  z-index: 55;
+  z-index: 998;
 }
 
 /* =====================================================
@@ -287,22 +328,10 @@ footer {
   backdrop-filter: blur(16px);
   position: relative;
   border-top: 1px solid #e2e8f0;
-  padding-top: 2.5rem; 
-  padding-bottom: 1.5rem;
+  padding-top: 3rem; 
+  padding-bottom: 2rem;
 }
 
-/* Footer Container */
-footer .container {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-/* Footer Grid Gap */
-footer .grid {
-  gap: 2rem;
-}
-
-/* Map Background */
 .footer-map-bg {
   background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/2000px-World_map_-_low_resolution.svg.png");
   background-repeat: no-repeat;
@@ -314,98 +343,57 @@ footer .grid {
   pointer-events: none;
 }
 
-/* Logo */
-.footer-logo {
-  width: 85px;
-  margin-bottom: 0.8rem;
-}
+.footer-logo { width: 120px; margin-bottom: 1rem; }
 
-/* Titles */
 .footer-title {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 800;
   color: #0f172a;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-/* Links Container */
-.footer-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: 0.8rem; }
 
-/* List Items */
-.footer-links li {
-  margin-bottom: 0.6rem;
-  display: flex;
-  align-items: center;
-}
-
-/* Link Styling */
 .footer-links li a {
   position: relative;
-  padding-left: 20px;
+  padding-left: 18px;
   color: #475569;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 500;
   transition: all 0.3s ease;
   text-decoration: none;
-  line-height: 1.4;
 }
 
-/* Animated Arrow */
 .footer-links li a::before {
   content: "➜";
   position: absolute;
   left: 0;
-  top: 4px;
-  font-size: 0.75rem;
+  top: 2px;
+  font-size: 0.7rem;
   color: #dc2626;
   transition: all 0.3s ease;
 }
 
-/* Hover Effects */
-.footer-links li a:hover {
-  color: #2563eb;
-  transform: translateX(5px);
-}
+.footer-links li a:hover { color: #2563eb; padding-left: 22px; }
 
-.footer-links li a:hover::before {
-  color: #2563eb;
-}
+.social-links-container { display: flex; gap: 0.8rem; margin-top: 1rem; }
 
-/* Footer Follow Text */
-.footer-follow-text {
-  margin-top: 0.8rem;
-  font-weight: 800;
-  font-style: italic;
-  color: #dc2626;
-  font-size: 0.85rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Social Icons Container */
-.social-links-container {
-  display: flex;
-  gap: 0.6rem;
-}
-
-/* Social Icons */
 .social-hover {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #f1f5f9;
   color: #334155;
-  font-size: 1rem;
+  font-size: 1.1rem;
   transition: all 0.3s ease;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .social-hover:hover {
@@ -415,95 +403,55 @@ footer .grid {
 }
 
 .social-hover.facebook:hover { background: #1877f2; }
-.social-hover.instagram:hover { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+.social-hover.instagram:hover { background: linear-gradient(45deg, #f09433 0%,#bc1888 100%); }
 .social-hover.linkedin:hover { background: #0a66c2; }
 .social-hover.twitter:hover { background: #000000; }
 .social-hover.youtube:hover { background: #ff0000; }
 .social-hover.telegram:hover { background: #229ed9; }
 
-/* Globe Icon */
-.footer-globe {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #2563eb, #06b6d4);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  font-size: 1.2rem;
-  box-shadow: 0 10px 25px rgba(37,99,235,0.35);
-  transition: all 0.35s ease;
-  margin-right: 10px;
-}
-
-.footer-globe:hover {
-  transform: rotate(12deg) scale(1.08);
-}
-
-/* Footer WhatsApp Button */
 .footer-whatsapp {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 1rem;
-  padding: 0.7rem 1.2rem;
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
   border-radius: 999px;
   background: linear-gradient(135deg, #25d366, #20bd5a);
   color: #ffffff !important;
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   transition: all 0.3s ease;
   text-decoration: none;
   box-shadow: 0 5px 15px rgba(37,211,102,0.3);
 }
-
 .footer-whatsapp:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(37,211,102,0.5);
 }
 
-/* Contact List Spacing */
-.space-y-3 > li {
-  margin-bottom: 0.8rem;
-  display: flex;
-  align-items: flex-start;
-}
-
-.space-y-3 i {
-  margin-top: 5px;
-  margin-right: 10px;
-}
-
-/* Footer Badges */
 .footer-badge {
-  width: 80px;
+  width: 90px;
   filter: grayscale(100%);
   transition: all 0.35s ease;
-  margin-top: 1rem;
-  display: inline-block;
+  opacity: 0.7;
 }
-
 .footer-badge:hover {
   filter: grayscale(0);
+  opacity: 1;
   transform: scale(1.05);
 }
 
 /* =====================================================
    7. PAGE SPECIFIC & RESPONSIVE
 ===================================================== */
-/* Sticky Nav */
 .sticky-tabs {
   position: sticky;
   top: 0;
   z-index: 40;
   transition: top 0.3s;
 }
-
 @media (min-width: 1024px) {
-  .sticky-tabs {
-    top: 72px;
-  }
+  .sticky-tabs { top: 72px; }
 }
 
 .tab-link.active-tab {
@@ -522,7 +470,6 @@ footer .grid {
   transition: all 0.3s ease;
   height: 100%;
 }
-
 .country-card:hover {
   transform: translateY(-5px);
   border-color: #3b82f6;
@@ -530,10 +477,8 @@ footer .grid {
 }
 
 /* =====================================================
-   8. GLOBAL PRESENCE FIXES (V3.0)
+   8. GLOBAL PRESENCE & SWIPER
 ===================================================== */
-
-/* 1. Force Center Alignment for Cards */
 .gp-card {
     display: flex;
     flex-direction: column;
@@ -542,65 +487,91 @@ footer .grid {
     text-align: center;
     width: 100%;
     padding: 1.5rem;
-    height: 100%; /* Ensure full height */
-    /* Ensure no stray margins push text to side */
+    height: 100%;
 }
 
-/* 2. Top Text Slider (Badge Style) */
 .gp-badge {
-    opacity: 0.5;
+    opacity: 0.6;
     transition: all 0.3s ease;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.95rem;
     white-space: nowrap;
     text-align: center;
     padding: 10px 20px;
     border-radius: 50px;
+    background: #f1f5f9;
+    border: 1px solid transparent;
 }
-
-/* 3. Active State for Top Text (Blue & Big) */
 .swiper-slide-thumb-active .gp-badge {
     opacity: 1;
-    color: #2563eb; /* Blue-600 */
-    background: #eff6ff; /* Blue-50 */
-    font-weight: 800;
-    transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+    color: #ffffff;
+    background: #2563eb;
+    font-weight: 700;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
-/* 4. Fix Swiper Wrapper Alignment */
 .gpMainSwiper .swiper-wrapper {
+    align-items: stretch;
+}
+
+/* Marquee Logic */
+.clientsSwiper .swiper-wrapper,
+.toolsSwiper .swiper-wrapper {
+    -webkit-transition-timing-function: linear !important;
+    -o-transition-timing-function: linear !important;
+    transition-timing-function: linear !important;
+}
+.clientsSwiper .swiper-slide, .toolsSwiper .swiper-slide {
+    width: auto !important; 
+    display: flex;
     align-items: center;
+    justify-content: center;
+}
+.clientsSwiper img, .toolsSwiper img {
+    display: block;
+    max-height: 50px;
+    width: auto;
+    object-fit: contain;
 }
 
 /* =====================================================
    9. FLOATING WHATSAPP
 ===================================================== */
+@keyframes pulse-border {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
 .wa-float {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   background: #25d366;
   color: #ffffff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  font-size: 34px;
   z-index: 100;
   transition: all 0.3s ease;
   text-decoration: none;
+  animation: pulse-border 2s infinite;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .wa-float:hover {
   transform: translateY(-5px);
+  background: #20bd5a;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.6);
 }
 
 /* =====================================================
-   10. RESPONSIVE ADJUSTMENTS
+   10. MEDIA QUERIES (RESPONSIVE RULES)
 ===================================================== */
 @media (max-width: 1024px) {
   .header {
@@ -608,119 +579,120 @@ footer .grid {
     background: #ffffff;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   }
-  .header.scrolled {
-    height: 70px;
-  }
-  .logo-img, .header.scrolled .logo-img {
-    height: 50px;
-  }
-  .nav-link {
-    color: #0f172a !important;
-  }
-  .footer-logo {
-    width: 80px;
-  }
+  .header.scrolled { height: 70px; }
+  .logo-img, .header.scrolled .logo-img { height: 50px; }
+  .nav-link { color: #0f172a !important; }
+  .footer-logo { width: 100px; }
+  .text-justify { text-align: left !important; }
 }
 
 @media (max-width: 768px) {
-  .btn-premium {
-    width: 100%;
-  }
-  footer .grid {
-    gap: 2.5rem;
-  }
+  .btn-premium { width: 100%; }
+  footer .grid { gap: 3rem; }
+  .container { padding-left: 1.25rem; padding-right: 1.25rem; }
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 1.8rem; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container { padding-left: 2rem; padding-right: 2rem; }
+    .grid { gap: 2rem !important; }
+    .image-wrapper { width: 100% !important; height: auto !important; }
+}
+
+/* =========================================
+   11. BLOG & EXTRAS (Modal, Chips)
+========================================= */
+.chip {
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #64748b;
+    font-weight: 600;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    font-size: 0.9rem;
+}
+.chip.active, .chip:hover {
+    background: linear-gradient(90deg, #2563eb, #06b6d4);
+    color: white; 
+    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+}
+
+.modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 9999; }
+.modal.show { display: flex; animation: fadeIn 0.2s ease-out; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(4px); }
+.modal-card {
+    position: relative; max-width: 900px; width: 94%; max-height: 90vh; overflow-y: auto;
+    background: #ffffff; 
+    border-radius: 12px; 
+    animation: slideUp 0.3s ease-out;
 }
 
 /* =====================================================
-   11. TEXT ALIGNMENT & ANIMATIONS (INTEGRATED)
+   12. ANIMATION KEYFRAMES (Required for JS)
 ===================================================== */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translate3d(0, 20px, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.animate-fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
 
-/* Force default paragraph alignment */
-.prose p, p {
-  text-align: left;
+.fa-spin { animation: fa-spin 2s infinite linear; }
+@keyframes fa-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-/* Desktop: Allow justified text where specifically asked */
-@media (min-width: 1024px) {
-  .text-justify {
-    text-align: justify;
-    text-justify: inter-word;
-  }
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .7; }
 }
+.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
 
-/* Mobile: Force Left align to prevent gaps */
-@media (max-width: 1023px) {
-  .text-justify {
-    text-align: left !important;
-  }
+@keyframes slideUp { 
+    from { opacity: 0; transform: translateY(20px); } 
+    to { opacity: 1; transform: translateY(0); } 
 }
-
-/* =========================================
-   FIX: MARQUEE ANIMATION & SIZING
-   (Added this missing part to ensure flow)
-========================================= */
-
-/* 1. Force Linear Animation (Smooth Flow) */
-.clientsSwiper .swiper-wrapper,
-.toolsSwiper .swiper-wrapper {
-    -webkit-transition-timing-function: linear !important;
-    -o-transition-timing-function: linear !important;
-    transition-timing-function: linear !important;
-}
-
-/* 2. Force Slides to Fit Content (Critical for loop) */
-.clientsSwiper .swiper-slide,
-.toolsSwiper .swiper-slide {
-    width: auto !important;  /* Creates the "auto" width behavior */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* 3. Ensure Images don't collapse */
-.clientsSwiper img,
-.toolsSwiper img {
-    display: block;
-    max-height: 50px; /* Sets a consistent height */
-    width: auto;      /* Allows width to adjust based on height */
+@keyframes fadeIn { 
+    from { opacity: 0; } 
+    to { opacity: 1; } 
 }
 
 /* =========================================
-   TABLET OPTIMIZATION (iPad / Tab View)
-   Target: Screen width between 768px and 1024px
+   HEADER DROPDOWN GAP FIX (SAFE OVERRIDE)
 ========================================= */
-@media (min-width: 768px) and (max-width: 1024px) {
-    
-    /* Increase container padding so content isn't stuck to edges */
-    .container {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
 
-    /* Fix Grid Gap: Prevent columns from touching */
-    .grid {
-        gap: 1.5rem !important; 
-    }
-
-    /* Stack flex containers that might be too squeezed */
-    .flex-col-tablet {
-        flex-direction: column !important;
-    }
-    
-    /* Ensure images don't overflow */
-    .image-wrapper {
-        width: 100% !important;
-        height: auto !important;
-    }
-
-    /* Make text slightly smaller to fit side-by-side layouts */
-    h1 { font-size: 2.5rem !important; }
-    h2 { font-size: 2rem !important; }
-    p  { font-size: 1rem !important; }
+/* Reduce panel padding */
+.nav-dropdown {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
 }
 
-/* TABLET OPTIMIZATION (iPad / Tab View) */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .container { padding-left: 2rem; padding-right: 2rem; }
-    /* ... other adjustments ... */
+.sub-dropdown {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+}
+
+/* Reduce item height & spacing */
+.dropdown-item a {
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  line-height: 1.25 !important;
+}
+
+/* Sub-dropdown links tighter */
+.sub-dropdown a {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  line-height: 1.25 !important;
+}
+
+/* Remove any accidental margins */
+.nav-dropdown *,
+.sub-dropdown * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
