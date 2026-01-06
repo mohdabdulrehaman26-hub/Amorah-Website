@@ -3,77 +3,78 @@
 
    <url>
       <loc>https://amorahgroup.in/</loc>
-      <lastmod>2025-12-30</lastmod>
+      <lastmod>2026-01-04</lastmod>
       <changefreq>daily</changefreq>
       <priority>1.0</priority>
-   </url>
-   <url>
-      <loc>https://amorahgroup.in/about</loc>
-      <lastmod>2025-12-30</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
-   </url>
-   <url>
-      <loc>https://amorahgroup.in/blog</loc>
-      <lastmod>2025-12-30</lastmod>
-      <changefreq>weekly</changefreq>
-      <priority>0.8</priority>
    </url>
 
    <url>
       <loc>https://amorahgroup.in/services</loc>
-      <lastmod>2025-12-30</lastmod>
+      <lastmod>2026-01-04</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.9</priority>
    </url>
 
    <url>
       <loc>https://amorahgroup.in/it</loc>
-      <lastmod>2025-12-30</lastmod>
+      <lastmod>2026-01-04</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.9</priority>
    </url>
    <url>
       <loc>https://amorahgroup.in/recruitment</loc>
-      <lastmod>2025-12-30</lastmod>
+      <lastmod>2026-01-04</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.9</priority>
    </url>
    <url>
+      <loc>https://amorahgroup.in/overseas</loc>
+      <lastmod>2026-01-04</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.9</priority>
+   </url>
+   <url>
       <loc>https://amorahgroup.in/training</loc>
-      <lastmod>2025-12-30</lastmod>
+      <lastmod>2026-01-04</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.9</priority>
    </url>
    <url>
       <loc>https://amorahgroup.in/coaching</loc>
-      <lastmod>2025-12-30</lastmod>
-      <changefreq>weekly</changefreq>
-      <priority>0.9</priority>
-   </url>
-   <url>
-      <loc>https://amorahgroup.in/overseas</loc>
-      <lastmod>2025-12-30</lastmod>
+      <lastmod>2026-01-04</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.9</priority>
    </url>
 
    <url>
+      <loc>https://amorahgroup.in/about</loc>
+      <lastmod>2026-01-04</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://amorahgroup.in/blog</loc>
+      <lastmod>2026-01-04</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+
+   <url>
       <loc>https://amorahgroup.in/coachingform</loc>
-      <lastmod>2025-12-30</lastmod>
+      <lastmod>2026-01-04</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
    </url>
 
    <url>
       <loc>https://amorahgroup.in/terms</loc>
-      <lastmod>2025-12-30</lastmod>
+      <lastmod>2026-01-04</lastmod>
       <changefreq>yearly</changefreq>
       <priority>0.5</priority>
    </url>
    <url>
       <loc>https://amorahgroup.in/privacy-policy</loc>
-      <lastmod>2025-12-30</lastmod>
+      <lastmod>2026-01-04</lastmod>
       <changefreq>yearly</changefreq>
       <priority>0.5</priority>
    </url>
