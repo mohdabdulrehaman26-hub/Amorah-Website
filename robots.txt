@@ -1,14 +1,19 @@
 User-agent: *
 Allow: /
 
-# Prevent indexing of partial template files (Header/Footer components)
-# These files have no styles when viewed alone, so we block them from search results.
+# Prevent indexing of partial component files
+# (These are the header/footer HTML chunks that look broken if opened directly)
 Disallow: /includes/
 
-# Prevent indexing of system & configuration files
+# Prevent indexing of configuration scripts
+Disallow: /links/
+
+# Prevent indexing of system & server files
 Disallow: /cgi-bin/
 Disallow: /error_log
 Disallow: /.htaccess
+Disallow: /README.md
+Disallow: /license.txt
 
 # Sitemap Location (Critical for Google Search Console)
 Sitemap: https://amorahgroup.in/sitemap.xml
