@@ -36,47 +36,38 @@
     <script src="js/main.js" defer></script>
 
     <style>
-        /* Canvas 1: Network Lines (Services) */
+        /* Homepage Specific Canvas Styles */
         #network-lines-red { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-        
-        /* Canvas 2: Dots (Why Choose Us) */
         #canvas-dots { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-
         #services .container { position: relative; z-index: 2; }
         
-        /* Global Presence Top Tabs Style */
-        .gp-badge {
-            cursor: pointer;
-            padding: 8px 16px;
-            border-radius: 99px;
-            background: #f1f5f9;
-            color: #64748b;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            border: 1px solid transparent;
+        /* Mobile Video Fix: Ensure full height on mobile browsers */
+        .hero-container { position: relative; width: 100%; overflow: hidden; background-color: #0f172a; }
+        @media (max-width: 768px) {
+            .hero-container { height: 100dvh !important; min-height: 500px; }
         }
-        .swiper-slide-thumb-active .gp-badge {
-            background: #2563eb;
-            color: white;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+        @media (min-width: 769px) {
+            .hero-container { height: 85vh; }
+        }
+        .hero-video {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+            object-fit: cover; object-position: center;
         }
     </style>
 </head>
 
-<body class="bg-slate-50 text-gray-900 antialiased font-sans">
+<body class="bg-slate-50 text-gray-900 antialiased font-sans overflow-x-hidden">
 
     <div id="header"></div>
 
     <main>
-        <section class="hero-container relative h-[50vh] md:h-[65vh] lg:h-[85vh] min-h-[400px] w-full overflow-hidden bg-slate-900">
-            <video autoplay muted loop playsinline 
-                   class="hero-video absolute inset-0 w-full h-full object-cover opacity-100" 
+        <section class="hero-container">
+            <video autoplay muted loop playsinline webkit-playsinline preload="auto"
+                   class="hero-video opacity-100" 
                    poster="https://amorahgroup.in/wp-content/uploads/2025/11/7605.jpg">
                 <source src="https://amorahgroup.in/assets/videos/index%20hero%20video.mp4" type="video/mp4">
             </video>
-            <div class="hero-overlay absolute inset-0 bg-black/10"></div>
+            <div class="absolute inset-0 bg-black/30 z-10"></div>
         </section>
 
         <section id="about" class="bg-white relative overflow-hidden py-24">
@@ -89,7 +80,7 @@
                         </h2>
                     </div>
 
-                    <div class="prose text-gray-700 text-left leading-relaxed mb-8 text-lg">
+                    <div class="prose text-gray-700 text-left leading-relaxed mb-8 text-lg text-justify">
                         <p class="mb-4">At Amorah Group, we believe that empowerment creates lasting impact. Founded in India and now serving clients across the globe, we bring together innovation, integrity, and world-class expertise to redefine what’s possible in Technology, Recruitment, and Overseas Services.</p>
                         <p>Our purpose is simple yet powerful: to connect talent with opportunity and businesses with success. From guiding professionals toward global career pathways to helping organizations secure high-performing talent.</p>
                     </div>
@@ -121,65 +112,65 @@
 
                 <div class="flex flex-col md:flex-row items-center gap-12 mb-20 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100" data-aos="fade-right">
                     <div class="w-full md:w-1/2">
-                        <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[300px] md:h-[350px]">
+                        <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[250px] md:h-[350px]">
                             <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="IT Services" loading="lazy">
                         </div>
                     </div>
                     <div class="w-full md:w-1/2 text-left">
                         <h3 class="text-3xl font-bold mb-4 text-slate-800 font-heading group-hover:text-blue-600 transition-colors">IT & Software</h3>
-                        <p class="text-slate-600 text-lg mb-6 leading-relaxed text-left">We deliver Advanced Applications, AI Automation, and Cloud Solutions. Our expertise includes <strong>Digital Transformation, Cybersecurity Solutions, and Enterprise ERP</strong> development to scale your business efficiently.</p>
+                        <p class="text-slate-600 text-lg mb-6 leading-relaxed text-justify">We deliver Advanced Applications, AI Automation, and Cloud Solutions. Our expertise includes <strong>Digital Transformation, Cybersecurity Solutions, and Enterprise ERP</strong> development to scale your business efficiently.</p>
                         <a href="it.html" class="btn-premium shadow-md">Learn More</a>
                     </div>
                 </div>
 
                 <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-20 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100" data-aos="fade-left">
                     <div class="w-full md:w-1/2">
-                        <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[300px] md:h-[350px]">
+                        <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[250px] md:h-[350px]">
                             <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Overseas Services" loading="lazy">
                         </div>
                     </div>
                     <div class="w-full md:w-1/2 text-left">
                         <h3 class="text-3xl font-bold mb-4 text-slate-800 font-heading group-hover:text-blue-600 transition-colors">Overseas Services</h3>
-                        <p class="text-slate-600 text-lg mb-6 leading-relaxed text-left">We specialize in <strong>Student and Work Visas, Business Immigration, Investor Visas, and Real Estate programs</strong> for seamless global mobility.</p>
+                        <p class="text-slate-600 text-lg mb-6 leading-relaxed text-justify">We specialize in <strong>Student and Work Visas, Business Immigration, Investor Visas, and Real Estate programs</strong> for seamless global mobility.</p>
                         <a href="overseas.html" class="btn-premium shadow-md">Learn More</a>
                     </div>
                 </div>
 
                 <div class="flex flex-col md:flex-row items-center gap-12 mb-20 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100" data-aos="fade-right">
                     <div class="w-full md:w-1/2">
-                        <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[300px] md:h-[350px]">
+                        <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[250px] md:h-[350px]">
                             <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Recruitment" loading="lazy">
                         </div>
                     </div>
                     <div class="w-full md:w-1/2 text-left">
                         <h3 class="text-3xl font-bold mb-4 text-slate-800 font-heading group-hover:text-blue-600 transition-colors">Recruitment</h3>
-                        <p class="text-slate-600 text-lg mb-6 leading-relaxed text-left">We bridge the gap between talent and opportunity. Our services cover <strong>Executive Search, RPO (Recruitment Process Outsourcing), and Contract Staffing</strong> to ensure you find the perfect fit for every role.</p>
+                        <p class="text-slate-600 text-lg mb-6 leading-relaxed text-justify">We bridge the gap between talent and opportunity. Our services cover <strong>Executive Search, RPO (Recruitment Process Outsourcing), and Contract Staffing</strong> to ensure you find the perfect fit for every role.</p>
                         <a href="recruitment.html" class="btn-premium shadow-md">Learn More</a>
                     </div>
                 </div>
 
                 <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-20 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100" data-aos="fade-left">
                     <div class="w-full md:w-1/2">
-                        <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[300px] md:h-[350px]">
+                        <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[250px] md:h-[350px]">
                             <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Training" loading="lazy">
                         </div>
                     </div>
                     <div class="w-full md:w-1/2 text-left">
                         <h3 class="text-3xl font-bold mb-4 text-slate-800 font-heading group-hover:text-blue-600 transition-colors">Training & Placement</h3>
-                        <p class="text-slate-600 text-lg mb-6 leading-relaxed text-left">We offer specialized training for <strong>IT (Java, Python, Full Stack) and Non-IT categories</strong>, including <strong>Banking & Finance jobs</strong>. Our comprehensive <strong>Interview Preparation</strong> ensures 100% placement assistance.</p>
+                        <p class="text-slate-600 text-lg mb-6 leading-relaxed text-justify">We offer specialized training for <strong>IT (Java, Python, Full Stack) and Non-IT categories</strong>, including <strong>Banking & Finance jobs</strong>. Our comprehensive <strong>Interview Preparation</strong> ensures 100% placement assistance.</p>
                         <a href="training.html" class="btn-premium shadow-md">Learn More</a>
                     </div>
                 </div>
 
                 <div class="flex flex-col md:flex-row items-center gap-12 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100" data-aos="fade-right">
                     <div class="w-full md:w-1/2">
-                        <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[300px] md:h-[350px]">
+                        <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[250px] md:h-[350px]">
                             <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="English Coaching" loading="lazy">
                         </div>
                     </div>
                     <div class="w-full md:w-1/2 text-left">
                         <h3 class="text-3xl font-bold mb-4 text-slate-800 font-heading group-hover:text-blue-600 transition-colors">English Coaching</h3>
-                        <p class="text-slate-600 text-lg mb-6 leading-relaxed text-left">Expert coaching for <strong>IELTS, PTE, TOEFL, and Duolingo</strong>. Achieve your target score with our certified trainers and comprehensive study materials designed for global success.</p>
+                        <p class="text-slate-600 text-lg mb-6 leading-relaxed text-justify">Expert coaching for <strong>IELTS, PTE, TOEFL, and Duolingo</strong>. Achieve your target score with our certified trainers and comprehensive study materials designed for global success.</p>
                         <a href="coaching.html" class="btn-premium shadow-md">Learn More</a>
                     </div>
                 </div>
@@ -188,7 +179,6 @@
 
         <section id="why-choose-us" class="py-24 relative bg-white text-slate-900 overflow-hidden">
             <canvas id="canvas-dots"></canvas> 
-            
             <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 font-heading mb-4">Why Choose <span class="text-blue-600">Amorah?</span></h2>
@@ -221,11 +211,7 @@
         </section>
 
         <section id="global-presence" class="py-20 bg-white relative overflow-hidden">
-            <img src="assets/images/world-map-bg.png" 
-                 onerror="this.style.display='none'"
-                 class="absolute inset-0 w-full h-full object-cover opacity-[0.05] pointer-events-none" 
-                 alt="Global Map Layer">
-            
+            <img src="assets/images/world-map-bg.png" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover opacity-[0.05] pointer-events-none" alt="Global Map Layer">
             <div class="relative z-[4] container mx-auto px-6 text-center">
                 <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 font-heading mb-4">Our <span class="text-blue-600">Global Presence</span></h2>
                 <div class="underline-blue mx-auto mb-10"></div>
@@ -279,17 +265,17 @@
                     <div class="glass-card p-8 text-center" data-tilt data-aos="fade-up">
                         <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600 text-3xl"><i class="fas fa-eye"></i></div>
                         <h3 class="text-xl font-bold text-slate-800 mb-4 font-heading">Our Vision</h3>
-                        <p class="text-slate-600 leading-relaxed text-left">To be a global leader in digital innovation, empowering individuals and businesses through technology and opportunities.</p>
+                        <p class="text-slate-600 leading-relaxed text-left text-justify">To be a global leader in digital innovation, empowering individuals and businesses through technology and opportunities.</p>
                     </div>
                     <div class="glass-card p-8 text-center" data-tilt data-aos="fade-up" data-aos-delay="100">
                         <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600 text-3xl"><i class="fas fa-bullseye"></i></div>
                         <h3 class="text-xl font-bold text-slate-800 mb-4 font-heading">Our Mission</h3>
-                        <p class="text-slate-600 leading-relaxed text-left">To deliver high-quality, cost-effective solutions across IT, recruitment, and overseas services with integrity.</p>
+                        <p class="text-slate-600 leading-relaxed text-left text-justify">To deliver high-quality, cost-effective solutions across IT, recruitment, and overseas services with integrity.</p>
                     </div>
                     <div class="glass-card p-8 text-center" data-tilt data-aos="fade-up" data-aos-delay="200">
                         <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600 text-3xl"><i class="fas fa-gem"></i></div>
                         <h3 class="text-xl font-bold text-slate-800 mb-4 font-heading">Core Values</h3>
-                        <p class="text-slate-600 leading-relaxed text-left">Integrity, Innovation, Transparency, Customer Success, and Excellence in everything we do.</p>
+                        <p class="text-slate-600 leading-relaxed text-left text-justify">Integrity, Innovation, Transparency, Customer Success, and Excellence in everything we do.</p>
                     </div>
                 </div>
             </div>
