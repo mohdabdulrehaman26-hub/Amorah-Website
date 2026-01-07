@@ -18,7 +18,7 @@
     # Referrer Policy (Protect user privacy)
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
 
-    # Force HTTPS (HSTS) - 1 Year Duration (Enable only if SSL is active)
+    # Force HTTPS (HSTS) - 1 Year Duration 
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
     # Permissions Policy (Disable unused browser features for security)
@@ -40,7 +40,7 @@
     RewriteCond %{HTTPS} off
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-    # 2.2 Force non-www (Optional - Remove if you prefer www)
+    # 2.2 Force non-www (Optional - Uncomment if you want to force non-www)
     # RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
     # RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
