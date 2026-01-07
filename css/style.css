@@ -1,698 +1,368 @@
 /* =====================================================
-   1. GLOBAL RESET & BASE
+   AMORAH GROUP - PRODUCTION STYLESHEET (FINAL v15.0)
+   Updates: Mobile Video Fixes, Menu Visibility & Overflow Protection
 ===================================================== */
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Poppins:wght@500;600;700;800&display=swap');
 
-*, *::before, *::after {
-  box-sizing: border-box;
+:root {
+  --primary: #2563eb;   /* Blue-600 */
+  --secondary: #06b6d4; /* Cyan-500 */
+  --dark: #0f172a;      /* Slate-900 */
 }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
+/* =====================================================
+   1. CRITICAL MOBILE RESET (THE FIX)
+===================================================== */
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden !important; /* Forces no horizontal scroll */
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
-  margin: 0;
-  font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
-  background-color: #f8fafc;
-  color: #0f172a;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+    background-color: #f8fafc;
+    color: #0f172a;
+    line-height: 1.7;
+    font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
 }
 
-/* Headings Font: Poppins */
+/* Prevent any element from accidentally being wider than screen */
+*, *::before, *::after {
+    box-sizing: border-box;
+    max-width: 100vw; 
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Exception for Swiper (needs to overflow for sliding) */
+.swiper-wrapper { max-width: none; }
+
 h1, h2, h3, h4, h5, h6, .font-heading {
-  font-family: 'Poppins', sans-serif;
-  line-height: 1.2;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.2;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    width: 100%;
 }
 
 /* Utilities */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.text-justify { text-align: justify; text-justify: inter-word; }
 
-.text-justify {
-  text-align: justify;
-  text-justify: inter-word;
-}
-
-/* Accessibility Focus */
 a:focus-visible {
-  outline: 2px solid #2563eb;
-  outline-offset: 2px;
-  border-radius: 4px;
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
 /* =====================================================
-   2. BUTTONS & UI COMPONENTS
+   2. HERO SECTION (MOBILE VIDEO FIX)
 ===================================================== */
-.btn-premium {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.6rem;
-  border-radius: 9999px;
-  font-weight: 800;
-  background: linear-gradient(135deg, #2563eb, #06b6d4);
-  color: #ffffff !important;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: all 0.35s ease;
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
-}
-
-.btn-premium:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 35px rgba(37, 99, 235, 0.45);
-  color: #ffffff !important;
-}
-
-.underline-blue {
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(to right, #2563eb, #06b6d4);
-  border-radius: 2px;
-}
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 1.25rem;
-  border: 1px solid rgba(226, 232, 240, 0.7);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease;
-}
-
-.image-wrapper {
+.hero-container {
     position: relative;
+    width: 100%;
+    /* Mobile First: Use Dynamic Viewport Height to avoid address bar hiding content */
+    height: 100vh; 
+    height: 100dvh; 
     overflow: hidden;
-    transform: translateZ(0); 
+    background-color: #000000; /* Black background ensures white text visibility before video loads */
 }
-.image-wrapper img { transition: transform 0.5s ease; }
-.image-wrapper:hover img { transform: scale(1.05); }
+
+/* Desktop Adjustment */
+@media (min-width: 1024px) {
+    .hero-container {
+        height: 85vh;
+    }
+}
+
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100vw; /* Allow full width */
+    height: 100%;
+    object-fit: cover; /* Ensures video fills screen without gaps */
+    object-position: center; /* Centers the focal point */
+    z-index: 0;
+    max-width: none !important; /* Override global reset */
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
+    z-index: 1;
+    max-width: none !important;
+}
 
 /* =====================================================
    3. HEADER & NAVIGATION
 ===================================================== */
 .header {
-  height: 92px;
-  display: flex;
-  align-items: center;
-  background: transparent;
-  transition: all 0.35s ease;
-  width: 100%;
-  
-  /* Fixed Positioning */
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
-  
-  will-change: height, background, box-shadow;
+    height: 92px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: transparent; /* Transparent initially */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, height 0.3s ease;
+    
+    /* Fixed Positioning Logic */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    
+    /* Hardware acceleration to prevent jitter */
+    transform: translateZ(0);
+    will-change: background-color, height;
 }
 
+/* Scrolled State: White Background */
 .header.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  height: 72px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    height: 72px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-.logo-img {
-  height: 70px;
-  width: auto;
-  transition: height 0.3s ease;
-}
-.header.scrolled .logo-img { height: 58px; }
+.logo-img { height: 70px; width: auto; transition: height 0.3s ease; object-fit: contain; }
+.header.scrolled .logo-img { height: 50px; }
 
-.desktop-nav {
-  gap: 2rem;
-  display: flex;
-  align-items: center;
-}
+/* Desktop Navigation */
+.desktop-nav { gap: 2rem; display: flex; align-items: center; }
 
 .nav-link {
-  position: relative;
-  font-weight: 600;
-  color: #ffffff !important;
-  text-decoration: none;
-  padding: 0.6rem 0.3rem;
-  transition: all 0.3s ease;
-  font-size: 0.95rem;
+    position: relative; font-weight: 600; color: #ffffff !important;
+    text-decoration: none; padding: 0.6rem 0.3rem; transition: all 0.3s ease; font-size: 0.95rem;
 }
-
 .header.scrolled .nav-link { color: #0f172a !important; }
-.nav-link:hover, .header.scrolled .nav-link:hover { color: #2563eb !important; }
+.nav-link:hover, .header.scrolled .nav-link:hover { color: var(--primary) !important; }
 
 .nav-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0;
-  height: 2px;
-  background: #2563eb;
-  transition: width 0.3s ease;
+    content: ""; position: absolute; left: 0; bottom: -6px; width: 0; height: 2px;
+    background: var(--primary); transition: width 0.3s ease;
 }
 .nav-link:hover::after { width: 100%; }
 
 .header-cta {
-  padding: 0.65rem 1.5rem;
-  border-radius: 999px;
-  background: #25d366;
-  color: #ffffff !important;
-  font-weight: 800;
-  transition: all 0.3s ease;
-  cursor: pointer;
+    padding: 0.65rem 1.5rem; border-radius: 999px; background: #25d366;
+    color: #ffffff !important; font-weight: 800; transition: all 0.3s ease; cursor: pointer;
 }
-.header-cta:hover {
-  background: #20bd5a;
-  transform: translateY(-2px);
-  color: #ffffff !important;
-}
+.header-cta:hover { background: #20bd5a; transform: translateY(-2px); }
 
-/* =====================================================
-   4. DROPDOWNS (FIXED BRIDGE)
-===================================================== */
-.nav-item-group {
-  position: relative;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-/* 1. Main Dropdown Panel */
-.nav-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 220px;
-  background: #ffffff;
-  border-radius: 0 0 12px 12px;
-  border-top: 3px solid #2563eb;
-  padding: 4px 0;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-  
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  z-index: 1000; 
-}
-
-.nav-item-group:hover .nav-dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-/* 2. Items */
-.dropdown-item {
-  position: relative;
-  display: block;
-}
-
-.dropdown-item a {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  color: #334155;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  border-left: 3px solid transparent;
-}
-
-.dropdown-item:hover > a {
-    color: #2563eb;
-    background-color: #f8fafc;
-    border-left: 3px solid #2563eb;
-    padding-left: 1.2rem;
-}
-
-/* 3. Sub Dropdown (With Bridge) */
-.sub-dropdown {
-  position: absolute;
-  left: 100%;
-  top: 0;
-  width: 240px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 5px 5px 20px rgba(0,0,0,0.1);
-  padding: 4px 0;
-  
-  opacity: 0;
-  visibility: hidden;
-  margin-left: 0; 
-  transition: all 0.2s ease;
-  z-index: 1001;
-  border: 1px solid #f1f5f9;
-}
-
-/* Bridge Logic: Prevents closing gap */
-.sub-dropdown::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -15px; 
-    width: 20px; 
-    height: 100%;
+/* --- MOBILE MENU BUTTON FIX --- */
+#mobileBtn {
+    font-size: 1.8rem;
+    border: none;
     background: transparent;
+    cursor: pointer;
+    padding: 0.5rem;
+    
+    /* Default: White (Visible on dark Hero) */
+    color: #ffffff; 
+    transition: color 0.3s ease;
+    z-index: 10000;
 }
 
-.dropdown-item:hover .sub-dropdown {
-  opacity: 1;
-  visibility: visible;
-}
-
-.sub-dropdown a {
-    display: block;
-    padding: 0.4rem 1rem;
-    color: #475569;
-    font-size: 0.85rem;
-    text-decoration: none;
-    transition: all 0.2s;
-    border-left: none;
-}
-.sub-dropdown a:hover {
-    color: #2563eb;
-    background-color: #eff6ff;
-    padding-left: 1.2rem;
+/* Scrolled: Dark (Visible on White Header) */
+.header.scrolled #mobileBtn {
+    color: #0f172a !important; 
 }
 
 /* =====================================================
-   5. MOBILE MENU
+   4. BUTTONS & UI COMPONENTS
 ===================================================== */
-#mobileMenu {
-  background: #ffffff;
-  transform: translateX(100%);
-  will-change: transform;
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: 300px;
-  z-index: 1000;
-  box-shadow: -5px 0 25px rgba(0,0,0,0.1);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow-y: auto;
+.btn-premium {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 0.75rem 1.6rem; border-radius: 9999px; font-weight: 800;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #ffffff !important; text-decoration: none; border: none; cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+}
+.btn-premium:hover { transform: translateY(-3px); box-shadow: 0 18px 35px rgba(37, 99, 235, 0.45); }
+
+.underline-blue {
+    width: 80px; height: 4px; 
+    background: linear-gradient(to right, var(--primary), var(--secondary)); 
+    border-radius: 2px;
 }
 
-.mobile-toggle-btn { font-weight: 600; }
-.mobile-dropdown-btn { width: 100%; text-align: left; }
+.glass-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-radius: 1.25rem; border: 1px solid rgba(226, 232, 240, 0.7);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06); transition: transform 0.3s ease;
+}
 
-#mobileOverlay {
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(4px);
-  z-index: 998;
+.image-wrapper { 
+    position: relative; overflow: hidden; transform: translateZ(0); 
+    border-radius: 1rem; width: 100%;
+}
+.image-wrapper img { transition: transform 0.5s ease; width: 100%; height: auto; }
+.image-wrapper:hover img { transform: scale(1.05); }
+
+/* =====================================================
+   5. DROPDOWNS & MOBILE SIDEBAR
+===================================================== */
+.nav-item-group { position: relative; height: 100%; display: flex; align-items: center; }
+
+.nav-dropdown {
+    position: absolute; top: 100%; left: 0; width: 240px; background: #ffffff;
+    border-radius: 0 0 12px 12px; border-top: 3px solid var(--primary);
+    padding: 8px 0; box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1000;
+}
+.nav-item-group:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+
+.dropdown-item > a {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.6rem 1rem; color: #334155; text-decoration: none; font-size: 0.9rem;
+    font-weight: 500; transition: all 0.2s ease; border-left: 3px solid transparent;
+}
+.dropdown-item:hover > a { color: var(--primary); background: #f8fafc; border-left-color: var(--primary); padding-left: 1.2rem; }
+
+/* Sub-Dropdown */
+.sub-dropdown {
+    position: absolute; left: 100%; top: 0; width: 240px; background: #ffffff;
+    border-radius: 12px; box-shadow: 5px 5px 20px rgba(0,0,0,0.1); padding: 8px 0;
+    opacity: 0; visibility: hidden; transition: all 0.2s ease; z-index: 1001;
+    border: 1px solid #f1f5f9;
+}
+.sub-dropdown::before { content: ""; position: absolute; top: 0; left: -15px; width: 20px; height: 100%; }
+.dropdown-item:hover .sub-dropdown { opacity: 1; visibility: visible; }
+.sub-dropdown a { display: block; padding: 0.5rem 1rem; color: #475569; font-size: 0.85rem; text-decoration: none; transition: 0.2s; }
+.sub-dropdown a:hover { color: var(--primary); background: #eff6ff; padding-left: 1.2rem; }
+
+/* Mobile Menu */
+#mobileMenu {
+    background: #ffffff; transform: translateX(100%); will-change: transform;
+    position: fixed; top: 0; right: 0; 
+    height: 100dvh; /* Mobile Fix */
+    width: 300px; z-index: 1000;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.1); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+}
+#mobileOverlay { 
+    background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px); z-index: 998; 
+    position: fixed; inset: 0;
 }
 
 /* =====================================================
    6. FOOTER
 ===================================================== */
 footer {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(16px);
-  position: relative;
-  border-top: 1px solid #e2e8f0;
-  padding-top: 3rem; 
-  padding-bottom: 2rem;
+    background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(16px);
+    position: relative; border-top: 1px solid #e2e8f0; padding-top: 3rem; padding-bottom: 2rem;
 }
-
 .footer-map-bg {
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/2000px-World_map_-_low_resolution.svg.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  opacity: 0.05;
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/2000px-World_map_-_low_resolution.svg.png");
+    background-repeat: no-repeat; background-position: center; background-size: contain;
+    opacity: 0.05; position: absolute; inset: 0; pointer-events: none;
 }
-
 .footer-logo { width: 120px; margin-bottom: 1rem; }
-
-.footer-title {
-  font-size: 1rem;
-  font-weight: 800;
-  color: #0f172a;
-  margin-bottom: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
+.footer-title { font-size: 1rem; font-weight: 800; color: #0f172a; margin-bottom: 1.2rem; text-transform: uppercase; }
 .footer-links { list-style: none; padding: 0; margin: 0; }
 .footer-links li { margin-bottom: 0.8rem; }
-
 .footer-links li a {
-  position: relative;
-  padding-left: 18px;
-  color: #475569;
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  text-decoration: none;
+    position: relative; padding-left: 18px; color: #475569; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; text-decoration: none;
 }
-
-.footer-links li a::before {
-  content: "➜";
-  position: absolute;
-  left: 0;
-  top: 2px;
-  font-size: 0.7rem;
-  color: #dc2626;
-  transition: all 0.3s ease;
-}
-
-.footer-links li a:hover { color: #2563eb; padding-left: 22px; }
-
-.social-links-container { display: flex; gap: 0.8rem; margin-top: 1rem; }
+.footer-links li a::before { content: "➜"; position: absolute; left: 0; top: 2px; font-size: 0.7rem; color: #dc2626; transition: all 0.3s ease; }
+.footer-links li a:hover { color: var(--primary); padding-left: 22px; }
 
 .social-hover {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f1f5f9;
-  color: #334155;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  cursor: pointer;
+    width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    background: #f1f5f9; color: #334155; font-size: 1.1rem; transition: all 0.3s ease; text-decoration: none; cursor: pointer;
 }
-
-.social-hover:hover {
-  transform: translateY(-3px);
-  color: #ffffff;
-  box-shadow: 0 8px 15px rgba(0,0,0,0.15);
-}
-
+.social-hover:hover { transform: translateY(-3px); color: #ffffff; box-shadow: 0 8px 15px rgba(0,0,0,0.15); }
 .social-hover.facebook:hover { background: #1877f2; }
 .social-hover.instagram:hover { background: linear-gradient(45deg, #f09433 0%,#bc1888 100%); }
 .social-hover.linkedin:hover { background: #0a66c2; }
 .social-hover.twitter:hover { background: #000000; }
 .social-hover.youtube:hover { background: #ff0000; }
-.social-hover.telegram:hover { background: #229ed9; }
 
 .footer-whatsapp {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-  padding: 0.8rem 1.5rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #25d366, #20bd5a);
-  color: #ffffff !important;
-  font-weight: 800;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  box-shadow: 0 5px 15px rgba(37,211,102,0.3);
+    display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem; padding: 0.8rem 1.5rem;
+    border-radius: 999px; background: linear-gradient(135deg, #25d366, #20bd5a); color: #ffffff !important;
+    font-weight: 800; font-size: 0.9rem; transition: all 0.3s ease; text-decoration: none; box-shadow: 0 5px 15px rgba(37,211,102,0.3);
 }
-.footer-whatsapp:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(37,211,102,0.5);
-}
-
-.footer-badge {
-  width: 90px;
-  filter: grayscale(100%);
-  transition: all 0.35s ease;
-  opacity: 0.7;
-}
-.footer-badge:hover {
-  filter: grayscale(0);
-  opacity: 1;
-  transform: scale(1.05);
-}
+.footer-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(37,211,102,0.5); }
 
 /* =====================================================
-   7. PAGE SPECIFIC & RESPONSIVE
-===================================================== */
-.sticky-tabs {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  transition: top 0.3s;
-}
-@media (min-width: 1024px) {
-  .sticky-tabs { top: 72px; }
-}
-
-.tab-link.active-tab {
-  color: #2563eb !important;
-  background-color: #eff6ff !important;
-  border: 1px solid #dbeafe;
-}
-
-/* Country Card */
-.country-card {
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 2rem 1rem;
-  text-align: center;
-  transition: all 0.3s ease;
-  height: 100%;
-}
-.country-card:hover {
-  transform: translateY(-5px);
-  border-color: #3b82f6;
-  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
-}
-
-/* =====================================================
-   8. GLOBAL PRESENCE & SWIPER
-===================================================== */
-.gp-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    padding: 1.5rem;
-    height: 100%;
-}
-
-.gp-badge {
-    opacity: 0.6;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    font-size: 0.95rem;
-    white-space: nowrap;
-    text-align: center;
-    padding: 10px 20px;
-    border-radius: 50px;
-    background: #f1f5f9;
-    border: 1px solid transparent;
-}
-.swiper-slide-thumb-active .gp-badge {
-    opacity: 1;
-    color: #ffffff;
-    background: #2563eb;
-    font-weight: 700;
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-}
-
-.gpMainSwiper .swiper-wrapper {
-    align-items: stretch;
-}
-
-/* Marquee Logic */
-.clientsSwiper .swiper-wrapper,
-.toolsSwiper .swiper-wrapper {
-    -webkit-transition-timing-function: linear !important;
-    -o-transition-timing-function: linear !important;
-    transition-timing-function: linear !important;
-}
-.clientsSwiper .swiper-slide, .toolsSwiper .swiper-slide {
-    width: auto !important; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.clientsSwiper img, .toolsSwiper img {
-    display: block;
-    max-height: 50px;
-    width: auto;
-    object-fit: contain;
-}
-
-/* =====================================================
-   9. FLOATING WHATSAPP
-===================================================== */
-@keyframes pulse-border {
-  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-}
-
-.wa-float {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 64px;
-  height: 64px;
-  background: #25d366;
-  color: #ffffff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 34px;
-  z-index: 100;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  animation: pulse-border 2s infinite;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-.wa-float:hover {
-  transform: translateY(-5px);
-  background: #20bd5a;
-  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.6);
-}
-
-/* =====================================================
-   10. MEDIA QUERIES (RESPONSIVE RULES)
+   7. RESPONSIVE BREAKPOINTS
 ===================================================== */
 @media (max-width: 1024px) {
-  .header {
-    height: 70px;
-    background: #ffffff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  }
-  .header.scrolled { height: 70px; }
-  .logo-img, .header.scrolled .logo-img { height: 50px; }
-  .nav-link { color: #0f172a !important; }
-  .footer-logo { width: 100px; }
-  .text-justify { text-align: left !important; }
+    .header {
+        height: 70px;
+        background: transparent; /* Keep transparent on mobile init */
+        box-shadow: none;
+    }
+    .header.scrolled { 
+        height: 70px; 
+        background: #ffffff; 
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+    }
+    .logo-img, .header.scrolled .logo-img { height: 50px; }
+    
+    /* Hide Desktop Nav items */
+    .desktop-nav { display: none; }
+    
+    .footer-logo { width: 100px; }
+    .text-justify { text-align: left !important; }
 }
 
 @media (max-width: 768px) {
-  .btn-premium { width: 100%; }
-  footer .grid { gap: 3rem; }
-  .container { padding-left: 1.25rem; padding-right: 1.25rem; }
-  h1 { font-size: 2.25rem; }
-  h2 { font-size: 1.8rem; }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-    .container { padding-left: 2rem; padding-right: 2rem; }
-    .grid { gap: 2rem !important; }
-    .image-wrapper { width: 100% !important; height: auto !important; }
-}
-
-/* =========================================
-   11. BLOG & EXTRAS (Modal, Chips)
-========================================= */
-.chip {
-    padding: 8px 18px;
-    border-radius: 999px;
-    background: #f1f5f9;
-    color: #64748b;
-    font-weight: 600;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-    font-size: 0.9rem;
-}
-.chip.active, .chip:hover {
-    background: linear-gradient(90deg, #2563eb, #06b6d4);
-    color: white; 
-    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
-}
-
-.modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 9999; }
-.modal.show { display: flex; animation: fadeIn 0.2s ease-out; }
-.modal-backdrop { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(4px); }
-.modal-card {
-    position: relative; max-width: 900px; width: 94%; max-height: 90vh; overflow-y: auto;
-    background: #ffffff; 
-    border-radius: 12px; 
-    animation: slideUp 0.3s ease-out;
+    .btn-premium { width: 100%; }
+    footer .grid { gap: 3rem; }
+    .container { padding-left: 1.25rem; padding-right: 1.25rem; }
+    h1 { font-size: 2.25rem; }
+    h2 { font-size: 1.8rem; }
 }
 
 /* =====================================================
-   12. ANIMATION KEYFRAMES (Required for JS)
+   8. EXTRAS (Swiper, Widgets, Animations)
 ===================================================== */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translate3d(0, 20px, 0); }
-    to { opacity: 1; transform: translate3d(0, 0, 0); }
-}
+.sticky-tabs { position: sticky; top: 0; z-index: 40; transition: top 0.3s; }
+@media (min-width: 1024px) { .sticky-tabs { top: 72px; } }
+.tab-link.active-tab { color: var(--primary) !important; background-color: #eff6ff !important; border: 1px solid #dbeafe; }
+
+.gp-card { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; width: 100%; padding: 1.5rem; height: 100%; }
+.gp-badge { opacity: 0.6; transition: all 0.3s ease; cursor: pointer; font-size: 0.95rem; white-space: nowrap; text-align: center; padding: 10px 20px; border-radius: 50px; background: #f1f5f9; border: 1px solid transparent; }
+.swiper-slide-thumb-active .gp-badge { opacity: 1; color: #ffffff; background: var(--primary); font-weight: 700; transform: scale(1.05); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); }
+.gpMainSwiper .swiper-wrapper { align-items: stretch; }
+.clientsSwiper .swiper-wrapper, .toolsSwiper .swiper-wrapper { -webkit-transition-timing-function: linear !important; transition-timing-function: linear !important; }
+.clientsSwiper .swiper-slide, .toolsSwiper .swiper-slide { width: auto !important; display: flex; align-items: center; justify-content: center; }
+.clientsSwiper img, .toolsSwiper img { display: block; max-height: 50px; width: auto; object-fit: contain; }
+
+.wa-float { position: fixed; bottom: 24px; right: 24px; width: 64px; height: 64px; background: #25d366; color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 34px; z-index: 100; transition: all 0.3s ease; text-decoration: none; animation: pulse-border 2s infinite; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+.wa-float:hover { transform: translateY(-5px); background: #20bd5a; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.6); }
+@keyframes pulse-border { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+
+.chip { padding: 8px 18px; border-radius: 999px; background: #f1f5f9; color: #64748b; font-weight: 600; border: 1px solid transparent; cursor: pointer; transition: all 0.2s ease; white-space: nowrap; font-size: 0.9rem; }
+.chip.active, .chip:hover { background: linear-gradient(90deg, var(--primary), var(--secondary)); color: white; box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3); }
+.modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 9999; }
+.modal.show { display: flex; animation: fadeIn 0.2s ease-out; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(4px); }
+.modal-card { position: relative; max-width: 900px; width: 94%; max-height: 90vh; overflow-y: auto; background: #ffffff; border-radius: 12px; animation: slideUp 0.3s ease-out; }
+
+/* Keyframes */
+@keyframes fadeInUp { from { opacity: 0; transform: translate3d(0, 20px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
 .animate-fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
-
 .fa-spin { animation: fa-spin 2s infinite linear; }
-@keyframes fa-spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: .7; }
-}
+@keyframes fa-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .7; } }
 .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-@keyframes slideUp { 
-    from { opacity: 0; transform: translateY(20px); } 
-    to { opacity: 1; transform: translateY(0); } 
-}
-@keyframes fadeIn { 
-    from { opacity: 0; } 
-    to { opacity: 1; } 
-}
-
-/* =========================================
-   HEADER DROPDOWN GAP FIX (SAFE OVERRIDE)
-========================================= */
-
-/* Reduce panel padding */
-.nav-dropdown {
-  padding-top: 2px !important;
-  padding-bottom: 2px !important;
-}
-
-.sub-dropdown {
-  padding-top: 2px !important;
-  padding-bottom: 2px !important;
-}
-
-/* Reduce item height & spacing */
-.dropdown-item a {
-  padding-top: 6px !important;
-  padding-bottom: 6px !important;
-  line-height: 1.25 !important;
-}
-
-/* Sub-dropdown links tighter */
-.sub-dropdown a {
-  padding-top: 5px !important;
-  padding-bottom: 5px !important;
-  line-height: 1.25 !important;
-}
-
-/* Remove any accidental margins */
-.nav-dropdown *,
-.sub-dropdown * {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
+/* Header Safe Overrides */
+.nav-dropdown, .sub-dropdown { padding-top: 2px !important; padding-bottom: 2px !important; margin-top: 0 !important; }
+.dropdown-item > a, .sub-dropdown a { padding-top: 6px !important; padding-bottom: 6px !important; line-height: 1.25 !important; }
