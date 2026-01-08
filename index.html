@@ -2,57 +2,44 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <meta property="og:site_name" content="Amorah Group">
-    <meta property="og:title" content="Amorah Group | IT Services, Recruitment & Overseas Consultancy">
-    <meta property="og:description" content="Your gateway to global opportunities. Expert IT solutions, job recruitment, and visa assistance for UK, USA, Canada, and Europe.">
-    <meta property="og:image" content="https://amorahgroup.in/assets/images/logo.png"> 
-    <meta property="og:url" content="https://amorahgroup.in/">
-    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
     <title>Amorah Group — IT Services, Recruitment & Overseas Consultancy</title>
     <meta name="description" content="Amorah Group provides enterprise IT solutions, specialized recruitment, professional training, and visa assistance. Your gateway to global opportunities.">
     <link rel="canonical" href="https://amorahgroup.in/">
-
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon.png">
 
-    <link rel="preload" as="image" href="https://amorahgroup.in/wp-content/uploads/2025/11/7605.jpg">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="print" onload="this.media='all'">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
 
     <script src="links/external-links.js" defer></script>
     <script src="links/links-init.js" defer></script>
     <script src="js/main.js" defer></script>
 
     <style>
-        /* Homepage Specific Canvas Styles */
-        #network-lines-red { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-        #canvas-dots { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-        #services .container { position: relative; z-index: 2; }
+        /* Mobile Video Height Fix */
+        .hero-container { background-color: #0f172a; position: relative; overflow: hidden; width: 100%; }
+        /* Use 100dvh for mobile browsers to account for address bar */
+        @media (max-width: 768px) { .hero-container { height: 100dvh; min-height: 500px; } }
+        @media (min-width: 769px) { .hero-container { height: 85vh; } }
         
-        /* Mobile Video Fix: Ensure full height on mobile browsers */
-        .hero-container { position: relative; width: 100%; overflow: hidden; background-color: #0f172a; }
-        @media (max-width: 768px) {
-            .hero-container { height: 100dvh !important; min-height: 500px; }
-        }
-        @media (min-width: 769px) {
-            .hero-container { height: 85vh; }
-        }
-        .hero-video {
-            position: absolute; inset: 0; width: 100%; height: 100%;
-            object-fit: cover; object-position: center;
-        }
+        .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+        
+        /* Canvas Positioning */
+        #network-lines-red, #canvas-dots { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        #services .container { position: relative; z-index: 2; }
     </style>
 </head>
 
@@ -62,12 +49,12 @@
 
     <main>
         <section class="hero-container">
-            <video autoplay muted loop playsinline webkit-playsinline preload="auto"
+            <video autoplay muted loop playsinline webkit-playsinline preload="none"
                    class="hero-video opacity-100" 
                    poster="https://amorahgroup.in/wp-content/uploads/2025/11/7605.jpg">
                 <source src="https://amorahgroup.in/assets/videos/index%20hero%20video.mp4" type="video/mp4">
             </video>
-            <div class="absolute inset-0 bg-black/30 z-10"></div>
+            <div class="absolute inset-0 bg-black/40 z-10"></div>
         </section>
 
         <section id="about" class="bg-white relative overflow-hidden py-24">
@@ -79,22 +66,18 @@
                             <span class="block w-20 h-1 bg-gradient-to-r from-blue-600 to-cyan-500 mt-3 rounded mx-auto lg:mx-0"></span>
                         </h2>
                     </div>
-
                     <div class="prose text-gray-700 text-left leading-relaxed mb-8 text-lg">
-                        <p class="mb-4">At Amorah Group, we believe that empowerment creates lasting impact. Founded in India and now serving clients across the globe, we bring together innovation, integrity, and world-class expertise to redefine what’s possible in Technology, Recruitment, and Overseas Services.</p>
-                        <p>Our purpose is simple yet powerful: to connect talent with opportunity and businesses with success. From guiding professionals toward global career pathways to helping organizations secure high-performing talent.</p>
+                        <p class="mb-4">At Amorah Group, we believe that empowerment creates lasting impact. Founded in India and now serving clients across the globe, we bring together <strong>innovation, integrity, and world-class expertise</strong> to redefine what’s possible in Technology, Recruitment, and Overseas Services.</p>
+                        <p>Our purpose is simple yet powerful: to <strong>connect talent with opportunity</strong> and businesses with success. From guiding professionals toward global career pathways to helping organizations secure high-performing talent.</p>
                     </div>
-
                     <div class="text-center lg:text-left">
-                        <a href="about.html" class="btn-premium text-lg group inline-flex">
-                            Read More
-                        </a>
+                        <a href="about.html" class="btn-premium text-lg group inline-flex">Read More</a>
                     </div>
                 </div>
-
                 <div class="w-full lg:w-1/2 flex justify-center" data-aos="fade-left">
-                    <div class="image-wrapper max-w-lg w-full rounded-2xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
+                    <div class="image-wrapper max-w-lg w-full rounded-2xl overflow-hidden shadow-2xl">
                         <img src="assets/images/about-team.png" 
+                             width="600" height="400"
                              onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop'"
                              alt="About Amorah Group Team" loading="lazy" class="w-full h-auto">
                     </div>
@@ -103,8 +86,7 @@
         </section>
 
         <section id="services" class="py-24 bg-slate-50 relative overflow-hidden">
-            <canvas id="network-lines-red"></canvas> 
-
+            <canvas id="network-lines-red"></canvas>
             <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center mb-16" data-aos="fade-up">
                     <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 font-heading mb-4">Our <span class="text-blue-600">Services</span></h2>
@@ -115,12 +97,21 @@
                 <div class="flex flex-col md:flex-row items-center gap-12 mb-20 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100" data-aos="fade-right">
                     <div class="w-full md:w-1/2">
                         <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[250px] md:h-[350px]">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="IT Services" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" 
+                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                                 alt="IT Services" loading="lazy" width="600" height="400">
                         </div>
                     </div>
                     <div class="w-full md:w-1/2 text-left">
                         <h3 class="text-3xl font-bold mb-4 text-slate-800 font-heading group-hover:text-blue-600 transition-colors">IT & Software</h3>
-                        <p class="text-slate-600 text-lg mb-6 leading-relaxed text-left">We deliver Advanced Applications, AI Automation, and Cloud Solutions. Our expertise includes <strong>Digital Transformation, Cybersecurity Solutions, and Enterprise ERP</strong> development to scale your business efficiently.</p>
+                        <div class="text-slate-600 text-lg mb-6 leading-relaxed text-left">
+                            <p class="mb-3">We deliver <strong>Advanced Applications, AI Automation, and Cloud Solutions</strong> tailored to scale your business. Our focus is on driving digital transformation through secure and scalable technologies.</p>
+                            <ul class="space-y-2 text-base text-slate-500">
+                                <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i> Custom Software & Mobile App Development</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i> Artificial Intelligence (AI) & Machine Learning</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i> Enterprise ERP & Cybersecurity Solutions</li>
+                            </ul>
+                        </div>
                         <a href="it.html" class="btn-premium shadow-md">Learn More</a>
                     </div>
                 </div>
@@ -128,12 +119,19 @@
                 <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-20 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100" data-aos="fade-left">
                     <div class="w-full md:w-1/2">
                         <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[250px] md:h-[350px]">
-                            <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Overseas Services" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Overseas Services" loading="lazy" width="600" height="400">
                         </div>
                     </div>
                     <div class="w-full md:w-1/2 text-left">
                         <h3 class="text-3xl font-bold mb-4 text-slate-800 font-heading group-hover:text-blue-600 transition-colors">Overseas Services</h3>
-                        <p class="text-slate-600 text-lg mb-6 leading-relaxed text-left">We specialize in <strong>Student and Work Visas, Business Immigration, Investor Visas, and Real Estate programs</strong> for seamless global mobility.</p>
+                        <div class="text-slate-600 text-lg mb-6 leading-relaxed text-left">
+                            <p class="mb-3">We provide end-to-end guidance for <strong>Student Visas, Work Permits, and Permanent Residency</strong>. Your gateway to top destinations like USA, UK, Canada, Australia, and Europe.</p>
+                            <ul class="space-y-2 text-base text-slate-500">
+                                <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i> University Admission & Scholarship Assistance</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i> Business Immigration & Investor Visas</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i> Post-Landing Support & Accommodation</li>
+                            </ul>
+                        </div>
                         <a href="overseas.html" class="btn-premium shadow-md">Learn More</a>
                     </div>
                 </div>
@@ -141,12 +139,19 @@
                 <div class="flex flex-col md:flex-row items-center gap-12 mb-20 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100" data-aos="fade-right">
                     <div class="w-full md:w-1/2">
                         <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[250px] md:h-[350px]">
-                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Recruitment" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Recruitment" loading="lazy" width="600" height="400">
                         </div>
                     </div>
                     <div class="w-full md:w-1/2 text-left">
                         <h3 class="text-3xl font-bold mb-4 text-slate-800 font-heading group-hover:text-blue-600 transition-colors">Recruitment</h3>
-                        <p class="text-slate-600 text-lg mb-6 leading-relaxed text-left">We bridge the gap between talent and opportunity. Our services cover <strong>Executive Search, RPO (Recruitment Process Outsourcing), and Contract Staffing</strong> to ensure you find the perfect fit for every role.</p>
+                        <div class="text-slate-600 text-lg mb-6 leading-relaxed text-left">
+                            <p class="mb-3">We bridge the gap between top talent and global opportunities. Our specialized <strong>HR solutions</strong> ensure companies find the perfect fit and candidates find their dream roles.</p>
+                            <ul class="space-y-2 text-base text-slate-500">
+                                <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i> Executive Search & IT Staffing</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i> RPO (Recruitment Process Outsourcing)</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i> Contract, Permanent & Bulk Hiring</li>
+                            </ul>
+                        </div>
                         <a href="recruitment.html" class="btn-premium shadow-md">Learn More</a>
                     </div>
                 </div>
@@ -154,12 +159,19 @@
                 <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-20 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100" data-aos="fade-left">
                     <div class="w-full md:w-1/2">
                         <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[250px] md:h-[350px]">
-                            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Training" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Training" loading="lazy" width="600" height="400">
                         </div>
                     </div>
                     <div class="w-full md:w-1/2 text-left">
                         <h3 class="text-3xl font-bold mb-4 text-slate-800 font-heading group-hover:text-blue-600 transition-colors">Training & Placement</h3>
-                        <p class="text-slate-600 text-lg mb-6 leading-relaxed text-left">We offer specialized training for <strong>IT (Java, Python, Full Stack) and Non-IT categories</strong>, including <strong>Banking & Finance jobs</strong>. Our comprehensive <strong>Interview Preparation</strong> ensures 100% placement assistance.</p>
+                        <div class="text-slate-600 text-lg mb-6 leading-relaxed text-left">
+                            <p class="mb-3">Industry-oriented training programs designed to make you <strong>job-ready from Day 1</strong>. We offer comprehensive courses for both IT and Non-IT domains with placement support.</p>
+                            <ul class="space-y-2 text-base text-slate-500">
+                                <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i> Java, Python, Full Stack & Data Science</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i> Banking, Finance & Digital Marketing</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i> Resume Building & Mock Interviews</li>
+                            </ul>
+                        </div>
                         <a href="training.html" class="btn-premium shadow-md">Learn More</a>
                     </div>
                 </div>
@@ -167,12 +179,19 @@
                 <div class="flex flex-col md:flex-row items-center gap-12 group hover:bg-white/80 p-8 rounded-3xl transition-colors duration-500 backdrop-blur-sm border border-transparent hover:border-blue-100" data-aos="fade-right">
                     <div class="w-full md:w-1/2">
                         <div class="image-wrapper rounded-2xl overflow-hidden shadow-lg h-[250px] md:h-[350px]">
-                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="English Coaching" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="English Coaching" loading="lazy" width="600" height="400">
                         </div>
                     </div>
                     <div class="w-full md:w-1/2 text-left">
                         <h3 class="text-3xl font-bold mb-4 text-slate-800 font-heading group-hover:text-blue-600 transition-colors">English Coaching</h3>
-                        <p class="text-slate-600 text-lg mb-6 leading-relaxed text-left">Expert coaching for <strong>IELTS, PTE, TOEFL, and Duolingo</strong>. Achieve your target score with our certified trainers and comprehensive study materials designed for global success.</p>
+                        <div class="text-slate-600 text-lg mb-6 leading-relaxed text-left">
+                            <p class="mb-3">Master the English language and achieve your target score. Our <strong>certified trainers</strong> provide personalized coaching for all major international proficiency tests.</p>
+                            <ul class="space-y-2 text-base text-slate-500">
+                                <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i> IELTS (Academic & General), PTE, TOEFL</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i> Duolingo & Spoken English</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i> Regular Mock Tests & Feedback Sessions</li>
+                            </ul>
+                        </div>
                         <a href="coaching.html" class="btn-premium shadow-md">Learn More</a>
                     </div>
                 </div>
@@ -191,22 +210,22 @@
                     <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition duration-300 group" data-aos="fade-up" data-aos-delay="0">
                         <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-2xl mb-6 group-hover:bg-blue-600 group-hover:text-white transition"><i class="fas fa-globe"></i></div>
                         <h3 class="text-xl font-bold mb-3 text-slate-800">Global Reach</h3>
-                        <p class="text-slate-600 text-sm">Presence in 30+ countries facilitating seamless international mobility.</p>
+                        <p class="text-slate-600 text-sm">Presence in <strong>30+ countries</strong> facilitating seamless international mobility.</p>
                     </div>
                     <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition duration-300 group" data-aos="fade-up" data-aos-delay="100">
                         <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center text-green-600 text-2xl mb-6 group-hover:bg-green-600 group-hover:text-white transition"><i class="fas fa-shield-alt"></i></div>
                         <h3 class="text-xl font-bold mb-3 text-slate-800">100% Transparency</h3>
-                        <p class="text-slate-600 text-sm">Ethical processing with clear documentation and no hidden costs.</p>
+                        <p class="text-slate-600 text-sm">Ethical processing with <strong>clear documentation and no hidden costs</strong>.</p>
                     </div>
                     <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition duration-300 group" data-aos="fade-up" data-aos-delay="200">
                         <div class="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 text-2xl mb-6 group-hover:bg-purple-600 group-hover:text-white transition"><i class="fas fa-user-tie"></i></div>
                         <h3 class="text-xl font-bold mb-3 text-slate-800">Expert Team</h3>
-                        <p class="text-slate-600 text-sm">Certified consultants and industry veterans guiding your path.</p>
+                        <p class="text-slate-600 text-sm"><strong>Certified consultants</strong> and industry veterans guiding your path.</p>
                     </div>
                     <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition duration-300 group" data-aos="fade-up" data-aos-delay="300">
                         <div class="w-14 h-14 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 text-2xl mb-6 group-hover:bg-orange-600 group-hover:text-white transition"><i class="fas fa-headset"></i></div>
                         <h3 class="text-xl font-bold mb-3 text-slate-800">24/7 Support</h3>
-                        <p class="text-slate-600 text-sm">Dedicated support team to assist you at every step of the journey.</p>
+                        <p class="text-slate-600 text-sm"><strong>Dedicated support team</strong> to assist you at every step of the journey.</p>
                     </div>
                 </div>
             </div>
@@ -267,17 +286,17 @@
                     <div class="glass-card p-8 text-center" data-tilt data-aos="fade-up">
                         <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600 text-3xl"><i class="fas fa-eye"></i></div>
                         <h3 class="text-xl font-bold text-slate-800 mb-4 font-heading">Our Vision</h3>
-                        <p class="text-slate-600 leading-relaxed text-left">To be a global leader in digital innovation, empowering individuals and businesses through technology and opportunities.</p>
+                        <p class="text-slate-600 leading-relaxed text-left">To be a global leader in <strong>digital innovation</strong>, empowering individuals and businesses through technology and opportunities.</p>
                     </div>
                     <div class="glass-card p-8 text-center" data-tilt data-aos="fade-up" data-aos-delay="100">
                         <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600 text-3xl"><i class="fas fa-bullseye"></i></div>
                         <h3 class="text-xl font-bold text-slate-800 mb-4 font-heading">Our Mission</h3>
-                        <p class="text-slate-600 leading-relaxed text-left">To deliver high-quality, cost-effective solutions across IT, recruitment, and overseas services with integrity.</p>
+                        <p class="text-slate-600 leading-relaxed text-left">To deliver <strong>high-quality, cost-effective solutions</strong> across IT, recruitment, and overseas services with integrity.</p>
                     </div>
                     <div class="glass-card p-8 text-center" data-tilt data-aos="fade-up" data-aos-delay="200">
                         <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600 text-3xl"><i class="fas fa-gem"></i></div>
                         <h3 class="text-xl font-bold text-slate-800 mb-4 font-heading">Core Values</h3>
-                        <p class="text-slate-600 leading-relaxed text-left">Integrity, Innovation, Transparency, Customer Success, and Excellence in everything we do.</p>
+                        <p class="text-slate-600 leading-relaxed text-left"><strong>Integrity, Innovation, Transparency, Customer Success</strong>, and Excellence in everything we do.</p>
                     </div>
                 </div>
             </div>
@@ -290,7 +309,7 @@
                         Driving Success Across <span class="text-blue-600">Multiple Verticals</span>
                     </h2>
                     <p class="text-slate-600 mb-8 text-lg leading-relaxed text-center lg:text-left">
-                        Amorah Group is a multifaceted organization excelling in IT Solutions, Talent Acquisition, and Global Overseas Services. We are committed to results that matter.
+                        Amorah Group is a multifaceted organization excelling in <strong>IT Solutions, Talent Acquisition, and Global Overseas Services</strong>. We are committed to results that matter.
                     </p>
                     <ul class="space-y-4 text-slate-700 font-semibold text-lg text-center lg:text-left">
                         <li class="flex items-center justify-center lg:justify-start gap-3"><i class="fas fa-check-circle text-blue-600 text-xl"></i> 100% Ethical & Transparent Processes</li>
@@ -467,78 +486,9 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js" defer></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // 1. SERVICES SECTION CANVAS (RED)
-            const canvasRed = document.getElementById("network-lines-red");
-            if (canvasRed) {
-                const ctxRed = canvasRed.getContext("2d");
-                let wRed, hRed, dotsRed = [];
-                const resizeRed = () => { wRed = canvasRed.width = canvasRed.parentElement.offsetWidth; hRed = canvasRed.height = canvasRed.parentElement.offsetHeight; initDotsRed(); };
-                
-                // UPDATED: Increased Line/Dot Count to 80
-                const initDotsRed = () => {
-                    dotsRed = Array.from({ length: 80 }, () => ({ x: Math.random() * wRed, y: Math.random() * hRed, vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5 }));
-                };
-                window.addEventListener('resize', resizeRed);
-                resizeRed();
-                const animateRed = () => {
-                    ctxRed.clearRect(0, 0, wRed, hRed);
-                    dotsRed.forEach((d, i) => {
-                        d.x += d.vx; d.y += d.vy;
-                        if(d.x<0||d.x>wRed) d.vx*=-1; if(d.y<0||d.y>hRed) d.vy*=-1;
-                        
-                        // Draw Lines (Red)
-                        dotsRed.slice(i+1).forEach(o => {
-                            const dist = Math.hypot(d.x - o.x, d.y - o.y);
-                            if (dist < 100) {
-                                ctxRed.strokeStyle = `rgba(220, 38, 38, ${0.4 * (1 - dist / 100)})`; // Red-600
-                                ctxRed.beginPath(); ctxRed.moveTo(d.x, d.y); ctxRed.lineTo(o.x, o.y); ctxRed.stroke();
-                            }
-                        });
-                        
-                        // Draw Dots (Red)
-                        ctxRed.fillStyle = "rgba(220, 38, 38, 0.5)"; // Red-600
-                        ctxRed.beginPath(); ctxRed.arc(d.x, d.y, 2, 0, Math.PI*2); ctxRed.fill();
-                    });
-                    requestAnimationFrame(animateRed);
-                };
-                animateRed();
-            }
-
-            // 2. WHY CHOOSE US CANVAS (DOTS - RED BUBBLES ADDED)
-            const canvasDots = document.getElementById("canvas-dots");
-            if (canvasDots) {
-                const ctx = canvasDots.getContext("2d");
-                let w, h, dots = [];
-                const resize = () => { w = canvasDots.width = canvasDots.parentElement.offsetWidth; h = canvasDots.height = canvasDots.parentElement.offsetHeight; initDots(); };
-                
-                // UPDATED: Increased Line/Dot Count to 80
-                const initDots = () => {
-                    dots = Array.from({ length: 80 }, () => ({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5 }));
-                };
-                window.addEventListener('resize', resize);
-                resize();
-                const animate = () => {
-                    ctx.clearRect(0, 0, w, h);
-                    dots.forEach(d => {
-                        d.x += d.vx; d.y += d.vy;
-                        if(d.x<0||d.x>w) d.vx*=-1; if(d.y<0||d.y>h) d.vy*=-1;
-                        
-                        // UPDATED: Dots are now Red-600 (rgba(220, 38, 38))
-                        ctx.fillStyle = "rgba(220, 38, 38, 0.25)"; 
-                        ctx.beginPath(); ctx.arc(d.x, d.y, 2, 0, Math.PI*2); ctx.fill();
-                    });
-                    requestAnimationFrame(animate);
-                };
-                animate();
-            }
-        });
-    </script>
 </body>
 </html>
