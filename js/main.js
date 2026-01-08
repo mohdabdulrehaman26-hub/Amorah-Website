@@ -547,8 +547,8 @@ function initWhatsAppBubble() {
                     <span class="absolute top-0 right-0 w-3 h-3 bg-red-500 border-2 border-white rounded-full"></span>
                 </div>
                 <div>
-                    <p class="font-bold text-slate-800 text-sm">Need Help?</p>
-                    <p class="text-xs text-green-600 font-semibold">Online now</p>
+                    <p class="font-bold text-slate-800 text-sm">Welcome to Amorah 👋</p>
+                    <p class="text-xs text-green-600 font-semibold">How can we assist you today?</p>
                 </div>
                 <button onclick="event.stopPropagation(); this.closest('#wa-bubble').remove()" class="text-slate-300 hover:text-red-500 ml-2 p-1">
                     <i class="fas fa-times"></i>
