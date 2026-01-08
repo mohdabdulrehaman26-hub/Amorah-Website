@@ -1,7 +1,8 @@
 /**
- * AMORAH GROUP - MAIN JAVASCRIPT (FINAL PRODUCTION v15.0)
+ * AMORAH GROUP - MAIN JAVASCRIPT (FINAL PRODUCTION v17.0)
  * =========================================================
  * Modular Architecture | Error Handling | Performance Optimized
+ * Includes: Mobile Logic, Tracking, Forms, Animations, Sliders
  */
 
 const CONFIG = {
@@ -24,7 +25,7 @@ const CONFIG = {
 /* --- INITIALIZATION SEQUENCE --- */
 document.addEventListener('DOMContentLoaded', async () => {
     
-    // 1. Load Global Components (Header/Footer)
+    // 1. Load Global Components (Header/Footer) - CRITICAL
     try {
         await Promise.all([
             loadComponent('header', 'includes/header.html'),
@@ -36,35 +37,37 @@ document.addEventListener('DOMContentLoaded', async () => {
         highlightActiveLink();
         updateCopyrightYear();
         
-        // Custom Event for other scripts (like links-init.js)
+        // Initialize sticky header logic IMMEDIATELY after load
+        initStickyHeader(); 
+        
+        // Custom Event for other scripts
         document.dispatchEvent(new Event('componentsLoaded'));
         
     } catch (error) {
         console.warn("Component loading warning:", error);
     }
 
-    // 2. Core Features (Immediate)
-    initStickyHeader();
-    initSmoothScroll();
-    initServiceTabs(); // For services.html scrolling
-    initForms();       // Handles all forms
+    // 2. Core Features (Load in next frame to prevent blocking)
+    requestAnimationFrame(() => {
+        initSmoothScroll();
+        initServiceTabs(); // For services.html scrolling
+        initForms();       // Handles all forms
+    });
 
-    // 3. Integrations (Immediate)
-    initTrackingSystem();
-    initSwipers();     // Sliders/Carousels
-
-    // 4. Deferred Integrations (Visuals & Widgets - 500ms delay)
+    // 3. Deferred Integrations (Visuals & Tracking - 1s delay for PageSpeed)
     setTimeout(() => {
-        initAOS();
-        initCounters();
+        initTrackingSystem(); // GA / Meta / LinkedIn
+        initSwipers();        // Sliders/Carousels
+        initAOS();            // Scroll Animations
+        initCounters();       // Number Counters
         initCanvasAnimations(); // Handles Blue, Red, and Dots canvases
-        initWhatsAppBubble();
-        initCookieBanner();
+        initWhatsAppBubble(); // Floating Widget
+        initCookieBanner();   // GDPR
         
         if (typeof VanillaTilt !== 'undefined') {
             VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
         }
-    }, 500); 
+    }, 1000); 
 });
 
 /* ==========================================
@@ -74,7 +77,7 @@ async function loadComponent(id, path) {
     const el = document.getElementById(id);
     if (!el) return;
     try {
-        // Cache busting to ensure fresh content on deployment updates
+        // Cache busting to ensure fresh content
         const version = new Date().getTime(); 
         const res = await fetch(`${path}?v=${version}`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -87,75 +90,25 @@ async function loadComponent(id, path) {
 }
 
 /* ==========================================
-   4. TRACKING SYSTEM
-========================================== */
-function initTrackingSystem() {
-    try {
-        const { GA_ID, META_ID, LINKEDIN_ID } = CONFIG.TRACKING;
-
-        // Google Analytics
-        if (!document.getElementById('ga-script')) {
-            const gaScript = document.createElement('script');
-            gaScript.id = 'ga-script';
-            gaScript.async = true;
-            gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-            document.head.appendChild(gaScript);
-
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            window.gtag = gtag;
-            gtag('js', new Date());
-            gtag('config', GA_ID);
-        }
-
-        // Meta Pixel
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', META_ID);
-        fbq('track', 'PageView');
-
-        // LinkedIn Insight
-        window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-        window._linkedin_data_partner_ids.push(LINKEDIN_ID);
-        (function(l) {
-        if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
-        window.lintrk.q=[]}
-        var s = document.getElementsByTagName("script")[0];
-        var b = document.createElement("script");
-        b.type = "text/javascript";b.async = true;
-        b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
-        s.parentNode.insertBefore(b, s);})(window.lintrk);
-
-    } catch (e) {
-        console.log("Tracking blocked or failed to initialize.");
-    }
-}
-
-/* ==========================================
-   5. UI & NAVIGATION
+   4. UI & NAVIGATION (FIXED FOR MOBILE)
 ========================================== */
 function initStickyHeader() {
     const header = document.querySelector('.header');
     if (!header) return;
 
-    // Use specific ID selector to update mobile button color
+    let lastScroll = 0;
+
     const updateHeaderState = () => {
-        const scrolled = window.scrollY > 20;
-        const mobileBtn = document.getElementById('mobileBtn');
+        const currentScroll = window.scrollY;
+        const isScrolled = currentScroll > 20;
         
-        // 1. Header Background
-        header.classList.toggle('scrolled', scrolled);
+        // 1. Header Background Toggle
+        header.classList.toggle('scrolled', isScrolled);
         
-        // 2. Desktop Links
+        // 2. Desktop Links Color Toggle
         const links = header.querySelectorAll('.nav-link');
         links.forEach(l => {
-            if(scrolled) { 
+            if(isScrolled) { 
                 l.classList.remove('text-white'); 
                 l.classList.add('text-slate-800'); 
             } else { 
@@ -164,21 +117,20 @@ function initStickyHeader() {
             }
         });
 
-        // 3. Mobile Button Color Fix
+        // 3. Mobile Button Color Fix (White on Hero, Dark on Scroll)
+        const mobileBtn = document.getElementById('mobileBtn');
         if(mobileBtn) {
-            if(scrolled) {
-                mobileBtn.style.color = '#0f172a'; // Dark
-            } else {
-                mobileBtn.style.color = '#ffffff'; // White
-            }
+            mobileBtn.style.color = isScrolled ? '#0f172a' : '#ffffff';
         }
+
+        lastScroll = currentScroll;
     };
 
     // Initialize immediately
     updateHeaderState();
     
-    // Update on scroll
-    window.addEventListener('scroll', updateHeaderState, { passive: true });
+    // Update on scroll using RequestAnimationFrame for performance
+    window.addEventListener('scroll', () => requestAnimationFrame(updateHeaderState), { passive: true });
 }
 
 function initMobileMenu() {
@@ -192,18 +144,14 @@ function initMobileMenu() {
         // Open Menu
         if (toggle && menu) {
             menu.style.transform = 'translateX(0)';
-            if(overlay) {
-                overlay.classList.remove('invisible', 'opacity-0');
-            }
+            if(overlay) overlay.classList.remove('invisible', 'opacity-0');
             document.body.style.overflow = 'hidden'; // Prevent background scroll
         }
 
         // Close Menu
         if ((close || e.target === overlay) && menu) {
             menu.style.transform = 'translateX(100%)';
-            if(overlay) {
-                overlay.classList.add('invisible', 'opacity-0');
-            }
+            if(overlay) overlay.classList.add('invisible', 'opacity-0');
             document.body.style.overflow = '';
         }
         
@@ -224,8 +172,7 @@ function highlightActiveLink() {
     const path = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-link').forEach(a => {
         const href = a.getAttribute('href');
-        // Basic match
-        if(href === path) {
+        if(href === path || (path === 'index.html' && href === './')) {
             a.classList.add('text-blue-600');
             a.classList.remove('text-white');
         }
@@ -290,7 +237,7 @@ function initServiceTabs() {
 }
 
 /* ==========================================
-   6. FORM HANDLING
+   5. FORM HANDLING
 ========================================== */
 function initForms() {
     document.addEventListener('submit', async e => {
@@ -364,8 +311,69 @@ function initForms() {
 }
 
 /* ==========================================
-   7. SWIPER SLIDERS
+   6. TRACKING SYSTEM
 ========================================== */
+function initTrackingSystem() {
+    try {
+        const { GA_ID, META_ID, LINKEDIN_ID } = CONFIG.TRACKING;
+
+        // Google Analytics
+        if (!document.getElementById('ga-script')) {
+            const gaScript = document.createElement('script');
+            gaScript.id = 'ga-script';
+            gaScript.async = true;
+            gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+            document.head.appendChild(gaScript);
+
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', GA_ID);
+        }
+
+        // Meta Pixel
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', META_ID);
+        fbq('track', 'PageView');
+
+        // LinkedIn Insight
+        window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+        window._linkedin_data_partner_ids.push(LINKEDIN_ID);
+        (function(l) {
+        if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+        window.lintrk.q=[]}
+        var s = document.getElementsByTagName("script")[0];
+        var b = document.createElement("script");
+        b.type = "text/javascript";b.async = true;
+        b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+        s.parentNode.insertBefore(b, s);})(window.lintrk);
+
+    } catch (e) {
+        console.log("Tracking blocked or failed to initialize.");
+    }
+}
+
+/* ==========================================
+   7. VISUALS & ANIMATIONS
+========================================== */
+function initAOS() { 
+    if (window.AOS) {
+        AOS.init({ 
+            duration: CONFIG.ANIMATION_DURATION, 
+            once: true,
+            offset: 100
+        }); 
+    }
+}
+
 function initSwipers() {
     if (typeof Swiper === 'undefined') return;
 
@@ -375,7 +383,7 @@ function initSwipers() {
             slidesPerView: "auto",
             spaceBetween: 60,
             loop: true,
-            speed: 4000, // Smooth continuous speed
+            speed: 4000, 
             allowTouchMove: false,
             autoplay: { delay: 0, disableOnInteraction: false },
             on: { 
@@ -423,19 +431,6 @@ function initSwipers() {
     }
 }
 
-/* ==========================================
-   8. VISUALS & ANIMATIONS
-========================================== */
-function initAOS() { 
-    if (window.AOS) {
-        AOS.init({ 
-            duration: CONFIG.ANIMATION_DURATION, 
-            once: true,
-            offset: 100
-        }); 
-    }
-}
-
 function initCounters() {
     const els = document.querySelectorAll('.counter-num, .gp-number');
     
@@ -443,24 +438,21 @@ function initCounters() {
         entries.forEach(e => {
             if (e.isIntersecting) {
                 const el = e.target;
-                const target = +el.dataset.target; // Get number from data-target
+                const target = +el.dataset.target; 
                 if(!target) return;
 
                 let count = 0;
-                const duration = 2000; // 2 seconds
-                const steps = 60;
-                const increment = target / steps;
-                const intervalTime = duration / steps;
-
+                const step = Math.ceil(target / 40);
+                
                 const timer = setInterval(() => {
-                    count += increment;
+                    count += step;
                     if (count >= target) { 
                         el.textContent = target + '+'; 
                         clearInterval(timer); 
                     } else { 
-                        el.textContent = Math.ceil(count); 
+                        el.textContent = count; 
                     }
-                }, intervalTime);
+                }, 30);
                 
                 observer.unobserve(el);
             }
@@ -501,18 +493,14 @@ function initCanvasAnimations() {
                 d.x += d.vx; 
                 d.y += d.vy;
                 
-                // Bounce off walls
                 if(d.x < 0 || d.x > w) d.vx *= -1; 
                 if(d.y < 0 || d.y > h) d.vy *= -1;
                 
                 if(isNet) {
-                    // Draw connecting lines
                     dots.slice(i + 1).forEach(o => {
                         const dist = Math.hypot(d.x - o.x, d.y - o.y);
                         if(dist < 100) {
-                            // Dynamic opacity based on distance
                             const alpha = (1 - dist / 100) * 0.3;
-                            // Replace placeholder OP with calculated alpha
                             ctx.strokeStyle = colorString.replace('OP', alpha);
                             ctx.beginPath(); 
                             ctx.moveTo(d.x, d.y); 
@@ -522,7 +510,6 @@ function initCanvasAnimations() {
                     });
                 }
                 
-                // Draw Dot
                 ctx.fillStyle = colorString.replace('OP', 0.4);
                 ctx.beginPath(); 
                 ctx.arc(d.x, d.y, 2, 0, Math.PI * 2); 
@@ -534,19 +521,17 @@ function initCanvasAnimations() {
         window.addEventListener('resize', resize); 
         resize();
         
-        // Only animate when visible to save battery
         new IntersectionObserver(e => {
             if(e[0].isIntersecting) draw();
         }).observe(cvs);
     };
     
-    // Initialize specific canvases
     setup('network-lines-red', 'rgba(220, 38, 38, OP)', true); // Red Network
     setup('canvas-dots', 'rgba(37, 99, 235, OP)', false);      // Blue Dots
 }
 
 /* ==========================================
-   9. WIDGETS
+   8. WIDGETS
 ========================================== */
 function initWhatsAppBubble() {
     if(document.getElementById('wa-bubble')) return;
@@ -562,18 +547,16 @@ function initWhatsAppBubble() {
                     <span class="absolute top-0 right-0 w-3 h-3 bg-red-500 border-2 border-white rounded-full"></span>
                 </div>
                 <div>
-                    <p class="font-bold text-slate-800 text-sm">Welcome to Amorah 👋 </p>
-                    <p class="text-xs text-green-600 font-semibold">How can we assist you today?</p>
+                    <p class="font-bold text-slate-800 text-sm">Need Help?</p>
+                    <p class="text-xs text-green-600 font-semibold">Online now</p>
                 </div>
                 <button onclick="event.stopPropagation(); this.closest('#wa-bubble').remove()" class="text-slate-300 hover:text-red-500 ml-2 p-1">
                     <i class="fas fa-times"></i>
                 </button>
             </div>`;
         document.body.appendChild(b);
-        
-        // Play gentle sound
         new Audio(CONFIG.NOTIFICATION_SOUND).play().catch(()=>{});
-    }, 4000); // Show after 4 seconds
+    }, 4000); 
 }
 
 function initCookieBanner() {
